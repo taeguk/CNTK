@@ -22,6 +22,7 @@ boAddRoisOnGrid = True
 # Main
 ####################################
 # generate ROIs using selective search and grid (for pascal we use the precomputed ROIs from Ross)
+#if False: # not datasetName.startswith("pascalVoc"):
 if not datasetName.startswith("pascalVoc"):
     # init
     makeDirectory(roiDir)
@@ -109,6 +110,9 @@ for image_set in image_sets:
                 currGtOverlaps = imdb.roidb[imgIndex]['gt_overlaps']
                 imgPath = imdb.image_path_at(imgIndex)
                 imgWidth, imgHeight = imWidthHeight(imgPath)
+
+                #import pdb
+                #pdb.set_trace()
 
                 # all rois need to be scaled + padded to cntk input image size
                 targetw, targeth, w_offset, h_offset, scale = roiTransformPadScaleParams(imgWidth, imgHeight,
