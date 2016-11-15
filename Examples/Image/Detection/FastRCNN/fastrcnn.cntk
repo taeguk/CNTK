@@ -30,8 +30,8 @@ ImageW = 1000
 ImageC = 3
 
 NumLabels = 22
-NumTrainROIs = 200
-NumTestROIs = 1000
+NumTrainROIs = 64
+NumTestROIs = 200
 
 TrainROIDim = 800               # $NumTrainROIs$ * 4 
 TrainROILabelDim = 4400         # $NumTrainROIs$ * $NumLabels$
@@ -91,10 +91,9 @@ Train = {
 
     SGD = {
         epochSize = 0
-        minibatchSize = 1
+        minibatchSize = 2
         maxEpochs = 17
         
-        #momentumAsTimeConstant = 0*5:10
         learningRatesPerSample=0.00001*10:0.000001*5:0.0000001
         momentumPerMB=0.9
         gradUpdateType=None
@@ -175,17 +174,14 @@ WriteTrain = {
         verbosity = 2
         deserializers = ({
             type = "CNTKTextFormatDeserializer" ; module = "CNTKTextFormatReader"
-            #file = "$dataDir$/test2007pad_all.rois.txt"
             file = train.rois.txt
             input = { rois = { dim = $TestROIDim$ ; format = "dense" } }
         }:{
             type = "CNTKTextFormatDeserializer" ; module = "CNTKTextFormatReader"
-            #file = "$dataDir$/test2007pad_all.roilabels.txt"
             file = train.roilabels.txt
             input = { roiLabels = { dim = $TestROILabelDim$ ; format = "dense" } }
         }:{
             type = "ImageDeserializer" ; module = "ImageReader"
-            #file = "$dataDir$/test2007pad_all.txt"
             file = train.txt
             input = {
                 features = { transforms = (

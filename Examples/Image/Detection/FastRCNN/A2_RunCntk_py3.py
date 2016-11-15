@@ -7,7 +7,7 @@
 from __future__ import print_function
 import numpy as np
 import os, sys, importlib
-from cntk import Trainer, load_model
+from cntk import * # Trainer, load_model, UnitType
 from cntk.device import cpu, set_default_device
 from cntk.learner import sgd
 from cntk.blocks import Placeholder, Constant
@@ -18,12 +18,12 @@ from cntk.ops import roipooling
 from cntk.ops.functions import CloneMethod
 from cntk.io import ReaderConfig, ImageDeserializer, CTFDeserializer, StreamConfiguration
 from cntk.initializer import glorot_uniform
+from cntk.graph import find_by_name, depth_first_search
 import PARAMETERS
 locals().update(importlib.import_module("PARAMETERS").__dict__)
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(abs_path, "..", ".."))
-from examples.common.nn import print_training_progress
 
 TRAIN_MAP_FILENAME = 'train.txt'
 TEST_MAP_FILENAME = 'test.txt'
@@ -31,31 +31,41 @@ ROIS_FILENAME_POSTFIX = '.rois.txt'
 ROILABELS_FILENAME_POSTFIX = '.roilabels.txt'
 
 
-#####################################################
-#####################################################
-# helpers for graph traversal
-def dfs_walk(node, visitor, accum, visited):
-    if node in visited:
-        return
-    visited.add(node)
-    print("visiting %s"%node.name)
-    if hasattr(node, 'root_function'):
-        node = node.root_function
-        for child in node.inputs:
-            dfs_walk(child, visitor, accum, visited)
-    elif hasattr(node, 'is_output') and node.is_output:
-        dfs_walk(node.owner, visitor, accum, visited)
+# model specific variables
+use_model = "VGG"
 
-    if visitor(node):
-        accum.append(node)
+if (use_model == "AlexNet"):
+    model_file = "../../../../../PretrainedModels/AlexNet.model"
+    feature_node_name = "features"
+    conv5_node_name = "conv5.y"  # "z.x._.x._.x.x_output"
+    pool3_node_name = "pool3"  # "z.x._.x._.x_output"
+    h2d_node_name = "h2_d"  # "z.x_output"
+elif (use_model == "VGG"):
+    model_file = "../../../../../PretrainedModels/VGG19_legacy.model"
+    feature_node_name = "data"
+    conv5_node_name = "relu5_4"  # "z.x._.x._.x.x_output"
+    pool3_node_name = "pool5"  # "z.x._.x._.x_output"
+    h2d_node_name = "drop7"  # "z.x_output"
 
-def visit(root_node, visitor):
-    nodes = []
-    dfs_walk(root_node, visitor, nodes, set())
-    return nodes
 
-def find_nodes_by_name(root_node, node_name):
-    return visit(root_node, lambda x: x.name == node_name)
+# Helper to print all node names
+def print_all_node_names(model_file, is_BrainScript=True):
+    loaded_model = load_model(model_file)
+    if is_BrainScript:
+        loaded_model = combine([loaded_model.outputs[0]])
+    node_list = depth_first_search(loaded_model, lambda x: True) #x.is_output)
+    print("printing node information in the format")
+    print("node name (tensor shape)")
+    for node in node_list:
+        print(node.name, node.shape)
+
+
+def print_training_progress(trainer, mb, frequency):
+    if mb % frequency == 0:
+        training_loss = get_train_loss(trainer)
+        eval_crit = get_train_eval_criterion(trainer)
+        print("Minibatch: {}, Train Loss: {}, Train Evaluation Criterion: {}".format(
+            mb, training_loss, eval_crit))
 
 
 # Instantiates a composite minibatch source for reading images, roi coordinates and roi labels for training Fast R-CNN
@@ -66,7 +76,10 @@ def create_mb_source(features_stream_name, rois_stream_name, labels_stream_name,
     label_dim = num_classes * num_rois
 
     path = os.path.normpath(os.path.join(abs_path, data_path))
-    map_file = os.path.join(path, TRAIN_MAP_FILENAME)
+    if (data_set == 'test'):
+        map_file = os.path.join(path, TEST_MAP_FILENAME)
+    else:
+        map_file = os.path.join(path, TRAIN_MAP_FILENAME)
     roi_file = os.path.join(path, data_set + ROIS_FILENAME_POSTFIX)
     label_file = os.path.join(path, data_set + ROILABELS_FILENAME_POSTFIX)
 
@@ -80,7 +93,7 @@ def create_mb_source(features_stream_name, rois_stream_name, labels_stream_name,
     image_source.ignore_labels()
     image_source.map_features(features_stream_name,
         [ImageDeserializer.scale(width=image_width, height=image_height, channels=num_channels,
-                                 scaleMode="pad", padValue=114, interpolations='linear')])
+                                 scale_mode="pad", pad_value=114, interpolations='linear')])
 
     # read rois and labels
     roi_source = CTFDeserializer(roi_file)
@@ -96,17 +109,22 @@ def create_mb_source(features_stream_name, rois_stream_name, labels_stream_name,
 # Defines the Fast R-CNN network model for detecting objects in images
 def frcn_predictor(features, rois, num_classes):
     # Load the pretrained model and find nodes
-    loaded_model = load_model("../../../../../PretrainedModels/AlexNetBS.model", 'float')
-    feature_node = find_nodes_by_name(loaded_model, "features")
-    conv5_node   = find_nodes_by_name(loaded_model, "z.x._.x._.x.x_output")
-    pool3_node   = find_nodes_by_name(loaded_model, "z.x._.x._.x_output")
-    h2d_node     = find_nodes_by_name(loaded_model, "z.x_output")
+    loaded_model = load_model(model_file)
+    feature_node = find_by_name(loaded_model, feature_node_name)
+    conv5_node   = find_by_name(loaded_model, conv5_node_name)
+    pool3_node   = find_by_name(loaded_model, pool3_node_name)
+    h2d_node     = find_by_name(loaded_model, h2d_node_name)
 
     # Clone the conv layers of the network, i.e. from the input features up to the output of the 5th conv layer
-    conv_layers = combine([conv5_node[0].owner]).clone(CloneMethod.freeze, {feature_node[0]: Placeholder()})
+    print("Cloning conv layers for %s model (%s to %s)" % (use_model, feature_node_name, conv5_node_name))
+    conv_layers = combine([conv5_node.owner]).clone(CloneMethod.freeze, {feature_node: Placeholder()})
+
+    #import pdb
+    #pdb.set_trace()
 
     # Clone the fully connected layers, i.e. from the output of the last pooling layer to the output of the last dense layer
-    fc_layers = combine([h2d_node[0].owner]).clone(CloneMethod.clone, {pool3_node[0]: Placeholder()})
+    print("Cloning fc layers for %s model (%s to %s)" % (use_model, pool3_node_name, h2d_node_name))
+    fc_layers = combine([h2d_node.owner]).clone(CloneMethod.clone, {pool3_node: Placeholder()})
 
     # create Fast R-CNN model
     feat_norm = features - Constant(114)
@@ -159,8 +177,7 @@ def frcn_grocery(base_path, debug_output=False):
     l2_reg_weight = 0.0005
 
     lr_per_mb = [0.00001] * 10 + [0.000001] * 5 + [0.0000001]
-    lr_per_sample = [lr / mb_size for lr in lr_per_mb]
-    lr_schedule = learning_rate_schedule(lr_per_sample, epoch_size=epoch_size)
+    lr_schedule = learning_rate_schedule(lr_per_mb, unit=UnitType.minibatch)
     mm_schedule = momentum_as_time_constant_schedule(momentum_time_constant)
 
     # Instantiate the trainer object to drive the model training
@@ -219,4 +236,6 @@ def frcn_grocery(base_path, debug_output=False):
 # set_default_device(cpu())
 
 os.chdir(cntkFilesDir)
+print_all_node_names(model_file)
+
 frcn_grocery(cntkFilesDir)

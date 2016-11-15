@@ -487,16 +487,6 @@ CNTK2 = [
     CrossEntropyWithSoftmax(labelSequence, outProbVectorSequence, axis=0, tag='') = 
         if axis==0 then new ComputationNode [ operation = 'CrossEntropyWithSoftmax' ; inputs = _AsNodes (labelSequence : outProbVectorSequence) /*plus the function args*/ ]
         else [ tag1 = tag; out = Minus (ReduceLogSum (outProbVectorSequence, axis=axis), ReduceSum (labelSequence .* outProbVectorSequence, axis=axis), tag=tag1) ].out
-        #else {
-        #    tag1 = tag; 
-        #    # p = Softmax(outProbVectorSequence, axis=axis)
-        #    z = outProbVectorSequence
-        #    numerator = Softmax (z)                                         # do a first Softmax to bring it into harmless numeric range
-        #    denominator = ReduceSum (numerator, axis=axis) #; axis1 = axis  # reduce along axis
-        #    p = numerator .* Reciprocal (denominator)                       # normalize numerator by the sum along the given axis
-        #    a = ReduceSum(labelSequence .* Log(p), axis=axis)
-        #    out = Minus(0, a, tag=tag1)
-        #}.out
     # Classification error along a specific axis: account only for missed labels, i.e.
     # strictly check whether at the one '1' location in labels we find a value equal to the max
     ClassificationError(labelSequence, outVectorSequence, topN=1, axis=0, tag='') =
