@@ -20,13 +20,7 @@ fi
 # Copy the test data to the test run directory
 TestDataDir=$TEST_RUN_DIR/TestData
 mkdir $TestDataDir
-cp -R $DataSourceDir/MNIST/v0/Train-28x28_cntk_text.txt $TestDataDir || exit $?
-cp -R $DataSourceDir/CIFAR/v0/cifar-10-batches-py $TestDataDir || exit $?
-cp -R $TEST_DIR/../../Simple2d/Data/SimpleDataT*_cntk_text.txt $TestDataDir || exit $?
-cp -R $TEST_DIR/../../Text/SequenceClassification/Data/Train.ctf $TestDataDir || exit $?
-cp -R $TEST_DIR/../../../../Examples/SequenceToSequence/CMUDict/Data/cmudict-0.7b.train-dev-20-21.ctf $TestDataDir || exit $?
 cp -R $TEST_DIR/../../../../Examples/Speech/AN4/Data/* $TestDataDir || exit $?
-cp -R $TEST_DIR/../../../UnitTests/V2LibraryTests/data/* $TestDataDir || exit $?
 
 # Train model that is used by Eval tests.
 # Setup predefined variables $DataDir, $ConfigDir, and $OutputDir that are required by cntkrun
@@ -52,9 +46,9 @@ fi
 pushd $TestDataDir
 
 if [ "$OS" == "Windows_NT" ]; then
-  $TEST_BIN_DIR/V2LibraryTests_boost.exe --report_level=detailed
+  $TEST_BIN_DIR/TruncatedLSTMAcousticModelTests.exe
 else
-  $TEST_BIN_DIR/v2librarytests
+  $TEST_BIN_DIR/truncatedlstmacousticmodeltests
 fi
 
 ExitCode=$?

@@ -1,0 +1,539 @@
+CPU info:
+    CPU Model Name: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+    Hardware threads: 12
+    Total Memory: 33474872 kB
+-------------------------------------------------------------------
++ [[ C:\CNTKTestData == '' ]]
++ [[ ! -d C:\CNTKTestData ]]
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -au 'C:\CNTKTestData'
++ DataSourceDir=/cygdrive/c/CNTKTestData/Image
++ TestDataDir=/tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData
++ mkdir /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData
++ ConfigDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ OutputDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ DataDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ cp /cygdrive/c/CNTKTestData/Image/MNIST/v0/Train-28x28_cntk_text.txt /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output ']'
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models ']'
++ rm -rf /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models
++ DeleteModelsAfterTest=0
++ '[' -f /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/01_OneHidden.cntk ']'
++ cntkrun 01_OneHidden.cntk 'stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ configFileName=01_OneHidden.cntk
++ additionalCNTKArgs='stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ ConfigDir='C:\repos\CNTK\Examples\Image\GettingStarted'
+++ cygpath -aw /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu
++ RunDir='C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ DataDir='C:\repos\CNTK\Examples\Image\DataSets\MNIST'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ OutputDir='C:\repos\CNTK\Examples\Image\GettingStarted\Output'
++ CNTKArgs='configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' '' '!=' '' ']'
++ modelsDir=/tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/Models
++ [[ 1 == 1 ]]
++ '[' -d /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/Models ']'
++ mkdir -p /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/Models
++ [[ 0 == 0 ]]
++ run /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
++ cmd=/cygdrive/c/repos/CNTK/x64/release/cntk.exe
++ shift
++ '[' '' == 1 ']'
++ echo === Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+=== Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]
++ /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+CNTK 2.0.beta7.0+ (master 214eb0, Jan 16 2017 10:28:42) on DESKTOP-9TF8PB8 at 2017/01/16 15:32:45
+
+C:\repos\CNTK\x64\release\cntk.exe  configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk  currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST  RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu  DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST  ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted  OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output  DeviceId=0  timestamping=true  stderr=-  command=trainNetwork  trainNetwork=[SGD=[maxEpochs=1]]
+Changed current directory to C:\repos\CNTK\Examples\Image\DataSets\MNIST
+01/16/2017 15:32:52: Redirecting stderr to file -_trainNetwork.log
+01/16/2017 15:32:52: -------------------------------------------------------------------
+01/16/2017 15:32:52: Build info: 
+
+01/16/2017 15:32:52: 		Built time: Jan 16 2017 10:28:42
+01/16/2017 15:32:52: 		Last modified date: Thu Jan  5 17:22:55 2017
+01/16/2017 15:32:52: 		Build type: Release
+01/16/2017 15:32:52: 		Build target: GPU
+01/16/2017 15:32:52: 		With 1bit-SGD: no
+01/16/2017 15:32:52: 		With ASGD: yes
+01/16/2017 15:32:52: 		Math lib: mkl
+01/16/2017 15:32:52: 		CUDA_PATH: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0
+01/16/2017 15:32:52: 		CUB_PATH: c:\src\cub-1.4.1
+01/16/2017 15:32:52: 		CUDNN_PATH: c:\NVIDIA\cudnn-5.0\cuda
+01/16/2017 15:32:52: 		Build Branch: master
+01/16/2017 15:32:52: 		Build SHA1: 214eb09def1c4317138541423de96d36d464603e (modified)
+01/16/2017 15:32:52: 		Built by t-ivrodr on DESKTOP-9TF8PB8
+01/16/2017 15:32:52: 		Build Path: C:\repos\CNTK\Source\CNTK\
+01/16/2017 15:32:52: 		MPI distribution: Microsoft MPI
+01/16/2017 15:32:52: 		MPI version: 7.0.12437.6
+01/16/2017 15:32:52: -------------------------------------------------------------------
+01/16/2017 15:32:54: -------------------------------------------------------------------
+01/16/2017 15:32:54: GPU info:
+
+01/16/2017 15:32:54: 		Device[0]: cores = 2496; computeCapability = 5.2; type = "Quadro M4000"; memory = 8192 MB
+01/16/2017 15:32:54: 		Device[1]: cores = 96; computeCapability = 2.1; type = "Quadro 600"; memory = 1024 MB
+01/16/2017 15:32:54: -------------------------------------------------------------------
+
+Configuration After Processing and Variable Resolution:
+
+configparameters: 01_OneHidden.cntk:command=trainNetwork
+configparameters: 01_OneHidden.cntk:ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted
+configparameters: 01_OneHidden.cntk:currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:dataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:deviceId=0
+configparameters: 01_OneHidden.cntk:modelPath=C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden
+configparameters: 01_OneHidden.cntk:outputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output
+configparameters: 01_OneHidden.cntk:precision=float
+configparameters: 01_OneHidden.cntk:rootDir=..
+configparameters: 01_OneHidden.cntk:RunDir=C:\cygwin64\tmp\cntk-test-20170116163244.804518\CNTKv2Library_MultiThreadsEvaluation@release_gpu
+configparameters: 01_OneHidden.cntk:stderr=-
+configparameters: 01_OneHidden.cntk:testNetwork={
+    action = "test"
+minibatchSize = 1024    
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Test-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }
+}
+
+configparameters: 01_OneHidden.cntk:timestamping=true
+configparameters: 01_OneHidden.cntk:traceLevel=1
+configparameters: 01_OneHidden.cntk:trainNetwork={
+    action = "train"
+    BrainScriptNetworkBuilder = {
+imageShape = 28:28:1                        
+labelDim = 10                               
+        featScale = 1/256
+        model(x) = {
+            s1 = x * featScale
+            h1 = DenseLayer {200, activation=ReLU} (s1) 
+            z = LinearLayer {labelDim} (h1)
+        }
+        features = Input {imageShape}
+        labels = Input {labelDim}
+        out = model (features)
+        ce   = CrossEntropyWithSoftmax (labels, out.z)
+        errs = ClassificationError (labels, out.z)
+        featureNodes    = (features)
+        labelNodes      = (labels)
+        criterionNodes  = (ce)
+        evaluationNodes = (errs)
+        outputNodes     = (out.z)
+    }
+    SGD = {
+        epochSize = 60000
+        minibatchSize = 64
+        maxEpochs = 10
+        learningRatesPerSample = 0.01*5:0.005
+        momentumAsTimeConstant = 0
+        numMBsToShowResult = 500
+    }
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Train-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }   
+} [SGD=[maxEpochs=1]]
+
+01/16/2017 15:32:54: Commands: trainNetwork
+01/16/2017 15:32:54: precision = "float"
+
+01/16/2017 15:32:54: ##############################################################################
+01/16/2017 15:32:54: #                                                                            #
+01/16/2017 15:32:54: # trainNetwork command (train action)                                        #
+01/16/2017 15:32:54: #                                                                            #
+01/16/2017 15:32:54: ##############################################################################
+
+01/16/2017 15:32:54: 
+Creating virgin network.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[10 x 0] as glorotUniform later when dimensions are fully known.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[200 x 0] as glorotUniform later when dimensions are fully known.
+
+Post-processing network...
+
+3 roots:
+	ce = CrossEntropyWithSoftmax()
+	errs = ClassificationError()
+	out.z = Plus()
+
+Validating network. 15 nodes to process in pass 1.
+
+Validating --> labels = InputValue() :  -> [10 x *]
+Validating --> out.z.W = LearnableParameter() :  -> [10 x 0]
+Validating --> out.h1.arrayOfFunctions[0].W = LearnableParameter() :  -> [200 x 0]
+Validating --> features = InputValue() :  -> [28 x 28 x 1 x *]
+Validating --> _out.s1 = LearnableParameter() :  -> [1]
+Validating --> out.s1 = ElementTimes (features, _out.s1) : [28 x 28 x 1 x *], [1] -> [28 x 28 x 1 x *]
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) operation: Tensor shape was inferred as [200 x 28 x 28 x 1].
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation): Initializing Parameter[200 x 28 x 28 x 1] <- glorotUniform(seed=2, init dims=[200 x 784], range=0.078087(0.078087*1.000000), onCPU=true.
+)Validating --> out.h1._.PlusArgs[0] = Times (out.h1.arrayOfFunctions[0].W, out.s1) : [200 x 28 x 28 x 1], [28 x 28 x 1 x *] -> [200 x *]
+Validating --> out.h1.arrayOfFunctions[0].b = LearnableParameter() :  -> [200]
+Validating --> out.h1._ = Plus (out.h1._.PlusArgs[0], out.h1.arrayOfFunctions[0].b) : [200 x *], [200] -> [200 x *]
+Validating --> out.h1 = RectifiedLinear (out.h1._) : [200 x *] -> [200 x *]
+Node 'out.z.W' (LearnableParameter operation) operation: Tensor shape was inferred as [10 x 200].
+Node 'out.z.W' (LearnableParameter operation): Initializing Parameter[10 x 200] <- glorotUniform(seed=1, init dims=[10 x 200], range=0.169031(0.169031*1.000000), onCPU=true.
+)Validating --> out.z.PlusArgs[0] = Times (out.z.W, out.h1) : [10 x 200], [200 x *] -> [10 x *]
+Validating --> out.z.b = LearnableParameter() :  -> [10]
+Validating --> out.z = Plus (out.z.PlusArgs[0], out.z.b) : [10 x *], [10] -> [10 x *]
+Validating --> ce = CrossEntropyWithSoftmax (labels, out.z) : [10 x *], [10 x *] -> [1]
+Validating --> errs = ClassificationError (labels, out.z) : [10 x *], [10 x *] -> [1]
+
+Validating network. 8 nodes to process in pass 2.
+
+
+Validating network, final pass.
+
+
+
+
+Post-processing network complete.
+
+01/16/2017 15:32:56: 
+Model has 15 nodes. Using GPU 0.
+
+01/16/2017 15:32:56: Training criterion:   ce = CrossEntropyWithSoftmax
+01/16/2017 15:32:56: Evaluation criterion: errs = ClassificationError
+
+
+Allocating matrices for forward and/or backward propagation.
+
+Memory Sharing: Out of 25 matrices, 12 are shared as 5, and 13 are not shared.
+
+	{ out.h1 : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].b : [200] (gradient) }
+	{ out.h1._ : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].W : [200 x 28 x 28 x 1] (gradient)
+	  out.z.PlusArgs[0] : [10 x *] (gradient) }
+	{ out.h1._ : [200 x *]
+	  out.z.PlusArgs[0] : [10 x *] }
+	{ out.z : [10 x *] (gradient)
+	  out.z.W : [10 x 200] (gradient) }
+	{ out.h1 : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *] (gradient) }
+
+
+01/16/2017 15:32:56: Training 159010 parameters in 4 out of 4 parameter tensors and 10 nodes with gradient:
+
+01/16/2017 15:32:56: 	Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) : [200 x 28 x 28 x 1]
+01/16/2017 15:32:56: 	Node 'out.h1.arrayOfFunctions[0].b' (LearnableParameter operation) : [200]
+01/16/2017 15:32:56: 	Node 'out.z.W' (LearnableParameter operation) : [10 x 200]
+01/16/2017 15:32:56: 	Node 'out.z.b' (LearnableParameter operation) : [10]
+
+01/16/2017 15:32:56: No PreCompute nodes found, or all already computed. Skipping pre-computation step.
+
+01/16/2017 15:32:56: Starting Epoch 1: learning rate per sample = 0.010000  effective momentum = 0.000000  momentum as time constant = 0.0 samples
+
+01/16/2017 15:32:56: Starting minibatch loop.
+01/16/2017 15:33:23:  Epoch[ 1 of 1]-Minibatch[   1- 500, 53.33%]: ce = 0.30730249 * 32000; errs = 9.509% * 32000; time = 27.4477s; samplesPerSecond = 1165.9
+01/16/2017 15:33:37: Finished Epoch[ 1 of 1]: [Training] ce = 0.22709749 * 60000; errs = 6.982% * 60000; totalSamplesSeen = 60000; learningRatePerSample = 0.0099999998; epochTime=41.4774s
+01/16/2017 15:33:37: SGD: Saving checkpoint model 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden'
+
+01/16/2017 15:33:38: Action "train" complete.
+
+01/16/2017 15:33:38: __COMPLETED__
++ return 0
++ local ExitCode=0
++ [[ 0 == 1 ]]
++ return 0
++ cp 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden' /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData
++ '[' gpu == cpu ']'
++ pushd /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData
+/tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/MultiThreadsEvaluation
++ '[' Windows_NT == Windows_NT ']'
++ /cygdrive/c/repos/CNTK/x64/release/MultiThreadsEvaluationTests.exe
+Run tests on GPU device using GPU build.
+
+##### Run evaluation on GPU device with 2 parallel evaluation thread(s). #####
+
+##### Run evaluation using new function on CPU. #####
+thread 0 joined.
+thread 1 joined.
+
+##### Run evaluation using new function on GPU. #####
+thread 0 joined.
+thread 1 joined.
+
+##### Run evaluation using clone function on CPU. #####
+Function 'classifierOutput': Input Variables (count=1)
+    name=features, kind=0
+Function 'classifierOutput': Output Variables (count=1)
+    name=classifierOutput, kind=1
+MultiThreadsEvaluationWithClone on device=0
+Evaluation result:
+Iteration:0, Sample 0:
+    8.719495 -7.649824 1.461358 10.811013 1.258002 -4.332582 7.601729 -16.948841 -0.582023 2.418952 ...
+Iteration:0, Sample 1:
+    8.720921 -7.647464 1.459090 10.812467 1.261331 -4.335119 7.599887 -16.945728 -0.579115 2.423536 ...
+Iteration:0, Sample 2:
+    8.720098 -7.650050 1.464658 10.805370 1.262745 -4.333428 7.598026 -16.944077 -0.584623 2.424257 ...
+Evaluation result:
+Iteration:1, Sample 0:
+    8.722198 -7.648003 1.462352 10.806681 1.262483 -4.338805 7.599281 -16.944553 -0.582075 2.421459 ...
+Iteration:1, Sample 1:
+    8.721128 -7.647965 1.461312 10.808915 1.260599 -4.335732 7.599219 -16.943222 -0.586524 2.423215 ...
+Iteration:1, Sample 2:
+    8.721639 -7.650586 1.460607 10.809494 1.258408 -4.334564 7.597912 -16.943573 -0.585630 2.419629 ...
+Evaluation result:
+Iteration:2, Sample 0:
+    8.718334 -7.646467 1.462742 10.808578 1.257757 -4.337018 7.599607 -16.946205 -0.582568 2.423580 ...
+Iteration:2, Sample 1:
+    8.717912 -7.645285 1.460468 10.811043 1.261216 -4.332682 7.599174 -16.947754 -0.583367 2.425624 ...
+Iteration:2, Sample 2:
+    8.721034 -7.649393 1.462294 10.806745 1.261738 -4.334638 7.599154 -16.942795 -0.578653 2.420603 ...
+Evaluation result:
+Iteration:3, Sample 0:
+    8.721185 -7.648074 1.462251 10.810593 1.259942 -4.337051 7.599345 -16.945053 -0.579848 2.421400 ...
+Iteration:3, Sample 1:
+    8.717768 -7.650075 1.461808 10.807858 1.261625 -4.334464 7.604058 -16.942713 -0.579218 2.419600 ...
+Iteration:3, Sample 2:
+    8.721836 -7.648918 1.460828 10.811454 1.260109 -4.334237 7.596703 -16.946081 -0.579708 2.423071 ...
+thread 0 joined.
+Evaluation result:
+Iteration:0, Sample 0:
+    8.719495 -7.649824 1.461358 10.811013 1.258002 -4.332582 7.601729 -16.948841 -0.582023 2.418952 ...
+Iteration:0, Sample 1:
+    8.720921 -7.647464 1.459090 10.812467 1.261331 -4.335119 7.599887 -16.945728 -0.579115 2.423536 ...
+Iteration:0, Sample 2:
+    8.720098 -7.650050 1.464658 10.805370 1.262745 -4.333428 7.598026 -16.944077 -0.584623 2.424257 ...
+Evaluation result:
+Iteration:1, Sample 0:
+    8.722198 -7.648003 1.462352 10.806681 1.262483 -4.338805 7.599281 -16.944553 -0.582075 2.421459 ...
+Iteration:1, Sample 1:
+    8.721128 -7.647965 1.461312 10.808915 1.260599 -4.335732 7.599219 -16.943222 -0.586524 2.423215 ...
+Iteration:1, Sample 2:
+    8.721639 -7.650586 1.460607 10.809494 1.258408 -4.334564 7.597912 -16.943573 -0.585630 2.419629 ...
+Evaluation result:
+Iteration:2, Sample 0:
+    8.718334 -7.646467 1.462742 10.808578 1.257757 -4.337018 7.599607 -16.946205 -0.582568 2.423580 ...
+Iteration:2, Sample 1:
+    8.717912 -7.645285 1.460468 10.811043 1.261216 -4.332682 7.599174 -16.947754 -0.583367 2.425624 ...
+Iteration:2, Sample 2:
+    8.721034 -7.649393 1.462294 10.806745 1.261738 -4.334638 7.599154 -16.942795 -0.578653 2.420603 ...
+Evaluation result:
+Iteration:3, Sample 0:
+    8.721185 -7.648074 1.462251 10.810593 1.259942 -4.337051 7.599345 -16.945053 -0.579848 2.421400 ...
+Iteration:3, Sample 1:
+    8.717768 -7.650075 1.461808 10.807858 1.261625 -4.334464 7.604058 -16.942713 -0.579218 2.419600 ...
+Iteration:3, Sample 2:
+    8.721836 -7.648918 1.460828 10.811454 1.260109 -4.334237 7.596703 -16.946081 -0.579708 2.423071 ...
+thread 1 joined.
+
+##### Run evaluation using clone function on GPU. #####
+Function 'classifierOutput': Input Variables (count=1)
+    name=features, kind=0
+Function 'classifierOutput': Output Variables (count=1)
+    name=classifierOutput, kind=1
+MultiThreadsEvaluationWithClone on device=0
+Evaluation result:
+Iteration:0, Sample 0:
+    1.736216 -2.727940 6.206212 3.786057 6.402899 2.282065 3.290561 -3.726553 6.733324 -8.657936 ...
+Iteration:0, Sample 1:
+    1.736724 -2.729739 6.208850 3.785677 6.405004 2.284062 3.291263 -3.724238 6.731872 -8.656819 ...
+Iteration:0, Sample 2:
+    1.735303 -2.730056 6.203740 3.781099 6.403130 2.280347 3.291617 -3.723971 6.731495 -8.653797 ...
+Evaluation result:
+Iteration:1, Sample 0:
+    1.735101 -2.728544 6.206993 3.776615 6.408544 2.282064 3.291742 -3.721628 6.729203 -8.654008 ...
+Iteration:1, Sample 1:
+    1.738858 -2.729151 6.208566 3.782923 6.408161 2.282825 3.292778 -3.723422 6.728349 -8.654612 ...
+Iteration:1, Sample 2:
+    1.736180 -2.730046 6.208835 3.780076 6.404348 2.277805 3.295566 -3.724390 6.732203 -8.657907 ...
+Evaluation result:
+Iteration:0, Sample 0:
+    1.736216 -2.727940 6.206212 3.786057 6.402899 2.282065 3.290561 -3.726553 6.733324 -8.657936 ...
+Iteration:0, Sample 1:
+    1.736724 -2.729739 6.208850 3.785677 6.405004 2.284062 3.291263 -3.724238 6.731872 -8.656819 ...
+Iteration:0, Sample 2:
+    1.735303 -2.730056 6.203740 3.781099 6.403130 2.280347 3.291617 -3.723971 6.731495 -8.653797 ...
+Evaluation result:
+Iteration:2, Sample 0:
+    1.732953 -2.730374 6.208559 3.783802 6.406854 2.282639 3.294977 -3.724947 6.734428 -8.654587 ...
+Iteration:2, Sample 1:
+    1.734979 -2.731544 6.208244 3.783403 6.399105 2.280866 3.289950 -3.724034 6.731304 -8.657026 ...
+Iteration:2, Sample 2:
+    1.737924 -2.727254 6.208600 3.783027 6.405755 2.277237 3.295089 -3.726955 6.732113 -8.656561 ...
+Evaluation result:
+Iteration:1, Sample 0:
+    1.735101 -2.728544 6.206993 3.776615 6.408544 2.282064 3.291742 -3.721628 6.729203 -8.654008 ...
+Iteration:1, Sample 1:
+    1.738858 -2.729151 6.208566 3.782923 6.408161 2.282825 3.292778 -3.723422 6.728349 -8.654612 ...
+Iteration:1, Sample 2:
+    1.736180 -2.730046 6.208835 3.780076 6.404348 2.277805 3.295566 -3.724390 6.732203 -8.657907 ...
+Evaluation result:
+Iteration:3, Sample 0:
+    1.735565 -2.728289 6.206496 3.782665 6.405285 2.280368 3.298810 -3.724006 6.729064 -8.654589 ...
+Iteration:3, Sample 1:
+    1.735816 -2.732991 6.207609 3.782609 6.405196 2.282218 3.289337 -3.723980 6.728164 -8.653746 ...
+Iteration:3, Sample 2:
+    1.735260 -2.730853 6.205897 3.781428 6.406174 2.282743 3.288371 -3.722442 6.730813 -8.652337 ...
+Evaluation result:
+Iteration:2, Sample 0:
+    1.732953 -2.730374 6.208559 3.783802 6.406854 2.282639 3.294977 -3.724947 6.734428 -8.654587 ...
+Iteration:2, Sample 1:
+    1.734979 -2.731544 6.208244 3.783403 6.399105 2.280866 3.289950 -3.724034 6.731304 -8.657026 ...
+Iteration:2, Sample 2:
+    1.737924 -2.727254 6.208600 3.783027 6.405755 2.277237 3.295089 -3.726955 6.732113 -8.656561 ...
+thread 0 joined.
+Evaluation result:
+Iteration:3, Sample 0:
+    1.735565 -2.728289 6.206496 3.782665 6.405285 2.280368 3.298810 -3.724006 6.729064 -8.654589 ...
+Iteration:3, Sample 1:
+    1.735816 -2.732991 6.207609 3.782609 6.405196 2.282218 3.289337 -3.723980 6.728164 -8.653746 ...
+Iteration:3, Sample 2:
+    1.735260 -2.730853 6.205897 3.781428 6.406174 2.282743 3.288371 -3.722442 6.730813 -8.652337 ...
+thread 1 joined.
+
+##### Run evaluation using pre-trained model on CPU. #####
+Function '': Input Variables (count=2)
+    name=features, kind=0
+    name=labels, kind=0
+Function '': Output Variables (count=3)
+    name=ce, kind=1
+    name=errs, kind=1
+    name=out.z, kind=1
+MultiThreadsEvaluationWithLoadModel on device=0
+Evaluation result:
+Iteration:0, Sample 0:
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:0, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:0, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Evaluation result:
+Iteration:0, Sample 0:
+Iteration:1, Sample 0:
+Ouput:Ouput:-1.425747 -1.425747 -1.934732 -1.934732 1.969601 4.241722 1.969601 4.241722 -2.117949 3.379070 -2.117949 3.379070 -3.130514 1.800768 -3.130514 1.800768 -1.164332 -1.794982 -1.164332 
+-1.794982 Iteration:0, Sample 1:
+
+Ouput:Iteration:1, Sample 1:
+-1.486611 Ouput:-1.695981 -1.486611 1.067438 2.418180 -2.234220 2.599320 -1.695981 -0.702214 0.747754 0.560226 1.067438 -1.077004 2.418180 -2.234220 2.599320 -0.702214 
+0.747754 Iteration:0, Sample 2:
+0.560226 Ouput:-1.077004 -2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+
+Iteration:1, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:1, Sample 0:
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:1, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:1, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:2, Sample 0:
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:2, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:2, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:2, Sample 0:
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:2, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:2, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 Evaluation result:
+-0.666758 -0.671374 Iteration:3, Sample 0:
+
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:3, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:3, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+thread 0 joined.
+Evaluation result:
+Iteration:3, Sample 0:
+Ouput:-1.425747 -1.934732 1.969601 4.241722 -2.117949 3.379070 -3.130514 1.800768 -1.164332 -1.794982 
+Iteration:3, Sample 1:
+Ouput:-1.486611 -1.695981 1.067438 2.418180 -2.234220 2.599320 -0.702214 0.747754 0.560226 -1.077004 
+Iteration:3, Sample 2:
+Ouput:-2.294234 -1.147464 -0.290555 4.923001 -3.607244 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+thread 1 joined.
+
+##### Run evaluation using pre-trained model on GPU. #####
+Function '': Input Variables (count=2)
+    name=features, kind=0
+    name=labels, kind=0
+Function '': Output Variables (count=3)
+    name=ce, kind=1
+    name=errs, kind=1
+    name=out.z, kind=1
+MultiThreadsEvaluationWithLoadModel on device=0
+Evaluation result:
+Iteration:0, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:0, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:0, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:1, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:1, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:1, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:2, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:2, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:2, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:3, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:3, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:3, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:0, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:0, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:0, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+thread 0 joined.
+Evaluation result:
+Iteration:1, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:1, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:1, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:2, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:2, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:2, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+Evaluation result:
+Iteration:3, Sample 0:
+Ouput:-1.425747 -1.934732 1.969600 4.241721 -2.117949 3.379070 -3.130515 1.800768 -1.164331 -1.794981 
+Iteration:3, Sample 1:
+Ouput:-1.486611 -1.695981 1.067437 2.418179 -2.234219 2.599321 -0.702214 0.747754 0.560226 -1.077003 
+Iteration:3, Sample 2:
+Ouput:-2.294234 -1.147463 -0.290556 4.923001 -3.607246 4.756474 -0.865264 -0.822840 -0.666758 -0.671374 
+thread 1 joined.
+
+CNTKv2Library-MultiThreadsEvaluation tests: Passed
++ ExitCode=0
++ popd
+/cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/MultiThreadsEvaluation
++ rm -rf /tmp/cntk-test-20170116163244.804518/CNTKv2Library_MultiThreadsEvaluation@release_gpu/TestData
++ '[' gpu == cpu ']'
++ exit 0

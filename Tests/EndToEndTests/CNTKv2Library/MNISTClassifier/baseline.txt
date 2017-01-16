@@ -1,0 +1,381 @@
+CPU info:
+    CPU Model Name: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+    Hardware threads: 12
+    Total Memory: 33474872 kB
+-------------------------------------------------------------------
++ [[ C:\CNTKTestData == '' ]]
++ [[ ! -d C:\CNTKTestData ]]
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -au 'C:\CNTKTestData'
++ DataSourceDir=/cygdrive/c/CNTKTestData/Image
++ TestDataDir=/tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ mkdir /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ cp -R /cygdrive/c/CNTKTestData/Image/MNIST/v0/Train-28x28_cntk_text.txt /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ cp -R /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/MNISTClassifier/../../Simple2d/Data/SimpleDataTrain_cntk_text.txt /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ ConfigDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ OutputDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ DataDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ cp /cygdrive/c/CNTKTestData/Image/MNIST/v0/Train-28x28_cntk_text.txt /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output ']'
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models ']'
++ rm -rf /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models
++ DeleteModelsAfterTest=0
++ '[' -f /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/01_OneHidden.cntk ']'
++ cntkrun 01_OneHidden.cntk 'stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ configFileName=01_OneHidden.cntk
++ additionalCNTKArgs='stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ ConfigDir='C:\repos\CNTK\Examples\Image\GettingStarted'
+++ cygpath -aw /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu
++ RunDir='C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ DataDir='C:\repos\CNTK\Examples\Image\DataSets\MNIST'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ OutputDir='C:\repos\CNTK\Examples\Image\GettingStarted\Output'
++ CNTKArgs='configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' '' '!=' '' ']'
++ modelsDir=/tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/Models
++ [[ 1 == 1 ]]
++ '[' -d /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/Models ']'
++ mkdir -p /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/Models
++ [[ 0 == 0 ]]
++ run /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
++ cmd=/cygdrive/c/repos/CNTK/x64/release/cntk.exe
++ shift
++ '[' '' == 1 ']'
++ echo === Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+=== Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]
++ /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+CNTK 2.0.beta7.0+ (master 214eb0, Jan 16 2017 10:28:42) on DESKTOP-9TF8PB8 at 2017/01/16 15:58:31
+
+C:\repos\CNTK\x64\release\cntk.exe  configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk  currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST  RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu  DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST  ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted  OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output  DeviceId=0  timestamping=true  stderr=-  command=trainNetwork  trainNetwork=[SGD=[maxEpochs=1]]
+Changed current directory to C:\repos\CNTK\Examples\Image\DataSets\MNIST
+01/16/2017 15:58:36: Redirecting stderr to file -_trainNetwork.log
+01/16/2017 15:58:36: -------------------------------------------------------------------
+01/16/2017 15:58:36: Build info: 
+
+01/16/2017 15:58:36: 		Built time: Jan 16 2017 10:28:42
+01/16/2017 15:58:36: 		Last modified date: Thu Jan  5 17:22:55 2017
+01/16/2017 15:58:36: 		Build type: Release
+01/16/2017 15:58:36: 		Build target: GPU
+01/16/2017 15:58:36: 		With 1bit-SGD: no
+01/16/2017 15:58:36: 		With ASGD: yes
+01/16/2017 15:58:36: 		Math lib: mkl
+01/16/2017 15:58:36: 		CUDA_PATH: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0
+01/16/2017 15:58:36: 		CUB_PATH: c:\src\cub-1.4.1
+01/16/2017 15:58:36: 		CUDNN_PATH: c:\NVIDIA\cudnn-5.0\cuda
+01/16/2017 15:58:36: 		Build Branch: master
+01/16/2017 15:58:36: 		Build SHA1: 214eb09def1c4317138541423de96d36d464603e (modified)
+01/16/2017 15:58:36: 		Built by t-ivrodr on DESKTOP-9TF8PB8
+01/16/2017 15:58:36: 		Build Path: C:\repos\CNTK\Source\CNTK\
+01/16/2017 15:58:36: 		MPI distribution: Microsoft MPI
+01/16/2017 15:58:36: 		MPI version: 7.0.12437.6
+01/16/2017 15:58:36: -------------------------------------------------------------------
+01/16/2017 15:58:39: -------------------------------------------------------------------
+01/16/2017 15:58:39: GPU info:
+
+01/16/2017 15:58:39: 		Device[0]: cores = 2496; computeCapability = 5.2; type = "Quadro M4000"; memory = 8192 MB
+01/16/2017 15:58:39: 		Device[1]: cores = 96; computeCapability = 2.1; type = "Quadro 600"; memory = 1024 MB
+01/16/2017 15:58:39: -------------------------------------------------------------------
+
+Configuration After Processing and Variable Resolution:
+
+configparameters: 01_OneHidden.cntk:command=trainNetwork
+configparameters: 01_OneHidden.cntk:ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted
+configparameters: 01_OneHidden.cntk:currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:dataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:deviceId=0
+configparameters: 01_OneHidden.cntk:modelPath=C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden
+configparameters: 01_OneHidden.cntk:outputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output
+configparameters: 01_OneHidden.cntk:precision=float
+configparameters: 01_OneHidden.cntk:rootDir=..
+configparameters: 01_OneHidden.cntk:RunDir=C:\cygwin64\tmp\cntk-test-20170116165829.173631\CNTKv2Library_MNISTClassifier@release_gpu
+configparameters: 01_OneHidden.cntk:stderr=-
+configparameters: 01_OneHidden.cntk:testNetwork={
+    action = "test"
+minibatchSize = 1024    
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Test-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }
+}
+
+configparameters: 01_OneHidden.cntk:timestamping=true
+configparameters: 01_OneHidden.cntk:traceLevel=1
+configparameters: 01_OneHidden.cntk:trainNetwork={
+    action = "train"
+    BrainScriptNetworkBuilder = {
+imageShape = 28:28:1                        
+labelDim = 10                               
+        featScale = 1/256
+        model(x) = {
+            s1 = x * featScale
+            h1 = DenseLayer {200, activation=ReLU} (s1) 
+            z = LinearLayer {labelDim} (h1)
+        }
+        features = Input {imageShape}
+        labels = Input {labelDim}
+        out = model (features)
+        ce   = CrossEntropyWithSoftmax (labels, out.z)
+        errs = ClassificationError (labels, out.z)
+        featureNodes    = (features)
+        labelNodes      = (labels)
+        criterionNodes  = (ce)
+        evaluationNodes = (errs)
+        outputNodes     = (out.z)
+    }
+    SGD = {
+        epochSize = 60000
+        minibatchSize = 64
+        maxEpochs = 10
+        learningRatesPerSample = 0.01*5:0.005
+        momentumAsTimeConstant = 0
+        numMBsToShowResult = 500
+    }
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Train-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }   
+} [SGD=[maxEpochs=1]]
+
+01/16/2017 15:58:39: Commands: trainNetwork
+01/16/2017 15:58:39: precision = "float"
+
+01/16/2017 15:58:39: ##############################################################################
+01/16/2017 15:58:39: #                                                                            #
+01/16/2017 15:58:39: # trainNetwork command (train action)                                        #
+01/16/2017 15:58:39: #                                                                            #
+01/16/2017 15:58:39: ##############################################################################
+
+01/16/2017 15:58:39: 
+Creating virgin network.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[10 x 0] as glorotUniform later when dimensions are fully known.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[200 x 0] as glorotUniform later when dimensions are fully known.
+
+Post-processing network...
+
+3 roots:
+	ce = CrossEntropyWithSoftmax()
+	errs = ClassificationError()
+	out.z = Plus()
+
+Validating network. 15 nodes to process in pass 1.
+
+Validating --> labels = InputValue() :  -> [10 x *]
+Validating --> out.z.W = LearnableParameter() :  -> [10 x 0]
+Validating --> out.h1.arrayOfFunctions[0].W = LearnableParameter() :  -> [200 x 0]
+Validating --> features = InputValue() :  -> [28 x 28 x 1 x *]
+Validating --> _out.s1 = LearnableParameter() :  -> [1]
+Validating --> out.s1 = ElementTimes (features, _out.s1) : [28 x 28 x 1 x *], [1] -> [28 x 28 x 1 x *]
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) operation: Tensor shape was inferred as [200 x 28 x 28 x 1].
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation): Initializing Parameter[200 x 28 x 28 x 1] <- glorotUniform(seed=2, init dims=[200 x 784], range=0.078087(0.078087*1.000000), onCPU=true.
+)Validating --> out.h1._.PlusArgs[0] = Times (out.h1.arrayOfFunctions[0].W, out.s1) : [200 x 28 x 28 x 1], [28 x 28 x 1 x *] -> [200 x *]
+Validating --> out.h1.arrayOfFunctions[0].b = LearnableParameter() :  -> [200]
+Validating --> out.h1._ = Plus (out.h1._.PlusArgs[0], out.h1.arrayOfFunctions[0].b) : [200 x *], [200] -> [200 x *]
+Validating --> out.h1 = RectifiedLinear (out.h1._) : [200 x *] -> [200 x *]
+Node 'out.z.W' (LearnableParameter operation) operation: Tensor shape was inferred as [10 x 200].
+Node 'out.z.W' (LearnableParameter operation): Initializing Parameter[10 x 200] <- glorotUniform(seed=1, init dims=[10 x 200], range=0.169031(0.169031*1.000000), onCPU=true.
+)Validating --> out.z.PlusArgs[0] = Times (out.z.W, out.h1) : [10 x 200], [200 x *] -> [10 x *]
+Validating --> out.z.b = LearnableParameter() :  -> [10]
+Validating --> out.z = Plus (out.z.PlusArgs[0], out.z.b) : [10 x *], [10] -> [10 x *]
+Validating --> ce = CrossEntropyWithSoftmax (labels, out.z) : [10 x *], [10 x *] -> [1]
+Validating --> errs = ClassificationError (labels, out.z) : [10 x *], [10 x *] -> [1]
+
+Validating network. 8 nodes to process in pass 2.
+
+
+Validating network, final pass.
+
+
+
+
+Post-processing network complete.
+
+01/16/2017 15:58:41: 
+Model has 15 nodes. Using GPU 0.
+
+01/16/2017 15:58:41: Training criterion:   ce = CrossEntropyWithSoftmax
+01/16/2017 15:58:41: Evaluation criterion: errs = ClassificationError
+
+
+Allocating matrices for forward and/or backward propagation.
+
+Memory Sharing: Out of 25 matrices, 12 are shared as 5, and 13 are not shared.
+
+	{ out.h1 : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].b : [200] (gradient) }
+	{ out.h1 : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *] (gradient) }
+	{ out.z : [10 x *] (gradient)
+	  out.z.W : [10 x 200] (gradient) }
+	{ out.h1._ : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].W : [200 x 28 x 28 x 1] (gradient)
+	  out.z.PlusArgs[0] : [10 x *] (gradient) }
+	{ out.h1._ : [200 x *]
+	  out.z.PlusArgs[0] : [10 x *] }
+
+
+01/16/2017 15:58:41: Training 159010 parameters in 4 out of 4 parameter tensors and 10 nodes with gradient:
+
+01/16/2017 15:58:41: 	Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) : [200 x 28 x 28 x 1]
+01/16/2017 15:58:41: 	Node 'out.h1.arrayOfFunctions[0].b' (LearnableParameter operation) : [200]
+01/16/2017 15:58:41: 	Node 'out.z.W' (LearnableParameter operation) : [10 x 200]
+01/16/2017 15:58:41: 	Node 'out.z.b' (LearnableParameter operation) : [10]
+
+01/16/2017 15:58:41: No PreCompute nodes found, or all already computed. Skipping pre-computation step.
+
+01/16/2017 15:58:41: Starting Epoch 1: learning rate per sample = 0.010000  effective momentum = 0.000000  momentum as time constant = 0.0 samples
+
+01/16/2017 15:58:41: Starting minibatch loop.
+01/16/2017 15:59:07:  Epoch[ 1 of 1]-Minibatch[   1- 500, 53.33%]: ce = 0.30730249 * 32000; errs = 9.509% * 32000; time = 26.2343s; samplesPerSecond = 1219.8
+01/16/2017 15:59:22: Finished Epoch[ 1 of 1]: [Training] ce = 0.22709749 * 60000; errs = 6.982% * 60000; totalSamplesSeen = 60000; learningRatePerSample = 0.0099999998; epochTime=41.3581s
+01/16/2017 15:59:22: SGD: Saving checkpoint model 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden'
+
+01/16/2017 15:59:22: Action "train" complete.
+
+01/16/2017 15:59:22: __COMPLETED__
++ return 0
++ local ExitCode=0
++ [[ 0 == 1 ]]
++ return 0
++ cp 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden' /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ '[' gpu == cpu ']'
++ pushd /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
+/tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/MNISTClassifier
++ '[' Windows_NT == Windows_NT ']'
++ /cygdrive/c/repos/CNTK/x64/release/MNISTClassifierTests.exe
+Minibatch 0: CrossEntropy loss = 0.69437904, Evaluation criterion = 0.5
+Minibatch 20: CrossEntropy loss = 0.68959145, Evaluation criterion = 0.44
+Minibatch 40: CrossEntropy loss = 0.88429253, Evaluation criterion = 0.64
+Minibatch 60: CrossEntropy loss = 0.1843997, Evaluation criterion = 0.06
+Minibatch 80: CrossEntropy loss = 0.10673933, Evaluation criterion = 0.04
+Minibatch 100: CrossEntropy loss = 0.25185369, Evaluation criterion = 0.16
+Minibatch 120: CrossEntropy loss = 0.18547657, Evaluation criterion = 0.06
+Minibatch 140: CrossEntropy loss = 0.40458298, Evaluation criterion = 0.22
+Minibatch 160: CrossEntropy loss = 0.12780809, Evaluation criterion = 0.08
+Minibatch 180: CrossEntropy loss = 0.12162611, Evaluation criterion = 0.06
+Minibatch 200: CrossEntropy loss = 0.13714027, Evaluation criterion = 0.08
+Minibatch 220: CrossEntropy loss = 0.10723413, Evaluation criterion = 0.04
+Minibatch 240: CrossEntropy loss = 0.1347163, Evaluation criterion = 0.06
+Minibatch 260: CrossEntropy loss = 0.29218624, Evaluation criterion = 0.14
+Minibatch 280: CrossEntropy loss = 0.11778997, Evaluation criterion = 0.04
+Minibatch 300: CrossEntropy loss = 0.13141306, Evaluation criterion = 0.06
+Minibatch 320: CrossEntropy loss = 0.19168581, Evaluation criterion = 0.1
+Minibatch 340: CrossEntropy loss = 0.12723223, Evaluation criterion = 0.06
+Minibatch 360: CrossEntropy loss = 0.12118832, Evaluation criterion = 0.04
+Minibatch 380: CrossEntropy loss = 0.15839136, Evaluation criterion = 0.06
+Minibatch 0: CrossEntropy loss = 2.3168504, Evaluation criterion = 0.90625
+Minibatch 20: CrossEntropy loss = 2.256546, Evaluation criterion = 0.828125
+Minibatch 40: CrossEntropy loss = 1.891829, Evaluation criterion = 0.421875
+Minibatch 60: CrossEntropy loss = 1.5479681, Evaluation criterion = 0.296875
+Minibatch 80: CrossEntropy loss = 1.4124339, Evaluation criterion = 0.25
+Minibatch 100: CrossEntropy loss = 1.2344962, Evaluation criterion = 0.421875
+Minibatch 120: CrossEntropy loss = 1.1058692, Evaluation criterion = 0.265625
+Minibatch 140: CrossEntropy loss = 0.89155948, Evaluation criterion = 0.21875
+Minibatch 160: CrossEntropy loss = 0.72186971, Evaluation criterion = 0.25
+Minibatch 180: CrossEntropy loss = 0.66625845, Evaluation criterion = 0.140625
+Minibatch 200: CrossEntropy loss = 0.7921266, Evaluation criterion = 0.1875
+Minibatch 220: CrossEntropy loss = 0.52941597, Evaluation criterion = 0.125
+Minibatch 240: CrossEntropy loss = 0.67363048, Evaluation criterion = 0.109375
+Minibatch 260: CrossEntropy loss = 0.36916977, Evaluation criterion = 0.078125
+Minibatch 280: CrossEntropy loss = 0.4927609, Evaluation criterion = 0.109375
+Minibatch 300: CrossEntropy loss = 0.44801027, Evaluation criterion = 0.109375
+Minibatch 320: CrossEntropy loss = 0.63082159, Evaluation criterion = 0.21875
+Minibatch 340: CrossEntropy loss = 0.32940671, Evaluation criterion = 0.078125
+Minibatch 360: CrossEntropy loss = 0.40899855, Evaluation criterion = 0.109375
+Minibatch 380: CrossEntropy loss = 0.4703548, Evaluation criterion = 0.140625
+Minibatch 400: CrossEntropy loss = 0.57097006, Evaluation criterion = 0.171875
+Minibatch 420: CrossEntropy loss = 0.40610808, Evaluation criterion = 0.140625
+Minibatch 440: CrossEntropy loss = 0.43731755, Evaluation criterion = 0.125
+Minibatch 460: CrossEntropy loss = 0.55856156, Evaluation criterion = 0.171875
+Minibatch 480: CrossEntropy loss = 0.4764736, Evaluation criterion = 0.15625
+Minibatch 500: CrossEntropy loss = 0.32800949, Evaluation criterion = 0.09375
+Minibatch 520: CrossEntropy loss = 0.41113174, Evaluation criterion = 0.09375
+Minibatch 540: CrossEntropy loss = 0.446392, Evaluation criterion = 0.09375
+Minibatch 560: CrossEntropy loss = 0.38261071, Evaluation criterion = 0.125
+Minibatch 580: CrossEntropy loss = 0.43934989, Evaluation criterion = 0.203125
+Minibatch 600: CrossEntropy loss = 0.17605573, Evaluation criterion = 0.046875
+Minibatch 620: CrossEntropy loss = 0.24554215, Evaluation criterion = 0.046875
+Minibatch 640: CrossEntropy loss = 0.4775984, Evaluation criterion = 0.109375
+Minibatch 660: CrossEntropy loss = 0.22141962, Evaluation criterion = 0.03125
+Minibatch 680: CrossEntropy loss = 0.45408773, Evaluation criterion = 0.125
+Minibatch 700: CrossEntropy loss = 0.23072423, Evaluation criterion = 0.0625
+Minibatch 720: CrossEntropy loss = 0.37298465, Evaluation criterion = 0.09375
+Minibatch 740: CrossEntropy loss = 0.34916133, Evaluation criterion = 0.09375
+Minibatch 760: CrossEntropy loss = 0.33845174, Evaluation criterion = 0.078125
+Minibatch 780: CrossEntropy loss = 0.36738291, Evaluation criterion = 0.09375
+Minibatch 800: CrossEntropy loss = 0.46097296, Evaluation criterion = 0.15625
+Minibatch 820: CrossEntropy loss = 0.24262561, Evaluation criterion = 0.078125
+Minibatch 840: CrossEntropy loss = 0.45214793, Evaluation criterion = 0.09375
+Minibatch 860: CrossEntropy loss = 0.23011774, Evaluation criterion = 0.0625
+Minibatch 880: CrossEntropy loss = 0.30663547, Evaluation criterion = 0.109375
+Minibatch 900: CrossEntropy loss = 0.34019235, Evaluation criterion = 0.09375
+Minibatch 920: CrossEntropy loss = 0.1940901, Evaluation criterion = 0.0625
+Minibatch 940: CrossEntropy loss = 0.29128301, Evaluation criterion = 0.140625
+Minibatch 960: CrossEntropy loss = 0.3238751, Evaluation criterion = 0.0625
+Minibatch 980: CrossEntropy loss = 0.44964868, Evaluation criterion = 0.109375
+Minibatch 1000: CrossEntropy loss = 0.21996534, Evaluation criterion = 0.09375
+Minibatch 1020: CrossEntropy loss = 0.27712366, Evaluation criterion = 0.078125
+Minibatch 1040: CrossEntropy loss = 0.29457796, Evaluation criterion = 0.109375
+Minibatch 1060: CrossEntropy loss = 0.31132716, Evaluation criterion = 0.109375
+Minibatch 1080: CrossEntropy loss = 0.33009124, Evaluation criterion = 0.0625
+Minibatch 1100: CrossEntropy loss = 0.31688619, Evaluation criterion = 0.109375
+Minibatch 1120: CrossEntropy loss = 0.58898985, Evaluation criterion = 0.171875
+Minibatch 1140: CrossEntropy loss = 0.36267266, Evaluation criterion = 0.09375
+Minibatch 1160: CrossEntropy loss = 0.4367291, Evaluation criterion = 0.140625
+Minibatch 1180: CrossEntropy loss = 0.27660853, Evaluation criterion = 0.046875
+Minibatch 1200: CrossEntropy loss = 0.21163729, Evaluation criterion = 0.0625
+Minibatch 1220: CrossEntropy loss = 0.25940746, Evaluation criterion = 0.046875
+Minibatch 1240: CrossEntropy loss = 0.24174003, Evaluation criterion = 0.109375
+Minibatch 1260: CrossEntropy loss = 0.23781233, Evaluation criterion = 0.0625
+Minibatch 1280: CrossEntropy loss = 0.37883165, Evaluation criterion = 0.078125
+Minibatch 1300: CrossEntropy loss = 0.24066836, Evaluation criterion = 0.0625
+Minibatch 1320: CrossEntropy loss = 0.30875921, Evaluation criterion = 0.09375
+Minibatch 1340: CrossEntropy loss = 0.34998456, Evaluation criterion = 0.09375
+Minibatch 1360: CrossEntropy loss = 0.26671618, Evaluation criterion = 0.0625
+Minibatch 1380: CrossEntropy loss = 0.41287619, Evaluation criterion = 0.109375
+Minibatch 1400: CrossEntropy loss = 0.32833564, Evaluation criterion = 0.078125
+Minibatch 1420: CrossEntropy loss = 0.18105474, Evaluation criterion = 0.0625
+Minibatch 1440: CrossEntropy loss = 0.21415609, Evaluation criterion = 0.078125
+Minibatch 1460: CrossEntropy loss = 0.11554888, Evaluation criterion = 0.046875
+Minibatch 1480: CrossEntropy loss = 0.19548397, Evaluation criterion = 0.046875
+Minibatch 1500: CrossEntropy loss = 0.40755141, Evaluation criterion = 0.125
+Minibatch 1520: CrossEntropy loss = 0.33830929, Evaluation criterion = 0.09375
+Minibatch 1540: CrossEntropy loss = 0.28005919, Evaluation criterion = 0.078125
+Minibatch 1560: CrossEntropy loss = 0.29519448, Evaluation criterion = 0.0625
+Minibatch 1580: CrossEntropy loss = 0.49602959, Evaluation criterion = 0.09375
+Minibatch 1600: CrossEntropy loss = 0.35363269, Evaluation criterion = 0.109375
+Minibatch 1620: CrossEntropy loss = 0.1905669, Evaluation criterion = 0.0625
+Minibatch 1640: CrossEntropy loss = 0.21787851, Evaluation criterion = 0.046875
+Minibatch 1660: CrossEntropy loss = 0.25339541, Evaluation criterion = 0.078125
+Minibatch 1680: CrossEntropy loss = 0.26656145, Evaluation criterion = 0.09375
+Minibatch 1700: CrossEntropy loss = 0.29863721, Run tests on GPU device using GPU build.
+
+MNISTClassifierTests..
+
+CNTKv2Library-MNISTClassifier tests: Passed
+Evaluation criterion = 0.09375
+Minibatch 1720: CrossEntropy loss = 0.23458651, Evaluation criterion = 0.078125
+Minibatch 1740: CrossEntropy loss = 0.39174604, Evaluation criterion = 0.109375
+Minibatch 1760: CrossEntropy loss = 0.35978153, Evaluation criterion = 0.09375
+Minibatch 1780: CrossEntropy loss = 0.30492419, Evaluation criterion = 0.09375
+Minibatch 1800: CrossEntropy loss = 0.24152872, Evaluation criterion = 0.078125
+Minibatch 1820: CrossEntropy loss = 0.28894237, Evaluation criterion = 0.046875
+Minibatch 1840: CrossEntropy loss = 0.31120461, Evaluation criterion = 0.046875
+Minibatch 1860: CrossEntropy loss = 0.39378145, Evaluation criterion = 0.09375
++ ExitCode=0
++ popd
+/cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/MNISTClassifier
++ rm -rf /tmp/cntk-test-20170116165829.173631/CNTKv2Library_MNISTClassifier@release_gpu/TestData
++ '[' gpu == cpu ']'
++ exit 0

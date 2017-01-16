@@ -1,0 +1,590 @@
+CPU info:
+    CPU Model Name: Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+    Hardware threads: 12
+    Total Memory: 33474872 kB
+-------------------------------------------------------------------
++ [[ C:\CNTKTestData == '' ]]
++ [[ ! -d C:\CNTKTestData ]]
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -au 'C:\CNTKTestData'
++ DataSourceDir=/cygdrive/c/CNTKTestData/Image
++ TestDataDir=/tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
++ mkdir /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
++ cp -R /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel/../../../../Examples/Speech/AN4/Data/000000000.chunk /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel/../../../../Examples/Speech/AN4/Data/glob_0000.mlf /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel/../../../../Examples/Speech/AN4/Data/glob_0000.scp /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel/../../../../Examples/Speech/AN4/Data/state.list /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
++ ConfigDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ OutputDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ DataDir=/cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ cp /cygdrive/c/CNTKTestData/Image/MNIST/v0/Train-28x28_cntk_text.txt /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output ']'
++ '[' -d /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models ']'
++ rm -rf /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output/Models
++ DeleteModelsAfterTest=0
++ '[' -f /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/01_OneHidden.cntk ']'
++ cntkrun 01_OneHidden.cntk 'stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ configFileName=01_OneHidden.cntk
++ additionalCNTKArgs='stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' Windows_NT == Windows_NT ']'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted
++ ConfigDir='C:\repos\CNTK\Examples\Image\GettingStarted'
+++ cygpath -aw /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu
++ RunDir='C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/../DataSets/MNIST
++ DataDir='C:\repos\CNTK\Examples\Image\DataSets\MNIST'
+++ cygpath -aw /cygdrive/c/repos/CNTK/Tests/EndToEndTests/../../Examples/Image/GettingStarted/Output
++ OutputDir='C:\repos\CNTK\Examples\Image\GettingStarted\Output'
++ CNTKArgs='configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]'
++ '[' '' '!=' '' ']'
++ modelsDir=/tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/Models
++ [[ 1 == 1 ]]
++ '[' -d /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/Models ']'
++ mkdir -p /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/Models
++ [[ 0 == 0 ]]
++ run /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
++ cmd=/cygdrive/c/repos/CNTK/x64/release/cntk.exe
++ shift
++ '[' '' == 1 ']'
++ echo === Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+=== Running /cygdrive/c/repos/CNTK/x64/release/cntk.exe configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output DeviceId=0 timestamping=true stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]
++ /cygdrive/c/repos/CNTK/x64/release/cntk.exe 'configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk' 'currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu' 'DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST' 'ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted' 'OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output' DeviceId=0 timestamping=true stderr=- command=trainNetwork 'trainNetwork=[SGD=[maxEpochs=1]]'
+CNTK 2.0.beta7.0+ (master 214eb0, Jan 16 2017 10:28:42) on DESKTOP-9TF8PB8 at 2017/01/16 16:43:52
+
+C:\repos\CNTK\x64\release\cntk.exe  configFile=C:\repos\CNTK\Examples\Image\GettingStarted/01_OneHidden.cntk  currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST  RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu  DataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST  ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted  OutputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output  DeviceId=0  timestamping=true  stderr=-  command=trainNetwork  trainNetwork=[SGD=[maxEpochs=1]]
+Changed current directory to C:\repos\CNTK\Examples\Image\DataSets\MNIST
+01/16/2017 16:43:54: Redirecting stderr to file -_trainNetwork.log
+01/16/2017 16:43:54: -------------------------------------------------------------------
+01/16/2017 16:43:54: Build info: 
+
+01/16/2017 16:43:54: 		Built time: Jan 16 2017 10:28:42
+01/16/2017 16:43:54: 		Last modified date: Thu Jan  5 17:22:55 2017
+01/16/2017 16:43:54: 		Build type: Release
+01/16/2017 16:43:54: 		Build target: GPU
+01/16/2017 16:43:54: 		With 1bit-SGD: no
+01/16/2017 16:43:54: 		With ASGD: yes
+01/16/2017 16:43:54: 		Math lib: mkl
+01/16/2017 16:43:54: 		CUDA_PATH: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0
+01/16/2017 16:43:54: 		CUB_PATH: c:\src\cub-1.4.1
+01/16/2017 16:43:54: 		CUDNN_PATH: c:\NVIDIA\cudnn-5.0\cuda
+01/16/2017 16:43:54: 		Build Branch: master
+01/16/2017 16:43:54: 		Build SHA1: 214eb09def1c4317138541423de96d36d464603e (modified)
+01/16/2017 16:43:54: 		Built by t-ivrodr on DESKTOP-9TF8PB8
+01/16/2017 16:43:54: 		Build Path: C:\repos\CNTK\Source\CNTK\
+01/16/2017 16:43:54: 		MPI distribution: Microsoft MPI
+01/16/2017 16:43:54: 		MPI version: 7.0.12437.6
+01/16/2017 16:43:54: -------------------------------------------------------------------
+01/16/2017 16:43:58: -------------------------------------------------------------------
+01/16/2017 16:43:58: GPU info:
+
+01/16/2017 16:43:58: 		Device[0]: cores = 2496; computeCapability = 5.2; type = "Quadro M4000"; memory = 8192 MB
+01/16/2017 16:43:58: 		Device[1]: cores = 96; computeCapability = 2.1; type = "Quadro 600"; memory = 1024 MB
+01/16/2017 16:43:58: -------------------------------------------------------------------
+
+Configuration After Processing and Variable Resolution:
+
+configparameters: 01_OneHidden.cntk:command=trainNetwork
+configparameters: 01_OneHidden.cntk:ConfigDir=C:\repos\CNTK\Examples\Image\GettingStarted
+configparameters: 01_OneHidden.cntk:currentDirectory=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:dataDir=C:\repos\CNTK\Examples\Image\DataSets\MNIST
+configparameters: 01_OneHidden.cntk:deviceId=0
+configparameters: 01_OneHidden.cntk:modelPath=C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden
+configparameters: 01_OneHidden.cntk:outputDir=C:\repos\CNTK\Examples\Image\GettingStarted\Output
+configparameters: 01_OneHidden.cntk:precision=float
+configparameters: 01_OneHidden.cntk:rootDir=..
+configparameters: 01_OneHidden.cntk:RunDir=C:\cygwin64\tmp\cntk-test-20170116174350.953949\CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu
+configparameters: 01_OneHidden.cntk:stderr=-
+configparameters: 01_OneHidden.cntk:testNetwork={
+    action = "test"
+minibatchSize = 1024    
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Test-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }
+}
+
+configparameters: 01_OneHidden.cntk:timestamping=true
+configparameters: 01_OneHidden.cntk:traceLevel=1
+configparameters: 01_OneHidden.cntk:trainNetwork={
+    action = "train"
+    BrainScriptNetworkBuilder = {
+imageShape = 28:28:1                        
+labelDim = 10                               
+        featScale = 1/256
+        model(x) = {
+            s1 = x * featScale
+            h1 = DenseLayer {200, activation=ReLU} (s1) 
+            z = LinearLayer {labelDim} (h1)
+        }
+        features = Input {imageShape}
+        labels = Input {labelDim}
+        out = model (features)
+        ce   = CrossEntropyWithSoftmax (labels, out.z)
+        errs = ClassificationError (labels, out.z)
+        featureNodes    = (features)
+        labelNodes      = (labels)
+        criterionNodes  = (ce)
+        evaluationNodes = (errs)
+        outputNodes     = (out.z)
+    }
+    SGD = {
+        epochSize = 60000
+        minibatchSize = 64
+        maxEpochs = 10
+        learningRatesPerSample = 0.01*5:0.005
+        momentumAsTimeConstant = 0
+        numMBsToShowResult = 500
+    }
+    reader = {
+        readerType = "CNTKTextFormatReader"
+        file = "C:\repos\CNTK\Examples\Image\DataSets\MNIST/Train-28x28_cntk_text.txt"
+        input = {
+            features = { dim = 784 ; format = "dense" }
+            labels =   { dim = 10  ; format = "dense" }
+        }
+    }   
+} [SGD=[maxEpochs=1]]
+
+01/16/2017 16:43:58: Commands: trainNetwork
+01/16/2017 16:43:58: precision = "float"
+
+01/16/2017 16:43:58: ##############################################################################
+01/16/2017 16:43:58: #                                                                            #
+01/16/2017 16:43:58: # trainNetwork command (train action)                                        #
+01/16/2017 16:43:58: #                                                                            #
+01/16/2017 16:43:58: ##############################################################################
+
+01/16/2017 16:43:58: 
+Creating virgin network.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[10 x 0] as glorotUniform later when dimensions are fully known.
+Node '<placeholder>' (LearnableParameter operation): Initializating Parameter[200 x 0] as glorotUniform later when dimensions are fully known.
+
+Post-processing network...
+
+3 roots:
+	ce = CrossEntropyWithSoftmax()
+	errs = ClassificationError()
+	out.z = Plus()
+
+Validating network. 15 nodes to process in pass 1.
+
+Validating --> labels = InputValue() :  -> [10 x *]
+Validating --> out.z.W = LearnableParameter() :  -> [10 x 0]
+Validating --> out.h1.arrayOfFunctions[0].W = LearnableParameter() :  -> [200 x 0]
+Validating --> features = InputValue() :  -> [28 x 28 x 1 x *]
+Validating --> _out.s1 = LearnableParameter() :  -> [1]
+Validating --> out.s1 = ElementTimes (features, _out.s1) : [28 x 28 x 1 x *], [1] -> [28 x 28 x 1 x *]
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) operation: Tensor shape was inferred as [200 x 28 x 28 x 1].
+Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation): Initializing Parameter[200 x 28 x 28 x 1] <- glorotUniform(seed=2, init dims=[200 x 784], range=0.078087(0.078087*1.000000), onCPU=true.
+)Validating --> out.h1._.PlusArgs[0] = Times (out.h1.arrayOfFunctions[0].W, out.s1) : [200 x 28 x 28 x 1], [28 x 28 x 1 x *] -> [200 x *]
+Validating --> out.h1.arrayOfFunctions[0].b = LearnableParameter() :  -> [200]
+Validating --> out.h1._ = Plus (out.h1._.PlusArgs[0], out.h1.arrayOfFunctions[0].b) : [200 x *], [200] -> [200 x *]
+Validating --> out.h1 = RectifiedLinear (out.h1._) : [200 x *] -> [200 x *]
+Node 'out.z.W' (LearnableParameter operation) operation: Tensor shape was inferred as [10 x 200].
+Node 'out.z.W' (LearnableParameter operation): Initializing Parameter[10 x 200] <- glorotUniform(seed=1, init dims=[10 x 200], range=0.169031(0.169031*1.000000), onCPU=true.
+)Validating --> out.z.PlusArgs[0] = Times (out.z.W, out.h1) : [10 x 200], [200 x *] -> [10 x *]
+Validating --> out.z.b = LearnableParameter() :  -> [10]
+Validating --> out.z = Plus (out.z.PlusArgs[0], out.z.b) : [10 x *], [10] -> [10 x *]
+Validating --> ce = CrossEntropyWithSoftmax (labels, out.z) : [10 x *], [10 x *] -> [1]
+Validating --> errs = ClassificationError (labels, out.z) : [10 x *], [10 x *] -> [1]
+
+Validating network. 8 nodes to process in pass 2.
+
+
+Validating network, final pass.
+
+
+
+
+Post-processing network complete.
+
+01/16/2017 16:43:58: 
+Model has 15 nodes. Using GPU 0.
+
+01/16/2017 16:43:58: Training criterion:   ce = CrossEntropyWithSoftmax
+01/16/2017 16:43:58: Evaluation criterion: errs = ClassificationError
+
+
+Allocating matrices for forward and/or backward propagation.
+
+Memory Sharing: Out of 25 matrices, 12 are shared as 5, and 13 are not shared.
+
+	{ out.h1._ : [200 x *]
+	  out.z.PlusArgs[0] : [10 x *] }
+	{ out.h1 : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].b : [200] (gradient) }
+	{ out.h1._ : [200 x *] (gradient)
+	  out.h1.arrayOfFunctions[0].W : [200 x 28 x 28 x 1] (gradient)
+	  out.z.PlusArgs[0] : [10 x *] (gradient) }
+	{ out.z : [10 x *] (gradient)
+	  out.z.W : [10 x 200] (gradient) }
+	{ out.h1 : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *]
+	  out.h1._.PlusArgs[0] : [200 x *] (gradient) }
+
+
+01/16/2017 16:43:58: Training 159010 parameters in 4 out of 4 parameter tensors and 10 nodes with gradient:
+
+01/16/2017 16:43:58: 	Node 'out.h1.arrayOfFunctions[0].W' (LearnableParameter operation) : [200 x 28 x 28 x 1]
+01/16/2017 16:43:58: 	Node 'out.h1.arrayOfFunctions[0].b' (LearnableParameter operation) : [200]
+01/16/2017 16:43:58: 	Node 'out.z.W' (LearnableParameter operation) : [10 x 200]
+01/16/2017 16:43:58: 	Node 'out.z.b' (LearnableParameter operation) : [10]
+
+01/16/2017 16:43:58: No PreCompute nodes found, or all already computed. Skipping pre-computation step.
+
+01/16/2017 16:43:59: Starting Epoch 1: learning rate per sample = 0.010000  effective momentum = 0.000000  momentum as time constant = 0.0 samples
+
+01/16/2017 16:43:59: Starting minibatch loop.
+01/16/2017 16:44:00:  Epoch[ 1 of 1]-Minibatch[   1- 500, 53.33%]: ce = 0.30730249 * 32000; errs = 9.509% * 32000; time = 1.7082s; samplesPerSecond = 18733.7
+01/16/2017 16:44:01: Finished Epoch[ 1 of 1]: [Training] ce = 0.22709749 * 60000; errs = 6.982% * 60000; totalSamplesSeen = 60000; learningRatePerSample = 0.0099999998; epochTime=2.00969s
+01/16/2017 16:44:01: SGD: Saving checkpoint model 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden'
+
+01/16/2017 16:44:01: Action "train" complete.
+
+01/16/2017 16:44:01: __COMPLETED__
++ return 0
++ local ExitCode=0
++ [[ 0 == 1 ]]
++ return 0
++ cp 'C:\repos\CNTK\Examples\Image\GettingStarted\Output/Models/01_OneHidden' /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
++ '[' gpu == cpu ']'
++ pushd /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
+/tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData /cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel
++ '[' Windows_NT == Windows_NT ']'
++ /cygdrive/c/repos/CNTK/x64/release/TruncatedLSTMAcousticModelTests.exe
+Minibatch 0: CrossEntropy loss = 4.8853031, Evaluation criterion = 0.996875
+Minibatch 1: CrossEntropy loss = 4.8794132, Evaluation criterion = 1
+Minibatch 2: CrossEntropy loss = 4.8797031, Evaluation criterion = 0.96875
+Minibatch 3: CrossEntropy loss = 4.8769264, Evaluation criterion = 0.859375
+Minibatch 4: CrossEntropy loss = 4.877396, Evaluation criterion = 0.940625
+Minibatch 5: CrossEntropy loss = 4.8068054, Evaluation criterion = 0.4390625
+Minibatch 6: CrossEntropy loss = 4.7957996, Evaluation criterion = 0.6515625
+Minibatch 7: CrossEntropy loss = 4.8459381, Evaluation criterion = 0.9515625
+Minibatch 8: CrossEntropy loss = 4.8063984, Evaluation criterion = 0.8625
+Minibatch 9: CrossEntropy loss = 4.7912994, Evaluation criterion = 0.9171875
+Minibatch 10: CrossEntropy loss = 4.7706169, Evaluation criterion = 0.878125
+Minibatch 11: CrossEntropy loss = 4.7734943, Evaluation criterion = 0.9390625
+Minibatch 12: CrossEntropy loss = 4.764888, Evaluation criterion = 0.9640625
+Minibatch 13: CrossEntropy loss = 4.6861412, Evaluation criterion = 0.9046875
+Minibatch 14: CrossEntropy loss = 4.6786411, Evaluation criterion = 0.921875
+Minibatch 15: CrossEntropy loss = 4.5419685, Evaluation criterion = 0.8703125
+Minibatch 16: CrossEntropy loss = 4.407386, Evaluation criterion = 0.8875
+Minibatch 17: CrossEntropy loss = 4.1946808, Evaluation criterion = 0.8859375
+Minibatch 18: CrossEntropy loss = 3.6316364, Evaluation criterion = 0.7875
+Minibatch 19: CrossEntropy loss = 3.605093, Evaluation criterion = 0.7578125
+Minibatch 20: CrossEntropy loss = 4.067952, Evaluation criterion = 0.8484375
+Minibatch 21: CrossEntropy loss = 3.9886471, Evaluation criterion = 0.796875
+Minibatch 22: CrossEntropy loss = 3.9742046, Evaluation criterion = 0.85625
+Minibatch 23: CrossEntropy loss = 3.6869324, Evaluation criterion = 0.8015625
+Minibatch 24: CrossEntropy loss = 3.9159386, Evaluation criterion = 0.84375
+Minibatch 25: CrossEntropy loss = 3.5650219, Evaluation criterion = 0.8265625
+Minibatch 26: CrossEntropy loss = 3.5134968, Evaluation criterion = 0.8375
+Minibatch 27: CrossEntropy loss = 3.1029558, Evaluation criterion = 0.7
+Minibatch 28: CrossEntropy loss = 3.3024693, Evaluation criterion = 0.7953125
+Minibatch 29: CrossEntropy loss = 3.3360149, Evaluation criterion = 0.7046875
+Minibatch 30: CrossEntropy loss = 2.7837385, Evaluation criterion = 0.7375
+Minibatch 31: CrossEntropy loss = 2.4514278, Evaluation criterion = 0.5984375
+Minibatch 32: CrossEntropy loss = 3.3611057, Evaluation criterion = 0.746875
+Minibatch 33: CrossEntropy loss = 3.5975246, Evaluation criterion = 0.796875
+Minibatch 34: CrossEntropy loss = 3.5055172, Evaluation criterion = 0.7953125
+Minibatch 35: CrossEntropy loss = 3.3663795, Evaluation criterion = 0.8015625
+Minibatch 36: CrossEntropy loss = 3.1376518, Evaluation criterion = 0.771875
+Minibatch 37: CrossEntropy loss = 2.9556606, Evaluation criterion = 0.7296875
+Minibatch 38: CrossEntropy loss = 3.2308891, Evaluation criterion = 0.75
+Minibatch 39: CrossEntropy loss = 3.0666105, Evaluation criterion = 0.696875
+Minibatch 40: CrossEntropy loss = 3.0212738, Evaluation criterion = 0.7796875
+Minibatch 41: CrossEntropy loss = 2.688834, Evaluation criterion = 0.6734375
+Minibatch 42: CrossEntropy loss = 2.2273617, Evaluation criterion = 0.528125
+Minibatch 43: CrossEntropy loss = 2.972624, Evaluation criterion = 0.7140625
+Minibatch 44: CrossEntropy loss = 3.0136839, Evaluation criterion = 0.71875
+Minibatch 45: CrossEntropy loss = 2.711393, Evaluation criterion = 0.675
+Minibatch 46: CrossEntropy loss = 2.3733736, Evaluation criterion = 0.6375
+Minibatch 47: CrossEntropy loss = 2.5887543, Evaluation criterion = 0.6765625
+Minibatch 48: CrossEntropy loss = 2.7667553, Evaluation criterion = 0.6984375
+Minibatch 49: CrossEntropy loss = 2.5698923, Evaluation criterion = 0.625
+Minibatch 50: CrossEntropy loss = 2.2404999, Evaluation criterion = 0.6171875
+Minibatch 51: CrossEntropy loss = 2.2461977, Evaluation criterion = 0.571875
+Minibatch 52: CrossEntropy loss = 1.9365698, Evaluation criterion = 0.4671875
+Minibatch 53: CrossEntropy loss = 2.430257, Evaluation criterion = 0.5484375
+Minibatch 54: CrossEntropy loss = 2.5883585, Evaluation criterion = 0.6546875
+Minibatch 55: CrossEntropy loss = 2.5641428, Evaluation criterion = 0.7359375
+Minibatch 56: CrossEntropy loss = 2.5602419, Evaluation criterion = 0.703125
+Minibatch 57: CrossEntropy loss = 2.3113123, Evaluation criterion = 0.665625
+Minibatch 58: CrossEntropy loss = 1.9511475, Evaluation criterion = 0.540625
+Minibatch 59: CrossEntropy loss = 1.9317768, Evaluation criterion = 0.5515625
+Minibatch 60: CrossEntropy loss = 2.0915348, Evaluation criterion = 0.509375
+Minibatch 61: CrossEntropy loss = 2.0488585, Evaluation criterion = 0.590625
+Minibatch 62: CrossEntropy loss = 2.1752569, Evaluation criterion = 0.575
+Minibatch 63: CrossEntropy loss = 2.6301199, Evaluation criterion = 0.6953125
+Minibatch 64: CrossEntropy loss = 2.4414371, Evaluation criterion = 0.5953125
+Minibatch 65: CrossEntropy loss = 1.9263161, Evaluation criterion = 0.4875
+Minibatch 66: CrossEntropy loss = 1.8917606, Evaluation criterion = 0.53125
+Minibatch 67: CrossEntropy loss = 1.9403036, Evaluation criterion = 0.5859375
+Minibatch 68: CrossEntropy loss = 2.1503042, Evaluation criterion = 0.5875
+Minibatch 69: CrossEntropy loss = 2.0912756, Evaluation criterion = 0.5890625
+Minibatch 70: CrossEntropy loss = 2.338888, Evaluation criterion = 0.634375
+Minibatch 71: CrossEntropy loss = 2.4187859, Evaluation criterion = 0.628125
+Minibatch 72: CrossEntropy loss = 2.0589598, Evaluation criterion = 0.54375
+Minibatch 73: CrossEntropy loss = 1.944574, Evaluation criterion = 0.5203125
+Minibatch 74: CrossEntropy loss = 1.8748808, Evaluation criterion = 0.5609375
+Minibatch 75: CrossEntropy loss = 1.5458277, Evaluation criterion = 0.4578125
+Minibatch 76: CrossEntropy loss = 1.9073183, Evaluation criterion = 0.5125
+Minibatch 77: CrossEntropy loss = 1.8353252, Evaluation criterion = 0.5140625
+Minibatch 78: CrossEntropy loss = 2.0150562, Evaluation criterion = 0.5546875
+Minibatch 79: CrossEntropy loss = 2.3277174, Evaluation criterion = 0.5640625
+Minibatch 80: CrossEntropy loss = 1.9848743, Evaluation criterion = 0.5171875
+Minibatch 81: CrossEntropy loss = 1.8959879, Evaluation criterion = 0.546875
+Minibatch 82: CrossEntropy loss = 1.9334955, Evaluation criterion = 0.5625
+Minibatch 83: CrossEntropy loss = 1.7595678, Evaluation criterion = 0.5390625
+Minibatch 84: CrossEntropy loss = 1.8959793, Evaluation criterion = 0.5546875
+Minibatch 85: CrossEntropy loss = 1.6695705, Evaluation criterion = 0.4578125
+Minibatch 86: CrossEntropy loss = 2.0716738, Evaluation criterion = 0.5640625
+Minibatch 87: CrossEntropy loss = 1.9978268, Evaluation criterion = 0.5203125
+Minibatch 88: CrossEntropy loss = 1.905265, Evaluation criterion = 0.58125
+Minibatch 89: CrossEntropy loss = 1.5056046, Evaluation criterion = 0.428125
+Minibatch 90: CrossEntropy loss = 1.5390173, Evaluation criterion = 0.475
+Minibatch 91: CrossEntropy loss = 1.7037382, Evaluation criterion = 0.4453125
+Minibatch 92: CrossEntropy loss = 2.1062805, Evaluation criterion = 0.5703125
+Minibatch 93: CrossEntropy loss = 1.9467434, Evaluation criterion = 0.5546875
+Minibatch 94: CrossEntropy loss = 1.6036186, Evaluation criterion = 0.4609375
+Minibatch 95: CrossEntropy loss = 1.6711086, Evaluation criterion = 0.4296875
+Minibatch 96: CrossEntropy loss = 2.0569843, Evaluation criterion = 0.546875
+Minibatch 97: CrossEntropy loss = 2.1827202, Evaluation criterion = 0.6359375
+Minibatch 98: CrossEntropy loss = 1.8522533, Evaluation criterion = 0.5421875
+Minibatch 99: CrossEntropy loss = 1.8264254, Evaluation criterion = 0.53125
+Minibatch 100: CrossEntropy loss = 1.6054295, Evaluation criterion = 0.4875
+Minibatch 101: CrossEntropy loss = 1.5620327, Evaluation criterion = 0.459375
+Minibatch 102: CrossEntropy loss = 1.6906742, Evaluation criterion = 0.521875
+Minibatch 103: CrossEntropy loss = 1.7196377, Evaluation criterion = 0.478125
+Minibatch 104: CrossEntropy loss = 1.861331, Evaluation criterion = 0.48125
+Minibatch 105: CrossEntropy loss = 1.8274639, Evaluation criterion = 0.471875
+Minibatch 106: CrossEntropy loss = 1.8545238, Evaluation criterion = 0.5578125
+Minibatch 107: CrossEntropy loss = 1.6334436, Evaluation criterion = 0.4546875
+Minibatch 108: CrossEntropy loss = 1.7126505, Evaluation criterion = 0.5015625
+Minibatch 109: CrossEntropy loss = 1.6663382, Evaluation criterion = 0.490625
+Minibatch 110: CrossEntropy loss = 1.4459431, Evaluation criterion = 0.45
+Minibatch 111: CrossEntropy loss = 1.5564557, Evaluation criterion = 0.4375
+Minibatch 112: CrossEntropy loss = 1.78897, Evaluation criterion = 0.4484375
+Minibatch 113: CrossEntropy loss = 1.9547583, Evaluation criterion = 0.5109375
+Minibatch 114: CrossEntropy loss = 1.5527621, Evaluation criterion = 0.4609375
+Minibatch 115: CrossEntropy loss = 1.624098, Evaluation criterion = 0.4640625
+Minibatch 116: CrossEntropy loss = 1.6792509, Evaluation criterion = 0.503125
+Minibatch 117: CrossEntropy loss = 1.7882505, Evaluation criterion = 0.5578125
+Minibatch 118: CrossEntropy loss = 1.721619, Evaluation criterion = 0.4921875
+Minibatch 119: CrossEntropy loss = 1.8172529, Evaluation criterion = 0.51875
+Minibatch 120: CrossEntropy loss = 1.7788755, Evaluation criterion = 0.5078125
+Minibatch 121: CrossEntropy loss = 1.7246737, Evaluation criterion = 0.4859375
+Minibatch 122: CrossEntropy loss = 1.4414123, Evaluation criterion = 0.4390625
+Minibatch 123: CrossEntropy loss = 1.5411008, Evaluation criterion = 0.4578125
+Minibatch 124: CrossEntropy loss = 1.4934094, Evaluation criterion = 0.4265625
+Minibatch 125: CrossEntropy loss = 1.7475119, Evaluation criterion = 0.5109375
+Minibatch 126: CrossEntropy loss = 1.7687504, Evaluation criterion = 0.5046875
+Minibatch 127: CrossEntropy loss = 1.757085, Evaluation criterion = 0.5015625
+Minibatch 128: CrossEntropy loss = 1.6924026, Evaluation criterion = 0.484375
+Minibatch 129: CrossEntropy loss = 1.5975081, Evaluation criterion = 0.478125
+Minibatch 130: CrossEntropy loss = 1.946693, Evaluation criterion = 0.578125
+Minibatch 131: CrossEntropy loss = 2.0221106, Evaluation criterion = 0.5765625
+Minibatch 132: CrossEntropy loss = 2.0245371, Evaluation criterion = 0.60793651
+Minibatch 133: CrossEntropy loss = 1.7534718, Evaluation criterion = 0.54898649
+Minibatch 134: CrossEntropy loss = 2.0503274, Evaluation criterion = 0.58108108
+Minibatch 135: CrossEntropy loss = 2.1345585, Evaluation criterion = 0.60294118
+Minibatch 136: CrossEntropy loss = 1.8307522, Evaluation criterion = 0.47704082
+Minibatch 137: CrossEntropy loss = 1.9579588, Evaluation criterion = 0.56756757
+Minibatch 138: CrossEntropy loss = 1.9835272, Evaluation criterion = 0.58333333
+Minibatch 139: CrossEntropy loss = 2.1548552, Evaluation criterion = 0.58333333
+Minibatch 140: CrossEntropy loss = 2.2518516, Evaluation criterion = 0.64457831
+Minibatch 141: CrossEntropy loss = 2.2361311, Evaluation criterion = 0.60897436
+Minibatch 142: CrossEntropy loss = 2.154081, Evaluation criterion = 0.56666667
+Minibatch 143: CrossEntropy loss = 2.085033, Evaluation criterion = 0.7254902
+Minibatch 144: CrossEntropy loss = 2.2807266, Evaluation criterion = 0.71666667
+Minibatch 145: CrossEntropy loss = 2.204, Evaluation criterion = 0.52631579
+Minibatch 146: CrossEntropy loss = 1.8886295, Evaluation criterion = 0.65
+Minibatch 147: CrossEntropy loss = 4.7407738, Evaluation criterion = 1
+Minibatch 148: CrossEntropy loss = 3.7750095, Evaluation criterion = 1
+Minibatch 149: CrossEntropy loss = 2.099544, Evaluation criterion = 0.9
+Minibatch 0: CrossEntropy loss = 4.8853054, Evaluation criterion = 0.996875
+Minibatch 1: CrossEntropy loss = 4.8794151, Evaluation criterion = 1
+Minibatch 2: CrossEntropy loss = 4.8797016, Evaluation criterion = 0.96875
+Minibatch 3: CrossEntropy loss = 4.8769287, Evaluation criterion = 0.859375
+Minibatch 4: CrossEntropy loss = 4.8773952, Evaluation criterion = 0.940625
+Minibatch 5: CrossEntropy loss = 4.8068066, Evaluation criterion = 0.4390625
+Minibatch 6: CrossEntropy loss = 4.7957966, Evaluation criterion = 0.6515625
+Minibatch 7: CrossEntropy loss = 4.8459389, Evaluation criterion = 0.9515625
+Minibatch 8: CrossEntropy loss = 4.8064011, Evaluation criterion = 0.8625
+Minibatch 9: CrossEntropy loss = 4.7912979, Evaluation criterion = 0.9171875
+Minibatch 10: CrossEntropy loss = 4.7706181, Evaluation criterion = 0.878125
+Minibatch 11: CrossEntropy loss = 4.7734982, Evaluation criterion = 0.9390625
+Minibatch 12: CrossEntropy loss = 4.7648876, Evaluation criterion = 0.9640625
+Minibatch 13: CrossEntropy loss = 4.686142, Evaluation criterion = 0.9046875
+Minibatch 14: CrossEntropy loss = 4.6786427, Evaluation criterion = 0.921875
+Minibatch 15: CrossEntropy loss = 4.5419689, Evaluation criterion = 0.8703125
+Minibatch 16: CrossEntropy loss = 4.4073872, Evaluation criterion = 0.8875
+Minibatch 17: CrossEntropy loss = 4.1946819, Evaluation criterion = 0.8859375
+Minibatch 18: CrossEntropy loss = 3.6316364, Evaluation criterion = 0.7875
+Minibatch 19: CrossEntropy loss = 3.6050167, Evaluation criterion = 0.7578125
+Minibatch 20: CrossEntropy loss = 4.0679226, Evaluation criterion = 0.8484375
+Minibatch 21: CrossEntropy loss = 3.9887348, Evaluation criterion = 0.796875
+Minibatch 22: CrossEntropy loss = 3.9743195, Evaluation criterion = 0.85625
+Minibatch 23: CrossEntropy loss = 3.6870159, Evaluation criterion = 0.8015625
+Minibatch 24: CrossEntropy loss = 3.9160236, Evaluation criterion = 0.84375
+Minibatch 25: CrossEntropy loss = 3.5649395, Evaluation criterion = 0.8265625
+Minibatch 26: CrossEntropy loss = 3.5134689, Evaluation criterion = 0.8375
+Minibatch 27: CrossEntropy loss = 3.1029741, Evaluation criterion = 0.6984375
+Minibatch 28: CrossEntropy loss = 3.3023926, Evaluation criterion = 0.7953125
+Minibatch 29: CrossEntropy loss = 3.3360149, Evaluation criterion = 0.7046875
+Minibatch 30: CrossEntropy loss = 2.7837896, Evaluation criterion = 0.7375
+Minibatch 31: CrossEntropy loss = 2.4515221, Evaluation criterion = 0.596875
+Minibatch 32: CrossEntropy loss = 3.3609612, Evaluation criterion = 0.746875
+Minibatch 33: CrossEntropy loss = 3.5973492, Evaluation criterion = 0.796875
+Minibatch 34: CrossEntropy loss = 3.5054428, Evaluation criterion = 0.7953125
+Minibatch 35: CrossEntropy loss = 3.3663612, Evaluation criterion = 0.8015625
+Minibatch 36: CrossEntropy loss = 3.1376518, Evaluation criterion = 0.771875
+Minibatch 37: CrossEntropy loss = 2.9556662, Evaluation criterion = 0.7296875
+Minibatch 38: CrossEntropy loss = 3.2309269, Evaluation criterion = 0.75
+Minibatch 39: CrossEntropy loss = 3.0666395, Evaluation criterion = 0.696875
+Minibatch 40: CrossEntropy loss = 3.0213205, Evaluation criterion = 0.7796875
+Minibatch 41: CrossEntropy loss = 2.6888218, Evaluation criterion = 0.6734375
+Minibatch 42: CrossEntropy loss = 2.2273411, Evaluation criterion = 0.528125
+Minibatch 43: CrossEntropy loss = 2.9723089, Evaluation criterion = 0.7140625
+Minibatch 44: CrossEntropy loss = 3.0133104, Evaluation criterion = 0.71875
+Minibatch 45: CrossEntropy loss = 2.7110016, Evaluation criterion = 0.675
+Minibatch 46: CrossEntropy loss = 2.3732473, Evaluation criterion = 0.6375
+Minibatch 47: CrossEntropy loss = 2.5888117, Evaluation criterion = 0.6765625
+Minibatch 48: CrossEntropy loss = 2.7667397, Evaluation criterion = 0.6984375
+Minibatch 49: CrossEntropy loss = 2.5700682, Evaluation criterion = 0.625
+Minibatch 50: CrossEntropy loss = 2.2407328, Evaluation criterion = 0.6171875
+Minibatch 51: CrossEntropy loss = 2.2462841, Evaluation criterion = 0.571875
+Minibatch 52: CrossEntropy loss = 1.9364151, Evaluation criterion = 0.4671875
+Minibatch 53: CrossEntropy loss = 2.4297691, Evaluation criterion = 0.5484375
+Minibatch 54: CrossEntropy loss = 2.587995, Evaluation criterion = 0.6546875
+Minibatch 55: CrossEntropy loss = 2.5637333, Evaluation criterion = 0.7359375
+Minibatch 56: CrossEntropy loss = 2.5598463, Evaluation criterion = 0.703125
+Minibatch 57: CrossEntropy loss = 2.3109785, Evaluation criterion = 0.6640625
+Minibatch 58: CrossEntropy loss = 1.9508141, Evaluation criterion = 0.5390625
+Minibatch 59: CrossEntropy loss = 1.9314243, Evaluation criterion = 0.5515625
+Minibatch 60: CrossEntropy loss = 2.0909359, Evaluation criterion = 0.509375
+Minibatch 61: CrossEntropy loss = 2.0483122, Evaluation criterion = 0.590625
+Minibatch 62: CrossEntropy loss = 2.1739639, Evaluation criterion = 0.575
+Minibatch 63: CrossEntropy loss = 2.6285807, Evaluation criterion = 0.6953125
+Minibatch 64: CrossEntropy loss = 2.4407398, Evaluation criterion = 0.5953125
+Minibatch 65: CrossEntropy loss = 1.9267384, Evaluation criterion = 0.4859375
+Minibatch 66: CrossEntropy loss = 1.891671, Evaluation criterion = 0.53125
+Minibatch 67: CrossEntropy loss = 1.9396282, Evaluation criterion = 0.584375
+Minibatch 68: CrossEntropy loss = 2.1499796, Evaluation criterion = 0.5890625
+Minibatch 69: CrossEntropy loss = 2.0916023, Evaluation criterion = 0.5890625
+Minibatch 70: CrossEntropy loss = 2.3379831, Evaluation criterion = 0.634375
+Minibatch 71: CrossEntropy loss = 2.4181885, Evaluation criterion = 0.628125
+Minibatch 72: CrossEntropy loss = 2.0584831, Evaluation criterion = 0.5453125
+Minibatch 73: CrossEntropy loss = 1.9444242, Evaluation criterion = 0.51875
+Minibatch 74: CrossEntropy loss = 1.8751041, Evaluation criterion = 0.5609375
+Minibatch 75: CrossEntropy loss = 1.5461226, Evaluation criterion = 0.4609375
+Minibatch 76: CrossEntropy loss = 1.9066765, Evaluation criterion = 0.5125
+Minibatch 77: CrossEntropy loss = 1.8350243, Evaluation criterion = 0.515625
+Minibatch 78: CrossEntropy loss = 2.01406, Evaluation criterion = 0.55625
+Minibatch 79: CrossEntropy loss = 2.326759, Evaluation criterion = 0.5625
+Minibatch 80: CrossEntropy loss = 1.9839407, Evaluation criterion = 0.515625
+Minibatch 81: CrossEntropy loss = 1.8954927, Evaluation criterion = 0.546875
+Minibatch 82: CrossEntropy loss = 1.9323299, Evaluation criterion = 0.5640625
+Minibatch 83: CrossEntropy loss = 1.7590166, Evaluation criterion = 0.5390625
+Minibatch 84: CrossEntropy loss = 1.8955132, Evaluation criterion = 0.553125
+Minibatch 85: CrossEntropy loss = 1.6698656, Evaluation criterion = 0.4578125
+Minibatch 86: CrossEntropy loss = 2.0715799, Evaluation criterion = 0.5625
+Minibatch 87: CrossEntropy loss = 1.9984587, Evaluation criterion = 0.5203125
+Minibatch 88: CrossEntropy loss = 1.9043703, Evaluation criterion = 0.5828125
+Minibatch 89: CrossEntropy loss = 1.5056041, Evaluation criterion = 0.4296875
+Minibatch 90: CrossEntropy loss = 1.5391541, Evaluation criterion = 0.4765625
+Minibatch 91: CrossEntropy loss = 1.7027277, Evaluation criterion = 0.4453125
+Minibatch 92: CrossEntropy loss = 2.1051542, Evaluation criterion = 0.571875
+Minibatch 93: CrossEntropy loss = 1.9457371, Evaluation criterion = 0.5546875
+Minibatch 94: CrossEntropy loss = 1.603051, Evaluation criterion = 0.459375
+Minibatch 95: CrossEntropy loss = 1.6697123, Evaluation criterion = 0.4328125
+Minibatch 96: CrossEntropy loss = 2.0558218, Evaluation criterion = 0.546875
+Minibatch 97: CrossEntropy loss = 2.1812136, Evaluation criterion = 0.6359375
+Minibatch 98: CrossEntropy loss = 1.8523376, Evaluation criterion = 0.5421875
+Minibatch 99: CrossEntropy loss = 1.8263023, Evaluation criterion = 0.5328125
+Minibatch 100: CrossEntropy loss = 1.6045446, Evaluation criterion = 0.4875
+Minibatch 101: CrossEntropy loss = 1.5619035, Evaluation criterion = 0.459375
+Minibatch 102: CrossEntropy loss = 1.6897823, Evaluation criterion = 0.5203125
+Minibatch 103: CrossEntropy loss = 1.718725, Evaluation criterion = 0.4765625
+Minibatch 104: CrossEntropy loss = 1.8601725, Evaluation criterion = 0.48125
+Minibatch 105: CrossEntropy loss = 1.8263414, Evaluation criterion = 0.4703125
+Minibatch 106: CrossEntropy loss = 1.8526447, Evaluation criterion = 0.5578125
+Minibatch 107: CrossEntropy loss = 1.6320429, Evaluation criterion = 0.453125
+Minibatch 108: CrossEntropy loss = 1.7120035, Evaluation criterion = 0.5
+Minibatch 109: CrossEntropy loss = 1.6646576, Evaluation criterion = 0.490625
+Minibatch 110: CrossEntropy loss = 1.443947, Evaluation criterion = 0.45
+Minibatch 111: CrossEntropy loss = 1.5557179, Evaluation criterion = 0.4375
+Minibatch 112: CrossEntropy loss = 1.7877502, Evaluation criterion = 0.45
+Minibatch 113: CrossEntropy loss = 1.953628, Evaluation criterion = 0.5109375
+Minibatch 114: CrossEntropy loss = 1.5522581, Evaluation criterion = 0.459375
+Minibatch 115: CrossEntropy loss = 1.6239292, Evaluation criteRun tests on GPU device using GPU build.
+
+TrainTruncatedLSTMAcousticModelClassifer..
+
+CNTKv2Library-TruncatedLSTMAcousticModel tests: Passed
+rion = 0.4625
+Minibatch 116: CrossEntropy loss = 1.6775414, Evaluation criterion = 0.5046875
+Minibatch 117: CrossEntropy loss = 1.7876331, Evaluation criterion = 0.5578125
+Minibatch 118: CrossEntropy loss = 1.7213089, Evaluation criterion = 0.49375
+Minibatch 119: CrossEntropy loss = 1.8156717, Evaluation criterion = 0.5171875
+Minibatch 120: CrossEntropy loss = 1.778194, Evaluation criterion = 0.5078125
+Minibatch 121: CrossEntropy loss = 1.7245178, Evaluation criterion = 0.4875
+Minibatch 122: CrossEntropy loss = 1.4416841, Evaluation criterion = 0.4375
+Minibatch 123: CrossEntropy loss = 1.5408732, Evaluation criterion = 0.45625
+Minibatch 124: CrossEntropy loss = 1.4926743, Evaluation criterion = 0.4296875
+Minibatch 125: CrossEntropy loss = 1.746636, Evaluation criterion = 0.5109375
+Minibatch 126: CrossEntropy loss = 1.7668291, Evaluation criterion = 0.5046875
+Minibatch 127: CrossEntropy loss = 1.7534969, Evaluation criterion = 0.5015625
+Minibatch 128: CrossEntropy loss = 1.6903093, Evaluation criterion = 0.4828125
+Minibatch 129: CrossEntropy loss = 1.5962669, Evaluation criterion = 0.478125
+Minibatch 130: CrossEntropy loss = 1.9451487, Evaluation criterion = 0.578125
+Minibatch 131: CrossEntropy loss = 2.0207315, Evaluation criterion = 0.5765625
+Minibatch 132: CrossEntropy loss = 2.0227851, Evaluation criterion = 0.60793651
+Minibatch 133: CrossEntropy loss = 1.7521148, Evaluation criterion = 0.5472973
+Minibatch 134: CrossEntropy loss = 2.049208, Evaluation criterion = 0.58108108
+Minibatch 135: CrossEntropy loss = 2.1334362, Evaluation criterion = 0.60504202
+Minibatch 136: CrossEntropy loss = 1.8293884, Evaluation criterion = 0.47704082
+Minibatch 137: CrossEntropy loss = 1.9571645, Evaluation criterion = 0.56486486
+Minibatch 138: CrossEntropy loss = 1.9825041, Evaluation criterion = 0.58
+Minibatch 139: CrossEntropy loss = 2.1535683, Evaluation criterion = 0.58333333
+Minibatch 140: CrossEntropy loss = 2.2501566, Evaluation criterion = 0.64457831
+Minibatch 141: CrossEntropy loss = 2.232862, Evaluation criterion = 0.60897436
+Minibatch 142: CrossEntropy loss = 2.1513527, Evaluation criterion = 0.56666667
+Minibatch 143: CrossEntropy loss = 2.0801104, Evaluation criterion = 0.7254902
+Minibatch 144: CrossEntropy loss = 2.2796023, Evaluation criterion = 0.71666667
+Minibatch 145: CrossEntropy loss = 2.2013793, Evaluation criterion = 0.52631579
+Minibatch 146: CrossEntropy loss = 1.8809866, Evaluation criterion = 0.65
+Minibatch 147: CrossEntropy loss = 4.7428692, Evaluation criterion = 1
+Minibatch 148: CrossEntropy loss = 3.7736874, Evaluation criterion = 1
+Minibatch 149: CrossEntropy loss = 2.1082102, Evaluation criterion = 0.9
+Reading script file glob_0000.scp ... 948 entries
+HTKDataDeserializer::HTKDataDeserializer: selected 948 utterances grouped into 3 chunks, average chunk size: 316.0 utterances, 84244.7 frames (for I/O: 316.0 utterances, 84244.7 frames)
+HTKDataDeserializer::HTKDataDeserializer: determined feature kind as 33-dimensional 'USER' with frame shift 10.0 ms
+total 132 state names in state list state.list
+htkmlfreader: reading MLF file glob_0000.mlf ... total 948 entries
+MLFDataDeserializer::MLFDataDeserializer: 948 utterances with 252734 frames in 129 classes
+Reading script file glob_0000.scp ... 948 entries
+HTKDataDeserializer::HTKDataDeserializer: selected 948 utterances grouped into 3 chunks, average chunk size: 316.0 utterances, 84244.7 frames (for I/O: 316.0 utterances, 84244.7 frames)
+HTKDataDeserializer::HTKDataDeserializer: determined feature kind as 33-dimensional 'USER' with frame shift 10.0 ms
+total 132 state names in state list state.list
+htkmlfreader: reading MLF file glob_0000.mlf ... total 948 entries
+MLFDataDeserializer::MLFDataDeserializer: 948 utterances with 252734 frames in 129 classes
+Reading script file glob_0000.scp ... 948 entries
+HTKDataDeserializer::HTKDataDeserializer: selected 948 utterances grouped into 3 chunks, average chunk size: 316.0 utterances, 84244.7 frames (for I/O: 316.0 utterances, 84244.7 frames)
+HTKDataDeserializer::HTKDataDeserializer: determined feature kind as 33-dimensional 'USER' with frame shift 10.0 ms
+total 132 state names in state list state.list
+htkmlfreader: reading MLF file glob_0000.mlf ... total 948 entries
+MLFDataDeserializer::MLFDataDeserializer: 948 utterances with 252734 frames in 129 classes
+Reading script file glob_0000.scp ... 948 entries
+HTKDataDeserializer::HTKDataDeserializer: selected 948 utterances grouped into 3 chunks, average chunk size: 316.0 utterances, 84244.7 frames (for I/O: 316.0 utterances, 84244.7 frames)
+HTKDataDeserializer::HTKDataDeserializer: determined feature kind as 33-dimensional 'USER' with frame shift 10.0 ms
+total 132 state names in state list state.list
+htkmlfreader: reading MLF file glob_0000.mlf ... total 948 entries
+MLFDataDeserializer::MLFDataDeserializer: 948 utterances with 252734 frames in 129 classes
++ ExitCode=0
++ popd
+/cygdrive/c/repos/CNTK/Tests/EndToEndTests/CNTKv2Library/TruncatedLSTMAcousticModel
++ rm -rf /tmp/cntk-test-20170116174350.953949/CNTKv2Library_TruncatedLSTMAcousticModel@release_gpu/TestData
++ '[' gpu == cpu ']'
++ exit 0
