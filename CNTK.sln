@@ -859,6 +859,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "V2LibraryTests", "Tests\UnitTests\V2LibraryTests\V2LibraryTests.vcxproj", "{F4CC3AB2-0DB2-4281-929A-2E68E30F0F6E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E5606ECE-48CA-4464-BB12-09D81D02B9EF} = {E5606ECE-48CA-4464-BB12-09D81D02B9EF}
+		{91973E60-A7BE-4C86-8FDB-59C88A0B3715} = {91973E60-A7BE-4C86-8FDB-59C88A0B3715}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{68263A2F-1D5F-4C46-B5AF-2304B80FC3D4}"
@@ -1495,6 +1496,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BrainScript", "BrainScript"
 		Examples\Image\Classification\GoogLeNet\BN-Inception\BrainScript\InceptionLayers.bs = Examples\Image\Classification\GoogLeNet\BN-Inception\BrainScript\InceptionLayers.bs
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CNTKLibraryCPPEvalExamplesTest", "Tests\EndToEndTests\EvalClientTests\CNTKLibraryCPPEvalExamplesTest\CNTKLibraryCPPEvalExamplesTest.vcxproj.vcxproj", "{D771A06D-CC25-4582-B5CD-D2A4782BB005}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91973E60-A7BE-4C86-8FDB-59C88A0B3715} = {91973E60-A7BE-4C86-8FDB-59C88A0B3715}
+		{E5606ECE-48CA-4464-BB12-09D81D02B9EF} = {E5606ECE-48CA-4464-BB12-09D81D02B9EF}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_CpuOnly|x64 = Debug_CpuOnly|x64
@@ -2001,6 +2008,16 @@ Global
 		{75A5F838-0DB5-4FD5-93E4-6D87E41E2597}.Release_NoOpt|x64.Build.0 = Release_NoOpt|x64
 		{75A5F838-0DB5-4FD5-93E4-6D87E41E2597}.Release|x64.ActiveCfg = Release|x64
 		{75A5F838-0DB5-4FD5-93E4-6D87E41E2597}.Release|x64.Build.0 = Release|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Debug_CpuOnly|x64.ActiveCfg = Debug_CpuOnly|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Debug_CpuOnly|x64.Build.0 = Debug_CpuOnly|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Debug|x64.ActiveCfg = Debug|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Debug|x64.Build.0 = Debug|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release_CpuOnly|x64.ActiveCfg = Release_CpuOnly|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release_CpuOnly|x64.Build.0 = Release_CpuOnly|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release_NoOpt|x64.ActiveCfg = Release_NoOpt|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release_NoOpt|x64.Build.0 = Release_NoOpt|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release|x64.ActiveCfg = Release|x64
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2211,5 +2228,6 @@ Global
 		{824766FA-759A-4466-9C39-13200D2D3159} = {789B4AB8-40F1-4A37-823A-BC20D80C8BF1}
 		{BD07C9F3-B10C-4C21-82BC-4F249B65DDFE} = {824766FA-759A-4466-9C39-13200D2D3159}
 		{5CC403B9-2405-4FFB-A73B-DAE0DC986C76} = {CE223840-1DEE-4849-B530-F06BEE05BAA8}
+		{D771A06D-CC25-4582-B5CD-D2A4782BB005} = {05E45AF7-C069-4057-BC16-0A532D068CE4}
 	EndGlobalSection
 EndGlobal
