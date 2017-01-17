@@ -50,7 +50,7 @@ pushd $TestDataDir
 if [ "$OS" == "Windows_NT" ]; then
   $TEST_BIN_DIR/V2LibraryTests_boost.exe --report_level=detailed
 else
-  $TEST_BIN_DIR/v2librarytests
+  $TEST_BIN_DIR/v2librarytests_boost --report_level=detailed
 fi
 
 ExitCode=$?
