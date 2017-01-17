@@ -58,7 +58,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\CNTKv2LibraryDll\API;$(SolutionDir)Tests\UnitTests\V2LibraryTests</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Tests\EndToEndTests\CNTKv2Library\Common;$(SolutionDir)Source\CNTKv2LibraryDll\API;$(SolutionDir)Tests\UnitTests\V2LibraryTests</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
@@ -114,7 +114,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\V2LibraryTests\Common.cpp" />
+    <ClCompile Include="..\..\EndToEndTests\CNTKv2Library\Common\Common.cpp" />
     <ClCompile Include="FrameModeTests.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

@@ -1,12 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 //
+#include "stdafx.h"
 
 #define _CRT_SECURE_NO_WARNINGS // "secure" CRT not available on all platforms  --add this at the top of all CPP files that give "function or variable may be unsafe" warnings
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include <boost/test/unit_test.hpp>
+
+namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
 
 #ifdef _MSC_VER
 // In case of asserts in debug mode, print the message into stderr and throw exception
@@ -54,6 +58,11 @@ bool IsGPUAvailable()
     return isGPUDeviceAvailable;
 }
 
+boost::test_tools::assertion_result GpuAvailable(boost::unit_test::test_unit_id)
+{
+    return IsGPUAvailable();
+}
+
 bool Is1bitSGDAvailable()
 {
     static bool is1bitSGDAvailable;
@@ -77,3 +86,5 @@ bool Is1bitSGDAvailable()
 
     return is1bitSGDAvailable;
 }
+
+}}}}

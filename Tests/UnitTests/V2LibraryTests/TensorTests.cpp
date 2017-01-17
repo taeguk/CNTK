@@ -2,10 +2,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 //
+#include "stdafx.h"
 #include "CNTKLibrary.h"
 #include "Common.h"
 
 using namespace CNTK;
+
+namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
 
 template <typename ElementType>
 void TestTensorPlus(size_t numAxesLeftOperand, size_t numAxesRightOperand, const DeviceDescriptor& device, bool useConstantInputsOnly)
@@ -67,7 +70,7 @@ void TestTensorPlus(size_t numAxesLeftOperand, size_t numAxesRightOperand, const
     if (useConstantInputsOnly)
         backPropState = plusFunc->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device, { plusFunc->Output() });
     else
-        backPropState = plusFunc->Forward({ { leftInputVar, MakeSharedObject<Value>(leftInputValue) }, { rightInputVar, MakeSharedObject<Value>(rightInputValue) } }, outputs, device, { plusFunc->Output() });
+        backPropState = plusFunc->Forward({ { leftInputVar, MakeSharedObject<Value>(leftInputValue) },{ rightInputVar, MakeSharedObject<Value>(rightInputValue) } }, outputs, device, { plusFunc->Output() });
 
     // Perform backprop
     std::vector<ElementType> rootGradientsData(outputShape.TotalSize(), 1);
@@ -91,7 +94,7 @@ void TestTensorPlus(size_t numAxesLeftOperand, size_t numAxesRightOperand, const
             expectedOutputValues[(i * smallerInput.size()) + j] += smallerInput[j];
     }
 
-    FloatingPointVectorCompare(outputData, expectedOutputValues, "TestTimesAndPlus: Forward prop results do not match expected results");
+    FloatingPointVectorCompare(outputData, expectedOutputValues, "Forward prop results do not match expected results");
 
     auto& smallerInputGradients = (numAxesLeftOperand < numAxesRightOperand) ? leftInputGradientsData : rightInputGradientsData;
     auto& largerInputGradients = (numAxesLeftOperand < numAxesRightOperand) ? rightInputGradientsData : leftInputGradientsData;
@@ -114,22 +117,31 @@ void TestInfAndNans()
     divideFunc->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device);
 
     if (outputData[0] != std::numeric_limits<float>::infinity())
-        throw std::runtime_error("1/0 != Infinity");
+        BOOST_ERROR("1/0 != Infinity");
 }
 
-void TensorTests()
+// TODO: Enable after the core engine reciprocal bug of 1/0 not being INF is fixed
+//TestInfAndNans();
+
+BOOST_AUTO_TEST_SUITE(TensorSuite)
+
+BOOST_AUTO_TEST_CASE(TensorPlusInCPU)
 {
-    fprintf(stderr, "\nTensorTests..\n");
-
-    // TODO: Enable after the core engine reciprocal bug of 1/0 not being INF is fixed
-    //TestInfAndNans();
-
     TestTensorPlus<float>(0, 3, DeviceDescriptor::CPUDevice(), false);
-    if (IsGPUAvailable())
-    {
-        TestTensorPlus<double>(4, 1, DeviceDescriptor::GPUDevice(0), true);
-        TestTensorPlus<float>(1, 3, DeviceDescriptor::GPUDevice(0), false);
-        TestTensorPlus<double>(2, 0, DeviceDescriptor::GPUDevice(0), false);
-        TestTensorPlus<float>(0, 0, DeviceDescriptor::GPUDevice(0), false);
-    }
 }
+
+BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithAxes, *boost::unit_test::precondition(GpuAvailable))
+{
+    TestTensorPlus<double>(4, 1, DeviceDescriptor::GPUDevice(0), true);
+    TestTensorPlus<float>(1, 3, DeviceDescriptor::GPUDevice(0), false);
+}
+
+BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithoutAxes, *boost::unit_test::precondition(GpuAvailable))
+{
+    TestTensorPlus<double>(2, 0, DeviceDescriptor::GPUDevice(0), false);
+    TestTensorPlus<float>(0, 0, DeviceDescriptor::GPUDevice(0), false);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+}}}}

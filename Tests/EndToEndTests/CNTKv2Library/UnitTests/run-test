@@ -22,6 +22,7 @@ TestDataDir=$TEST_RUN_DIR/TestData
 mkdir $TestDataDir
 cp -R $DataSourceDir/MNIST/v0/Train-28x28_cntk_text.txt $TestDataDir || exit $?
 cp -R $TEST_DIR/../../Text/SequenceClassification/Data/Train.ctf $TestDataDir || exit $?
+cp -R $TEST_DIR/../../Simple2d/Data/SimpleDataT*_cntk_text.txt $TestDataDir || exit $?
 cp -R $TEST_DIR/../../../UnitTests/V2LibraryTests/data/* $TestDataDir || exit $?
 
 # Train model that is used by Eval tests.
@@ -48,9 +49,9 @@ fi
 pushd $TestDataDir
 
 if [ "$OS" == "Windows_NT" ]; then
-  $TEST_BIN_DIR/V2LibraryTests_boost.exe --report_level=detailed
+  $TEST_BIN_DIR/V2LibraryTests.exe --report_level=detailed
 else
-  $TEST_BIN_DIR/v2librarytests_boost --report_level=detailed
+  $TEST_BIN_DIR/v2librarytests --report_level=detailed
 fi
 
 ExitCode=$?
