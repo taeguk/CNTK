@@ -22,7 +22,7 @@ static const size_t maxDimSize = 5;
 template <typename ElementType>
 void TestUpdate(LearnerPtr& learner, NDShape& shape, size_t numMinibatches, const DeviceDescriptor& device)
 {
-    auto seed = (unsigned long)rng();
+    auto seed = (unsigned long) rng();
     unordered_map<Parameter, NDArrayViewPtr> gradientValues;
     for (auto i = 0; i < numMinibatches; i++)
     { 
@@ -75,7 +75,7 @@ void TestNesterovLearner(size_t numParameters, size_t numMinibatches, bool unitG
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
     MomentumAsTimeConstantSchedule momentumValues = { { { 1, 1 }, { 3, 5 }, { 10, 25 } }, 100 };
-    auto learner = NesterovLearner(parameters, LearningRatePerMinibatchSchedule( { { 1, 0.5 }, { 10, 0.25 }, { 20, 0.125 } }, 3), momentumValues, unitGainMomentum);
+    auto learner = NesterovLearner(parameters, LearningRatePerMinibatchSchedule( { { 1, 0.5 }, { 10, 0.25 }, { 20, 0.125 } }, 3 ), momentumValues, unitGainMomentum);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
@@ -84,7 +84,7 @@ void TestAdaGradLearner(size_t numParameters, size_t numMinibatches, const Devic
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    auto learner = AdaGradLearner(parameters, LearningRatePerMinibatchSchedule({ 0.5, 0.4, 0.3, 0.2, 0.1 }, 2), true);
+    auto learner = AdaGradLearner(parameters, LearningRatePerMinibatchSchedule( { 0.5, 0.4, 0.3, 0.2, 0.1 }, 2), true);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
@@ -246,9 +246,9 @@ void TestSweepBasedSchedule()
     assert(1 == learner1->LearningRate());
 
     
-    for (auto i : { 2, 3, 4, 5 })
+    for (auto i : {2, 3, 4, 5 })
     {
-        std::unordered_map<Parameter, NDArrayViewPtr> gradients{};
+        std::unordered_map<Parameter, NDArrayViewPtr> gradients {};
         learner1->Update(gradients, 1, true);
         assert(i == learner1->LearningRate());
     }

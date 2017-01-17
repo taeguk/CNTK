@@ -130,7 +130,7 @@ void TrainSequenceToSequenceTranslator(const DeviceDescriptor& device, bool useS
     auto z = Plus(Times(outputLayerProjWeights, Stabilize<float>(decoderOutput, device)), biasWeights, L"classifierOutput");
 
     if (usePlaceholders)
-        z->ReplacePlaceholders({ { thoughtVectorBroadcastH, actualThoughtVectorBroadcastH },{ thoughtVectorBroadcastC, actualThoughtVectorBroadcastC } });
+        z->ReplacePlaceholders({ { thoughtVectorBroadcastH, actualThoughtVectorBroadcastH }, { thoughtVectorBroadcastC, actualThoughtVectorBroadcastC } });
 
     auto ce = CrossEntropyWithSoftmax(z, labelSequence, L"lossFunction");
     auto errs = ClassificationError(z, labelSequence, L"classificationError");
@@ -163,14 +163,13 @@ void TrainSequenceToSequenceTranslator(const DeviceDescriptor& device, bool useS
 
     // Decoder history for greedy decoding
     auto decoderHistoryFromOutput = Hardmax(z);
-    auto decodingFunction = decoderHistoryFromOutput->Clone(ParameterCloningMethod::Share, { { decoderHistoryHook, decoderHistoryFromOutput } });
+    auto decodingFunction = decoderHistoryFromOutput->Clone(ParameterCloningMethod::Share, { {decoderHistoryHook, decoderHistoryFromOutput} });
     decodingFunction = Combine({ decodingFunction->RootFunction()->Arguments()[0] });
 
     auto featureStreamName = L"rawInput";
     auto labelStreamName = L"rawLabels";
     auto minibatchSource = TextFormatMinibatchSource(L"cmudict-0.7b.train-dev-20-21.ctf",
-    { { featureStreamName, inputVocabDim, true, L"S0" },{ labelStreamName, labelVocabDim, true, L"S1" } },
-        5000);
+                                                     { { featureStreamName, inputVocabDim, true, L"S0" }, { labelStreamName, labelVocabDim, true, L"S1" } }, 5000);
 
     auto rawInputStreamInfo = minibatchSource->StreamInfo(featureStreamName);
     auto rawLabelsStreamInfo = minibatchSource->StreamInfo(labelStreamName);
@@ -209,7 +208,7 @@ void TrainSequenceToSequenceTranslator(const DeviceDescriptor& device, bool useS
         if (minibatchData.empty())
             break;
 
-        trainer->TrainMinibatch({ { rawInput, minibatchData[rawInputStreamInfo] },{ rawLabels, minibatchData[rawLabelsStreamInfo] } }, device);
+        trainer->TrainMinibatch({ { rawInput, minibatchData[rawInputStreamInfo] }, { rawLabels, minibatchData[rawLabelsStreamInfo] } }, device);
         PrintTrainingProgress(trainer, i, outputFrequencyInMinibatches);
 
         if ((i + 1) == numMinibatchesToCheckpointAfter)
@@ -221,8 +220,8 @@ void TrainSequenceToSequenceTranslator(const DeviceDescriptor& device, bool useS
 
         if ((i % decodingFrequency) == 0)
         {
-            std::unordered_map<Variable, ValuePtr> outputs = { { decodingFunction, nullptr } };
-            decodingFunction->Forward({ { decodingFunction->Arguments()[0], minibatchData[rawInputStreamInfo].data },{ decodingFunction->Arguments()[1], minibatchData[rawLabelsStreamInfo].data } },
+            std::unordered_map<Variable, ValuePtr> outputs = { { decodingFunction, nullptr }};
+            decodingFunction->Forward({ { decodingFunction->Arguments()[0], minibatchData[rawInputStreamInfo].data }, { decodingFunction->Arguments()[1], minibatchData[rawLabelsStreamInfo].data } },
                 outputs,
                 device);
         }

@@ -70,7 +70,7 @@ void TestTensorPlus(size_t numAxesLeftOperand, size_t numAxesRightOperand, const
     if (useConstantInputsOnly)
         backPropState = plusFunc->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device, { plusFunc->Output() });
     else
-        backPropState = plusFunc->Forward({ { leftInputVar, MakeSharedObject<Value>(leftInputValue) },{ rightInputVar, MakeSharedObject<Value>(rightInputValue) } }, outputs, device, { plusFunc->Output() });
+        backPropState = plusFunc->Forward({ { leftInputVar, MakeSharedObject<Value>(leftInputValue) }, { rightInputVar, MakeSharedObject<Value>(rightInputValue) } }, outputs, device, { plusFunc->Output() });
 
     // Perform backprop
     std::vector<ElementType> rootGradientsData(outputShape.TotalSize(), 1);

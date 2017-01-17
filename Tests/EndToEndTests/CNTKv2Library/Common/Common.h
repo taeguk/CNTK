@@ -262,7 +262,7 @@ std::pair<FunctionPtr, FunctionPtr> LSTMPComponentWithSelfStabilization(Variable
     auto actualDc = recurrenceHookC(LSTMCell.second);
 
     // Form the recurrence loop by replacing the dh and dc placeholders with the actualDh and actualDc
-    LSTMCell.first->ReplacePlaceholders({ { dh, actualDh },{ dc, actualDc } });
+    LSTMCell.first->ReplacePlaceholders({ { dh, actualDh }, { dc, actualDc } });
 
     return{ LSTMCell.first, LSTMCell.second };
 }
