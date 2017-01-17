@@ -32,10 +32,14 @@ fi
 
 pushd $TestDataDir
 
+# Note: Run the device selection tests first since later tests may interfere with
+# device selection by freezing default device
 if [ "$OS" == "Windows_NT" ]; then
-  $TEST_BIN_DIR/V2LibraryTests.exe --report_level=detailed
+  $TEST_BIN_DIR/V2LibraryTests.exe --report_level=detailed --run_test=DeviceSelectionSuite
+  $TEST_BIN_DIR/V2LibraryTests.exe --report_level=detailed --run_test=!DeviceSelectionSuite
 else
-  $TEST_BIN_DIR/v2librarytests --report_level=detailed
+  $TEST_BIN_DIR/v2librarytests --report_level=detailed --run_test=DeviceSelectionSuite
+  $TEST_BIN_DIR/v2librarytests --report_level=detailed --run_test=!DeviceSelectionSuite
 fi
 
 ExitCode=$?

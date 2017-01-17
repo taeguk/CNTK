@@ -7,6 +7,7 @@
 #include <functional>
 #include "Common.h"
 #include <numeric>
+#include <iostream>
 
 static unsigned long seed = 1;
 
@@ -115,6 +116,26 @@ void TestBlocksWithRecurrence(size_t inputDim, size_t outputDim, const DeviceDes
     if (outputValue->Shape()[0] != outputDim)
         ReportFailure("Output value shape's leading dimensions does not match expected output dim (%d)", (int)outputDim);
 }
+
+
+struct V2LibraryTestFixture
+{
+    V2LibraryTestFixture()
+    {
+#if defined(_MSC_VER)
+        // in case of asserts in debug mode, print the message into stderr and throw exception
+        if (_CrtSetReportHook2(_CRT_RPTHOOK_INSTALL, HandleDebugAssert) == -1) {
+            fprintf(stderr, "_CrtSetReportHook2 failed.\n");
+        }
+#endif
+
+        // Lets disable automatic unpacking of PackedValue object to detect any accidental unpacking
+        // which will have a silent performance degradation otherwise
+        Internal::SetAutomaticUnpackingOfPackedValues(/*disable =*/ true);
+    }
+};
+
+BOOST_GLOBAL_FIXTURE(V2LibraryTestFixture);
 
 BOOST_AUTO_TEST_SUITE(BlockSuite)
 
