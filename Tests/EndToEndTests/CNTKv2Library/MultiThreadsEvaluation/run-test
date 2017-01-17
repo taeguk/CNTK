@@ -45,9 +45,9 @@ fi
 pushd $TestDataDir
 
 if [ "$OS" == "Windows_NT" ]; then
-  $TEST_BIN_DIR/MultiThreadsEvaluationTests.exe
+  $TEST_BIN_DIR/CNTKLibraryCPPEvalExamples.exe
 else
-  $TEST_BIN_DIR/multithreadsevaluationtests
+  $TEST_BIN_DIR/CNTKLibraryCPPEvalExamples
 fi
 
 ExitCode=$?

@@ -53,31 +53,6 @@ inline void FloatingPointCompare(ElementType actual, ElementType expected, const
         ReportFailure((message + std::string("; Expected=%g, Actual=%g")).c_str(), expected, actual);
 }
 
-template <typename ElementType>
-inline void FloatingPointVectorCompare(const std::vector<ElementType>& actual, const std::vector<ElementType>& expected, const char* message)
-{
-    if (actual.size() != expected.size())
-        ReportFailure((message + std::string("; actual data vector size (%d) and expected data vector size (%d) are not equal")).c_str(), (int)actual.size(), (int)expected.size());
-
-    for (size_t i = 0; i < actual.size(); ++i)
-        FloatingPointCompare(actual[i], expected[i], message);
-}
-
-inline void VerifyException(const std::function<void()>& functionToTest, std::string errorMessage) {
-    bool error = false;
-    try
-    {
-        functionToTest();
-    }
-    catch (const std::exception&)
-    {
-        error = true;
-    }
-
-    if (!error)
-        throw std::runtime_error(errorMessage);
-};
-
 static std::mt19937_64 rng(0);
 
 #pragma warning(push)
@@ -377,33 +352,6 @@ inline std::pair<CNTK::NDArrayViewPtr, CNTK::NDArrayViewPtr> GenerateSparseSeque
 }
 
 #pragma warning(pop)
-
-inline CNTK::NDShape CreateShape(size_t numAxes, size_t maxDimSize)
-{
-    CNTK::NDShape shape(numAxes);
-    for (size_t i = 0; i < numAxes; ++i)
-    {
-        shape[i] = (rng() % maxDimSize) + 1;
-    }
-
-    return shape;
-}
-
-inline void OpenStream(std::fstream& stream, const std::wstring& filename, bool readonly)
-{
-    if (filename.empty())
-       throw std::runtime_error("File: filename is empty");
-
-    std::ios_base::openmode mode = std::ios_base::binary;
-    mode = mode | (readonly ? std::ios_base::in : std::ios_base::out);
-
-    #ifdef _MSC_VER
-    stream.open(filename.c_str(), mode);
-    #else
-    stream.open(wtocharpath(filename.c_str()).c_str(), mode);
-    #endif
-    stream.exceptions(std::ios_base::badbit);  
-}
 
 inline void PrintTrainingProgress(const CNTK::Trainer& trainer, size_t minibatchIdx, size_t outputFrequencyInMinibatches)
 {

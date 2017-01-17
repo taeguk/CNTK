@@ -22,10 +22,10 @@ static const size_t maxDimSize = 5;
 template <typename ElementType>
 void TestUpdate(LearnerPtr& learner, NDShape& shape, size_t numMinibatches, const DeviceDescriptor& device)
 {
-    auto seed = (unsigned long) rng();
+    auto seed = (unsigned long)rng();
     unordered_map<Parameter, NDArrayViewPtr> gradientValues;
     for (auto i = 0; i < numMinibatches; i++)
-    { 
+    {
         for (auto& parameter : learner->Parameters())
         {
             gradientValues[parameter] = NDArrayView::RandomUniform<ElementType>(shape, -1.0, 1.0, seed + i, device);
@@ -42,12 +42,12 @@ vector<Parameter> CreateParameters(const NDShape& shape, size_t numParameters, c
     for (int i = 0; i < numParameters; i++)
     {
         parameters.push_back(
-            Parameter(NDArrayView::RandomUniform<ElementType>(shape, -1.0, 1.0, i, device), 
-                      L"parameter_" + to_wstring(i)));
+            Parameter(NDArrayView::RandomUniform<ElementType>(shape, -1.0, 1.0, i, device),
+                L"parameter_" + to_wstring(i)));
     }
     return parameters;
 }
-  
+
 template <typename ElementType>
 void TestSGDLearner(size_t numParameters, size_t numMinibatches, const DeviceDescriptor& device)
 {
@@ -58,24 +58,24 @@ void TestSGDLearner(size_t numParameters, size_t numMinibatches, const DeviceDes
 }
 
 template <typename ElementType>
-void TestMomentumSGDLearner(size_t numParameters, size_t numMinibatches, const DeviceDescriptor& device)
+void TestMomentumSGDLearner(size_t numParameters, size_t numMinibatches, bool unitGainMomentum, const DeviceDescriptor& device)
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
     LearningRatePerMinibatchSchedule learnigRateSchedule = { { 3.0, 2.0, 1.0 }, numMinibatches };
-    MomentumPerSampleSchedule momentumValues = { { { 1, 1.0 }, { 3, 0.1 }, { 10, 0.01 } }, 2 };
-    auto learner = MomentumSGDLearner(parameters, learnigRateSchedule, momentumValues);
+    MomentumPerSampleSchedule momentumValues = { { { 1, 1.0 },{ 3, 0.1 },{ 10, 0.01 } }, 2 };
+    auto learner = MomentumSGDLearner(parameters, learnigRateSchedule, momentumValues, unitGainMomentum);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
     FloatingPointCompare(learner->LearningRate(), 2.0, "Learner::LearningRate does not match expectation");
 }
 
 template <typename ElementType>
-void TestNesterovLearner(size_t numParameters, size_t numMinibatches, const DeviceDescriptor& device)
+void TestNesterovLearner(size_t numParameters, size_t numMinibatches, bool unitGainMomentum, const DeviceDescriptor& device)
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    MomentumAsTimeConstantSchedule momentumValues = { { { 1, 1 }, { 3, 5 }, { 10, 25 } }, 100 };
-    auto learner = NesterovLearner(parameters, LearningRatePerMinibatchSchedule( { { 1, 0.5 }, { 10, 0.25 }, { 20, 0.125 } }, 3 ), momentumValues);
+    MomentumAsTimeConstantSchedule momentumValues = { { { 1, 1 },{ 3, 5 },{ 10, 25 } }, 100 };
+    auto learner = NesterovLearner(parameters, LearningRatePerMinibatchSchedule({ { 1, 0.5 },{ 10, 0.25 },{ 20, 0.125 } }, 3), momentumValues, unitGainMomentum);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
@@ -84,16 +84,16 @@ void TestAdaGradLearner(size_t numParameters, size_t numMinibatches, const Devic
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    auto learner = AdaGradLearner(parameters, LearningRatePerMinibatchSchedule( {0.5, 0.4, 0.3, 0.2, 0.1}, 2 ), true);
+    auto learner = AdaGradLearner(parameters, LearningRatePerMinibatchSchedule({ 0.5, 0.4, 0.3, 0.2, 0.1 }, 2), true);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
 template <typename ElementType>
-void TestFSAdaGradLearner(size_t numParameters, size_t numMinibatches, const DeviceDescriptor& device)
+void TestFSAdaGradLearner(size_t numParameters, size_t numMinibatches, bool unitGainMomentum, const DeviceDescriptor& device)
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    auto learner = AdamLearner(parameters, LearningRatePerSampleSchedule({ 0.5 }), MomentumAsTimeConstantSchedule({ 10.0, 100.0, 1000.0 }));
+    auto learner = AdamLearner(parameters, LearningRatePerSampleSchedule({ 0.5 }), MomentumAsTimeConstantSchedule({ 10.0, 100.0, 1000.0 }), unitGainMomentum);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
@@ -102,7 +102,7 @@ void TestRMSPropLearner(size_t numParameters, size_t numMinibatches, const Devic
 {
     NDShape shape = CreateShape(rng() % maxNumAxes + 1, maxDimSize);
     auto parameters = CreateParameters<ElementType>(shape, numParameters, device);
-    auto learner = RMSPropLearner(parameters, LearningRatePerMinibatchSchedule({ { 3, 0.7 }, { 1, 0.2 } }), 0.01, 0.02, 0.03, 0.1, 0.001);
+    auto learner = RMSPropLearner(parameters, LearningRatePerMinibatchSchedule({ { 3, 0.7 },{ 1, 0.2 } }), 0.01, 0.02, 0.03, 0.1, 0.001);
     TestUpdate<ElementType>(learner, shape, numMinibatches, device);
 }
 
@@ -230,72 +230,93 @@ void TestTrainingParametersSchedule()
     assert(schedule16[99999] == exp(-1.0 / 3.0));
 }
 
+struct LearnerSuiteFixture
+{
+    LearnerSuiteFixture():
+        unitGain{true, false}
+    {
+        srand(1);
 
-BOOST_AUTO_TEST_SUITE(LearnerSuite)
+        devices.push_back(DeviceDescriptor::CPUDevice());
+
+        if (IsGPUAvailable())
+        {
+            devices.push_back(DeviceDescriptor::GPUDevice(0));
+        }
+
+        numParameters = 1 + rand() % 5;
+        numMinibatches = 1 + rand() % 5;
+    }
+
+    bool unitGain[2];
+    vector<DeviceDescriptor> devices;
+    int numParameters;
+    int numMinibatches;
+
+};
+
+BOOST_FIXTURE_TEST_SUITE(LearnerSuite, LearnerSuiteFixture)
 
 BOOST_AUTO_TEST_CASE(TrainingParametersSchedule)
 {
     TestTrainingParametersSchedule();
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateSGDLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateSGDLearner)
 {
-    TestSGDLearner<double>(5, 3, DeviceDescriptor::CPUDevice());
+    for (auto& device : devices)
+    {
+        TestSGDLearner<double>(numParameters, numMinibatches, device);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateMomentumLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateAdaGradLearner)
 {
-    TestMomentumSGDLearner<float>(3, 4, DeviceDescriptor::CPUDevice());
+    for (auto& device : devices)
+    {
+        TestAdaGradLearner<double>(numParameters, numMinibatches, device);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateNesterovLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateRMSPropLearner)
 {
-    TestNesterovLearner<float>(1, 4, DeviceDescriptor::CPUDevice());
+    for (auto& device : devices)
+    {
+        TestRMSPropLearner<float>(numParameters, numMinibatches, device);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateAdaGradLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateMomentumLearner)
 {
-    TestAdaGradLearner<double>(2, 5, DeviceDescriptor::CPUDevice());
+    for (auto& device : devices)
+    {
+        for (auto gain : unitGain)
+        {
+            TestMomentumSGDLearner<float>(numParameters, numMinibatches, gain, device);
+        }
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateFSAdaGradLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateNesterovLearner)
 {
-    TestFSAdaGradLearner<double>(10, 2, DeviceDescriptor::CPUDevice());
+    for (auto& device : devices)
+    {
+        for (auto& gain : unitGain)
+        {
+            TestNesterovLearner<float>(numParameters, numMinibatches, gain, device);
+        }
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CreateAndUpdateRMSPropLearnerInCPU)
+BOOST_AUTO_TEST_CASE(CreateAndUpdateFSAdaGradLearner)
 {
-    TestRMSPropLearner<float>(3, 3, DeviceDescriptor::CPUDevice());
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateSGDLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestSGDLearner<double>(1, 1, DeviceDescriptor::CPUDevice());
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateMomentumLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestMomentumSGDLearner<float>(3, 5, DeviceDescriptor::GPUDevice(0));
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateNesterovLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestNesterovLearner<float>(1, 4, DeviceDescriptor::GPUDevice(0));
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateAdaGradLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestAdaGradLearner<double>(1, 2, DeviceDescriptor::GPUDevice(0));
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateFSAdaGradLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestFSAdaGradLearner<double>(2, 2, DeviceDescriptor::GPUDevice(0));
-}
-
-BOOST_AUTO_TEST_CASE(CreateAndUpdateRMSPropLearnerInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    TestRMSPropLearner<float>(3, 3, DeviceDescriptor::GPUDevice(0));
+    for (auto& device : devices)
+    {
+        for (auto& gain : unitGain)
+        {
+            TestFSAdaGradLearner<double>(numParameters, numMinibatches, gain, device);
+        }
+    }
 }
 
 BOOST_AUTO_TEST_SUITE_END()

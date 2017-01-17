@@ -7,5 +7,4 @@ tags:
 testCases:
   Test run must be completed:
     patterns:
-      - "CNTKv2Library-MultiThreadsEvaluation tests: Passed"
-
+      - Evaluation complete

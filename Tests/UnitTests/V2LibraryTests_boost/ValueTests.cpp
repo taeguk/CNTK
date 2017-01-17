@@ -20,15 +20,13 @@ template <typename ElementType>
 void CheckValue(const ValuePtr testValue, const NDShape& sampleShape, const vector<vector<ElementType>>& expectedData, const vector<size_t>& seqLenList)
 {
     size_t sampleSize = sampleShape.TotalSize();
-
     // Check parameters
     BOOST_TEST(expectedData.size() == seqLenList.size(), "Parameter error: the sequence number in the exepected data and sequence list does not match.");
-
     for (size_t i = 0; i < expectedData.size(); i++)
     {
         if (expectedData[i].size() != seqLenList[i] * sampleSize)
         {
-            ReportFailure("Parameter error: the number of data for sequence %" PRIu64 " in the expected data does not match. Expected: %" PRIu64 ", actual: %" PRIu64 ".",
+            ReportFailure("Parameter erroe: the number of data for sequence %" PRIu64 " in the expected data does not match. Expected: %" PRIu64 ", actual: %" PRIu64 ".",
                 i, seqLenList[i] * sampleSize, expectedData[i].size());
         }
     }
@@ -87,12 +85,11 @@ void CheckValue(const ValuePtr testValue, const size_t vocabSize, const vector<v
 {
     // Check parameters
     BOOST_TEST(expectedData.size() == seqLenList.size(), "Parameter error: the sequence number in the exepected data and sequence list does not match.");
-
     for (size_t i = 0; i < expectedData.size(); i++)
     {
         if (expectedData[i].size() != seqLenList[i])
         {
-            ReportFailure("Parameter error: the number of data for sequence %" PRIu64 " in the expected data does not match. Expected: %" PRIu64 ", actual: %" PRIu64 ".",
+            ReportFailure("Parameter erroe: the number of data for sequence %" PRIu64 " in the expected data does not match. Expected: %" PRIu64 ", actual: %" PRIu64 ".",
                 i, seqLenList[i], expectedData[i].size());
         }
     }
@@ -156,7 +153,7 @@ void ValueCreationNoNDMaskTest(const DeviceDescriptor device, bool readOnly)
     testValue = Value::Create(sampleShape, data, device, readOnly);
     CheckValue(testValue, sampleShape, data, seqLenList);
 
-    // Single sequnce, multiple samples
+    // Single sequence, multiple samples
     seqLenList = {2};
     data = GenerateSequences<ElementType>(seqLenList, sampleShape);
     testValue = Value::Create(sampleShape, data, device, readOnly);
@@ -174,13 +171,13 @@ void ValueCreationNoNDMaskTest(const DeviceDescriptor device, bool readOnly)
     for (int i = 0; i < testRun; i++)
     {
         size_t numberOfSequences = distribution(generator);
-        std::vector<size_t> seqLenList(numberOfSequences, seqLen);
+        std::vector<size_t> seqLenListBatch(numberOfSequences, seqLen);
 
-        data = GenerateSequences<ElementType>(seqLenList, sampleShape);
+        data = GenerateSequences<ElementType>(seqLenListBatch, sampleShape);
         // Create the Value object based on the given data and shape.
         testValue = Value::Create(sampleShape, data, device, readOnly);
         // Check whether the created value matches expected shape and data.
-        CheckValue(testValue, sampleShape, data, seqLenList);
+        CheckValue(testValue, sampleShape, data, seqLenListBatch);
     }
 }
 
@@ -240,11 +237,11 @@ void ValueCreationOneHotNoNDMaskTest(const DeviceDescriptor device, bool readOnl
     for (int i = 0; i < testRun; i++)
     {
         size_t numberOfSequences = distribution(generator);
-        std::vector<size_t> seqLenList(numberOfSequences, seqLen);
+        std::vector<size_t> seqLenListBatch(numberOfSequences, seqLen);
 
-        data = GenerateOneHotSequences(seqLenList, vocabSize);
+        data = GenerateOneHotSequences(seqLenListBatch, vocabSize);
         testValue = Value::Create<ElementType>(vocabSize, data, device, readOnly);
-        CheckValue<ElementType>(testValue, vocabSize, data, seqLenList);
+        CheckValue<ElementType>(testValue, vocabSize, data, seqLenListBatch);
     }
 }
 
@@ -277,9 +274,8 @@ void ValueCreationOneHotWithNDMaskTest(const DeviceDescriptor device, bool readO
 template <typename ElementType>
 void CheckCopyToOutput(const std::vector<std::vector<ElementType>>& expected, const std::vector<std::vector<ElementType>>& actual)
 {
-    if (expected.size() != actual.size()){
+    if (expected.size() != actual.size())
         ReportFailure("The number of sequences does not match. expected: %" PRIu64 " actual: %" PRIu64 "\n", expected.size(), actual.size());
-    }
 
     for (size_t i = 0; i < expected.size(); i++)
     {
@@ -674,7 +670,8 @@ void SparseSequenceBatchValueCreationTest(size_t vocabSize, size_t maxAllowedSeq
     BOOST_TEST(Internal::AreEqual(*denseSequenceBatch, *sparseSequenceBatchValueConvertedToDense), "Sparse sequence batch does not match expectation");
 }
 
-struct ValueFixture {
+struct ValueFixture
+{
     ValueFixture()
     {
         srand(1);

@@ -24,4 +24,5 @@ int main()
     MultiThreadsEvaluation(false);
 #endif
 
+    fprintf(stderr, "Evaluation complete.\n");
 }

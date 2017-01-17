@@ -7,7 +7,6 @@
 #include "Common.h"
 
 using namespace CNTK;
-
 // TODO: Need to further cleanup/simplify definition of user defined functions
 class UserDefinedTimesOrPlusFunction final : public Function
 {
@@ -23,24 +22,32 @@ public:
 
 public:
 
-    BackPropStatePtr Forward(const std::unordered_map<Variable, ValuePtr>& arguments,
-                             std::unordered_map<Variable, ValuePtr>& outputs,
-                             const DeviceDescriptor& computeDevice,
-                             const std::unordered_set<Variable>& outputsToRetainBackwardStateFor) override
+    BackPropStatePtr Forward(const std::vector<ValuePtr>& inputValues,
+        std::unordered_map<Variable, ValuePtr>& outputs,
+        const DeviceDescriptor& computeDevice,
+        const std::unordered_set<Variable>& outputsToRetainBackwardStateFor) override
     {
         std::unordered_map<Variable, ValuePtr> outputValues = { { m_timesOrPlusFunc->Output(), nullptr } };
         std::unordered_set<Variable> retainBackwardStateFor;
         if (!outputsToRetainBackwardStateFor.empty())
             retainBackwardStateFor = { m_timesOrPlusFunc->Output() };
 
+        auto inputs = Inputs();
+        auto GetInputIndex = [&inputs](const Variable& input) -> size_t {
+            for (size_t i = 0; i < inputs.size(); ++i)
+            {
+                if (inputs[i] == input)
+                    return i;
+            }
+
+            std::runtime_error("GetInputIndex: Specified variable is not an input of this Function");
+            return 0;
+        };
+
         std::unordered_map<Variable, ValuePtr> argumentValues;
         for (auto argumentMapping : m_timesOrPlusFuncArgumentMap)
         {
-            ValuePtr argValue;
-            if (argumentMapping.second.IsConstant() || argumentMapping.second.IsParameter())
-                argValue = MakeSharedObject<Value>(argumentMapping.second.IsConstant() ? Constant(argumentMapping.second).Value() : Parameter(argumentMapping.second).Value());
-            else
-                argValue = arguments.at(argumentMapping.second);
+            ValuePtr argValue = inputValues[GetInputIndex(argumentMapping.second)];
 
             if (argumentMapping.first.IsParameter())
                 Parameter(argumentMapping.first).SetValue(argValue->Data());
@@ -84,7 +91,7 @@ public:
                         auto inVar2 = InputVariable(argumentMapping.second.Shape(), argumentMapping.second.GetDataType(), argumentMapping.second.DynamicAxes());
                         auto aggregationFunc = Plus(inVar1, inVar2);
                         std::unordered_map<Variable, ValuePtr> outputValues = { { aggregationFunc->Output(), nullptr } };
-                        aggregationFunc->Forward({ { inVar1, backPropagatedGradientValuesForInputs[argumentMapping.second] }, { inVar2, timesFuncBackPropagatedGradientValuesForInputs.at(argumentMapping.first) } }, outputValues, state->Device());
+                        aggregationFunc->Forward({ { inVar1, backPropagatedGradientValuesForInputs[argumentMapping.second] },{ inVar2, timesFuncBackPropagatedGradientValuesForInputs.at(argumentMapping.first) } }, outputValues, state->Device());
                         backPropagatedGradientValuesForInputs[argumentMapping.second] = outputValues[aggregationFunc->Output()];
                     }
                 }
@@ -119,11 +126,8 @@ private:
     {
         auto createTimesOperandVar = [this](const Variable& operand, const std::wstring& operandName) {
             Variable var;
-
             if (Combine({ operand })->Parameters().empty())
-            {
                 BOOST_ERROR("Cannot determine device to place Parameter on!");
-            }
 
             if (operand.DynamicAxes().empty())
                 var = Parameter(operand.Shape(), operand.GetDataType(), 0, Combine({ operand })->Parameters()[0].Value()->Device());
@@ -250,7 +254,7 @@ void TestTimesAndPlus(size_t inputDim,
                 expectedOutputValues[i * outputDim + j] = expectedVal;
         }
 
-        FloatingPointVectorCompare(outputData, expectedOutputValues, "Forward prop results do not match expected results");
+        FloatingPointVectorCompare(outputData, expectedOutputValues, "TestTimesAndPlus: Forward prop results do not match expected results");
 
         // Verify backward prop results
         if (device.Type() != DeviceKind::CPU)
@@ -267,9 +271,8 @@ void TestTimesAndPlus(size_t inputDim,
         }
 
         for (size_t i = 0; i < outputDim; ++i)
-            if (plusParameterGradientData[i] != numSamples){
+            if (plusParameterGradientData[i] != numSamples)
                 BOOST_ERROR("Backprop prop results do not match expected results for Plus params gradients");
-            }
 
         std::vector<ElementType> expectedTimesParamsGradientValues(timesParam.Shape().TotalSize());
         for (size_t i = 0; i < inputDim; ++i)
@@ -345,16 +348,15 @@ void TestDuplicateVariablesInInputs(size_t dim, const DeviceDescriptor& device)
     // Verify backward prop results
     if (device.Type() != DeviceKind::CPU)
     {
-        NDArrayViewPtr cpuArrayView = MakeSharedObject<NDArrayView>(DataType::Float, inputShape, DeviceDescriptor::CPUDevice());
-        cpuArrayView->CopyFrom(*inputGradientValue->Data());
-        const float* cpuArrayViewBuffer = cpuArrayView->DataBuffer<float>();
+        NDArrayViewPtr cpuArrayViewBack = MakeSharedObject<NDArrayView>(DataType::Float, inputShape, DeviceDescriptor::CPUDevice());
+        cpuArrayViewBack->CopyFrom(*inputGradientValue->Data());
+        const float* cpuArrayViewBuffer = cpuArrayViewBack->DataBuffer<float>();
         memcpy(inputGradientData.data(), cpuArrayViewBuffer, inputShape.TotalSize() * sizeof(float));
     }
 
     for (size_t i = 0; i < dim; ++i)
-        if (inputGradientData[i] != 2){
-            BOOST_ERROR("Backprop prop results do not match expected results for Plus params gradients");
-        }
+        if (inputGradientData[i] != 2)
+            BOOST_ERROR("TestTimesAndPlus: Backprop prop results do not match expected results for Plus params gradients");
 }
 
 BOOST_AUTO_TEST_SUITE(UserDefinedFunctionSuite, *boost::unit_test::disabled())

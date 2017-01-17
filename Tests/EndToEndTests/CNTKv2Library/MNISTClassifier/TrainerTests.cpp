@@ -24,11 +24,11 @@ void TrainSimpleFeedForwardClassifer(const DeviceDescriptor& device)
 
     auto featureStreamName = L"features";
     auto labelsStreamName = L"labels";
-    auto minibatchSource = TextFormatMinibatchSource(L"SimpleDataTrain_cntk_text.txt", { { featureStreamName, inputDim }, { labelsStreamName, numOutputClasses } }, MinibatchSource::FullDataSweep, false);
+    auto minibatchSource = TextFormatMinibatchSource(L"SimpleDataTrain_cntk_text.txt", { { featureStreamName, inputDim },{ labelsStreamName, numOutputClasses } }, MinibatchSource::FullDataSweep, false);
     auto featureStreamInfo = minibatchSource->StreamInfo(featureStreamName);
     auto labelStreamInfo = minibatchSource->StreamInfo(labelsStreamName);
 
-    std::unordered_map<StreamInformation, std::pair<NDArrayViewPtr, NDArrayViewPtr>> inputMeansAndInvStdDevs = { { featureStreamInfo, { nullptr, nullptr } } };
+    std::unordered_map<StreamInformation, std::pair<NDArrayViewPtr, NDArrayViewPtr>> inputMeansAndInvStdDevs = { { featureStreamInfo,{ nullptr, nullptr } } };
     ComputeInputPerDimMeansAndInvStdDevs(minibatchSource, inputMeansAndInvStdDevs);
 
     auto nonLinearity = std::bind(Sigmoid, _1, L"");
@@ -60,14 +60,14 @@ void TrainSimpleFeedForwardClassifer(const DeviceDescriptor& device)
     }
 
     LearningRatePerSampleSchedule learningRatePerSample = 0.02;
-    minibatchSource = TextFormatMinibatchSource(L"SimpleDataTrain_cntk_text.txt", { { L"features", inputDim }, { L"labels", numOutputClasses } });
+    minibatchSource = TextFormatMinibatchSource(L"SimpleDataTrain_cntk_text.txt", { { L"features", inputDim },{ L"labels", numOutputClasses } });
     Trainer trainer(classifierOutput, trainingLoss, prediction, { SGDLearner(classifierOutput->Parameters(), learningRatePerSample) });
     size_t outputFrequencyInMinibatches = 20;
     size_t trainingCheckpointFrequency = 100;
     for (size_t i = 0; i < numMinibatchesToTrain; ++i)
     {
         auto minibatchData = minibatchSource->GetNextMinibatch(minibatchSize, device);
-        trainer.TrainMinibatch({ { input, minibatchData[featureStreamInfo].m_data }, { labels, minibatchData[labelStreamInfo].m_data } }, device);
+        trainer.TrainMinibatch({ { input, minibatchData[featureStreamInfo].m_data },{ labels, minibatchData[labelStreamInfo].m_data } }, device);
         PrintTrainingProgress(trainer, i, outputFrequencyInMinibatches);
 
         if ((i % trainingCheckpointFrequency) == (trainingCheckpointFrequency - 1))
@@ -116,7 +116,7 @@ void TrainMNISTClassifier(const DeviceDescriptor& device)
 
     auto featureStreamName = L"features";
     auto labelsStreamName = L"labels";
-    auto minibatchSource = TextFormatMinibatchSource(L"Train-28x28_cntk_text.txt", { { featureStreamName, inputDim }, { labelsStreamName, numOutputClasses } });
+    auto minibatchSource = TextFormatMinibatchSource(L"Train-28x28_cntk_text.txt", { { featureStreamName, inputDim },{ labelsStreamName, numOutputClasses } });
 
     auto featureStreamInfo = minibatchSource->StreamInfo(featureStreamName);
     auto labelStreamInfo = minibatchSource->StreamInfo(labelsStreamName);
@@ -128,7 +128,7 @@ void TrainMNISTClassifier(const DeviceDescriptor& device)
     for (size_t i = 0; i < numMinibatchesToTrain; ++i)
     {
         auto minibatchData = minibatchSource->GetNextMinibatch(minibatchSize, device);
-        trainer.TrainMinibatch({ { input, minibatchData[featureStreamInfo].m_data }, { labels, minibatchData[labelStreamInfo].m_data } }, device);
+        trainer.TrainMinibatch({ { input, minibatchData[featureStreamInfo].m_data },{ labels, minibatchData[labelStreamInfo].m_data } }, device);
         PrintTrainingProgress(trainer, i, outputFrequencyInMinibatches);
     }
 }

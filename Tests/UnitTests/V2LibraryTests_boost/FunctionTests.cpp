@@ -399,7 +399,7 @@ void TestSplice(size_t numInputs, size_t maxNumInputAxes, size_t spliceAxis, con
         transposeInputFuncs[i] = TransposeAxes(inputVars[i], Axis(0), Axis((int)spliceAxis));
         transposedInputs[i] = transposeInputFuncs[i];
     }
-    
+
     auto spliceTransposedFunc = Splice(transposedInputs, Axis(0));
     spliceUsingTransposeFunc = TransposeAxes(spliceTransposedFunc, Axis(0), Axis((int)spliceAxis));
     std::unordered_map<Variable, ValuePtr> spliceUsingTransposeOutputs = { { spliceUsingTransposeFunc->Output(), nullptr } };
@@ -410,8 +410,8 @@ void TestSplice(size_t numInputs, size_t maxNumInputAxes, size_t spliceAxis, con
     auto automaticUnpackingOfPackedValuesDisabled = Internal::IsAutomaticUnpackingOfPackedValuesDisabled();
     Internal::SetAutomaticUnpackingOfPackedValues(/*disable =*/ false);
 
-    BOOST_TEST(::CNTK::Internal::AreEqual(*spliceOutputs.begin()->second, *spliceUsingTransposeOutputs.begin()->second, relativeTolerance, absoluteTolerance),
-        "Splice actual output does not match expectation");
+    if (!::CNTK::Internal::AreEqual(*spliceOutputs.begin()->second, *spliceUsingTransposeOutputs.begin()->second, relativeTolerance, absoluteTolerance))
+        ReportFailure("Splice actual output does not match expectation");
 
     // Test backprop
     std::unordered_map<Variable, ValuePtr> sliceInputGradients;
@@ -457,7 +457,7 @@ void TestSplice()
 void TestTimesNodeShapeInference()
 {
     auto timesNodeShapeInferenceTest = [](size_t inputRank, size_t outputRank, int inputRankToMap) {
-        
+
         auto device = DeviceDescriptor::CPUDevice();
 
         size_t maxDimSize = 15;
@@ -527,20 +527,20 @@ void TestChangingParameterValues(size_t rank, const DeviceDescriptor& device)
 
     auto param = Parameter(shape, AsDataType<ElementType>(), GlorotUniformInitializer(), device);
     auto plus = Plus(param, param);
-    
+
 
     std::vector<ElementType> outputData(numElements);
     ValuePtr outputValue = MakeSharedObject<Value>(MakeSharedObject<NDArrayView>(shape, outputData, false));
 
     std::unordered_map<Variable, ValuePtr> outputs = { { plus->Output(), outputValue } };
-    plus->Forward({}, outputs, device);
+    plus->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device);
 
     NDArrayViewPtr cpuView;
     auto getParameterData = [&cpuView](const Parameter& p) -> const ElementType*
     {
-          cpuView = (p.Value()->Device() != DeviceDescriptor::CPUDevice()) ?
-                     p.Value()->DeepClone(DeviceDescriptor::CPUDevice()) : p.Value();
-          return cpuView->DataBuffer<ElementType>();
+        cpuView = (p.Value()->Device() != DeviceDescriptor::CPUDevice()) ?
+        p.Value()->DeepClone(DeviceDescriptor::CPUDevice()) : p.Value();
+    return cpuView->DataBuffer<ElementType>();
     };
 
     auto parameterData = getParameterData(param);
@@ -548,7 +548,7 @@ void TestChangingParameterValues(size_t rank, const DeviceDescriptor& device)
     for (int i = 0; i < numElements; i++)
     {
         FloatingPointCompare<ElementType>(outputData[i], 2 * parameterData[i],
-                                          "Function output does not match the expected value.");
+            "Function output does not match the expected value.");
     }
 
     // Change parameter values element-wise, through a pointer to the writable data buffer.
@@ -565,13 +565,13 @@ void TestChangingParameterValues(size_t rank, const DeviceDescriptor& device)
         }
 
         param.RecordValueUpdate();
-        plus->Forward({}, outputs, device);
+        plus->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device);
         parameterData = getParameterData(param);
         for (int i = 0; i < numElements; i++)
         {
 
             FloatingPointCompare<ElementType>(outputData[i], 2 * parameterData[i],
-                                              "Function output does not match the expected value.");
+                "Function output does not match the expected value.");
         }
     }
 
@@ -584,15 +584,15 @@ void TestChangingParameterValues(size_t rank, const DeviceDescriptor& device)
     auto newValuesNDarray = MakeSharedObject<NDArrayView>(shape, newValues, false);
 
     param.SetValue(newValuesNDarray);
-    plus->Forward({}, outputs, device);
+    plus->Forward(std::unordered_map<Variable, ValuePtr>({}), outputs, device);
     parameterData = getParameterData(param);
     for (int i = 0; i < numElements; i++)
     {
         auto denom = (i + ElementType(1.0));
-        FloatingPointCompare<ElementType>(parameterData[i], ElementType(1.0) / denom, 
-                                          "Parameter valued does not match the expected value.");
-        FloatingPointCompare<ElementType>(outputData[i], ElementType(2.0) / denom, 
-                                          "Function output does not match the expected value.");
+        FloatingPointCompare<ElementType>(parameterData[i], ElementType(1.0) / denom,
+            "Parameter valued does not match the expected value.");
+        FloatingPointCompare<ElementType>(outputData[i], ElementType(2.0) / denom,
+            "Function output does not match the expected value.");
     }
 }
 
@@ -654,15 +654,15 @@ void TestOuputVariableName(const DeviceDescriptor& device)
     const std::wstring combineFuncName = L"CombineFunc";
     const std::wstring outputName = L"ModelOutput";
 
-    auto inputVar = InputVariable({inputDim}, DataType::Float, L"features");
+    auto inputVar = InputVariable({ inputDim }, DataType::Float, L"features");
 
-    auto plusParam = ::CNTK::Parameter(::CNTK::NDArrayView::RandomUniform<float>({inputDim}, -0.05, 0.05, 1, device));
+    auto plusParam = ::CNTK::Parameter(::CNTK::NDArrayView::RandomUniform<float>({ inputDim }, -0.05, 0.05, 1, device));
     auto plusFunc = ::CNTK::Plus(plusParam, inputVar, plusFuncName);
 
-    auto timesParam = ::CNTK::Parameter(::CNTK::NDArrayView::RandomUniform<float>({outputDim, inputDim}, -0.05, 0.05, 1, device));
+    auto timesParam = ::CNTK::Parameter(::CNTK::NDArrayView::RandomUniform<float>({ outputDim, inputDim }, -0.05, 0.05, 1, device));
     auto timesFunc = ::CNTK::Times(timesParam, plusFunc, timesFuncName);
 
-    auto combineFunc = ::CNTK::Combine({timesFunc, plusFunc}, combineFuncName);
+    auto combineFunc = ::CNTK::Combine({ timesFunc, plusFunc }, combineFuncName);
 
     FunctionPtr output = Alias(combineFunc->Outputs()[0], outputName);
 
@@ -696,12 +696,12 @@ void TestOuputVariableName(const DeviceDescriptor& device)
     // Check the output variable has correct shape size.
     if (output->Output().Shape().TotalSize() != outputDim)
         ReportFailure("The output variable does not have expected shape size. exptected = %ld, actual = %ld\n",
-                      static_cast<unsigned long>(outputDim),
-                      static_cast<unsigned long>(output->Output().Shape().TotalSize()));
+            static_cast<unsigned long>(outputDim),
+            static_cast<unsigned long>(output->Output().Shape().TotalSize()));
 
     // Change the output order of combine function.
     // Todo: it is allowed to have duplicated function name?
-    combineFunc = ::CNTK::Combine({plusFunc, timesFunc}, combineFuncName);
+    combineFunc = ::CNTK::Combine({ plusFunc, timesFunc }, combineFuncName);
 
     // Make sure that the alias maps to the correct output variable when the output order changes
     output = Alias(combineFunc->Outputs()[1], outputName);
@@ -723,8 +723,8 @@ void TestOuputVariableName(const DeviceDescriptor& device)
     // Check the output variable has correct shape size.
     if (output->Output().Shape().TotalSize() != outputDim)
         ReportFailure("The output variable does not have expected shape size. exptected = %ld, actual = %ld\n",
-        static_cast<unsigned long>(outputDim),
-        static_cast<unsigned long>(output->Output().Shape().TotalSize()));
+            static_cast<unsigned long>(outputDim),
+            static_cast<unsigned long>(output->Output().Shape().TotalSize()));
 }
 
 BOOST_AUTO_TEST_SUITE(FunctionSuite)

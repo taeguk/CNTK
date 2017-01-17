@@ -20,8 +20,8 @@ MinibatchSourcePtr CreateCifarMinibatchSource(size_t epochSize)
 
     Dictionary cropTransformConfig;
     cropTransformConfig[L"type"] = L"Crop";
-    cropTransformConfig[L"cropType"] = L"Random";
-    cropTransformConfig[L"cropRatio"] = L"0.8";
+    cropTransformConfig[L"cropType"] = L"RandomSide";
+    cropTransformConfig[L"sideRatio"] = L"0.8";
     cropTransformConfig[L"jitterType"] = L"uniRatio";
 
     Dictionary scaleTransformConfig;
@@ -166,7 +166,7 @@ void TrainResNetCifarClassifer(const DeviceDescriptor& device, bool testSaveAndR
     for (size_t i = 0; i < numMinibatchesToTrain; ++i)
     {
         auto minibatchData = minibatchSource->GetNextMinibatch(minibatchSize, device);
-        trainer.TrainMinibatch({ { imageInput, minibatchData[imageStreamInfo].m_data }, { labelsVar, minibatchData[labelStreamInfo].m_data } }, device);
+        trainer.TrainMinibatch({ { imageInput, minibatchData[imageStreamInfo].m_data },{ labelsVar, minibatchData[labelStreamInfo].m_data } }, device);
         PrintTrainingProgress(trainer, i, outputFrequencyInMinibatches);
     }
 }
