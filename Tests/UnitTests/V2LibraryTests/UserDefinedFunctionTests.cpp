@@ -132,8 +132,8 @@ private:
 
             if (operand.DynamicAxes().empty())
             {
-            if (Combine({ operand })->Parameters().empty())
-                BOOST_ERROR("Cannot determine device to place Parameter on!");
+                if (Combine({ operand })->Parameters().empty())
+                    BOOST_ERROR("Cannot determine device to place Parameter on!");
 
                 var = Parameter(operand.Shape(), operand.GetDataType(), 0, Combine({ operand })->Parameters()[0].Value()->Device());
             }
@@ -155,7 +155,7 @@ private:
     std::unordered_map<Variable, Variable> m_timesOrPlusFuncArgumentMap;
 };
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 template <typename ElementType>
 void TestTimesAndPlus(size_t inputDim,
@@ -366,33 +366,34 @@ void TestDuplicateVariablesInInputs(size_t dim, const DeviceDescriptor& device)
             BOOST_ERROR("TestTimesAndPlus: Backprop prop results do not match expected results for Plus params gradients");
 }
 
-BOOST_AUTO_TEST_SUITE(UserDefinedFunctionSuite, *boost::unit_test::disabled())
+BOOST_AUTO_TEST_SUITE(UserDefinedFunctionSuite)
 
-//BOOST_AUTO_TEST_CASE(DuplicateVariablesInCPU)
-//{
-//    TestDuplicateVariablesInInputs(11, DeviceDescriptor::CPUDevice());
-//}
-//
-//BOOST_AUTO_TEST_CASE(DuplicateVariablesInGPU)
-//{
-//    if (IsGPUAvailable())
-//        TestDuplicateVariablesInInputs(117, DeviceDescriptor::GPUDevice(0));
-//}
-//
-//BOOST_AUTO_TEST_CASE(TimesAndPlusInCPU)
-//{
-//    TestTimesAndPlus<double>(4, 2, 5, DeviceDescriptor::CPUDevice(), 3, true, true);
-//}
-//
-//BOOST_AUTO_TEST_CASE(TimesAndPlusInGPU)
-//{
-//    if (IsGPUAvailable())
-//    {
-//        TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false);
-//        TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false);
-//    }
-//}
+BOOST_AUTO_TEST_CASE(DuplicateVariablesInCPU)
+{
+    TestDuplicateVariablesInInputs(11, DeviceDescriptor::CPUDevice());
+}
+
+BOOST_AUTO_TEST_CASE(DuplicateVariablesInGPU)
+{
+    if (IsGPUAvailable()) {
+        TestDuplicateVariablesInInputs(117, DeviceDescriptor::GPUDevice(0));
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TimesAndPlusInCPU)
+{
+    TestTimesAndPlus<double>(4, 2, 5, DeviceDescriptor::CPUDevice(), 3, true, true);
+}
+
+BOOST_AUTO_TEST_CASE(TimesAndPlusInGPU)
+{
+    if (IsGPUAvailable())
+    {
+        TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false);
+        TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false);
+    }
+}
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

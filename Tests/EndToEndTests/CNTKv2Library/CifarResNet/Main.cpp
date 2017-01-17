@@ -21,17 +21,19 @@ int main()
     }
 #endif
 
-#ifndef CPUONLY
-    fprintf(stderr, "Run tests on %s device using GPU build.\n", IsGPUAvailable() ? "GPU" : "CPU");
-#else
-    fprintf(stderr, "Run tests using CPU-only build.\n");
-#endif
+    if (IsGPUAvailable())
+    {
+        fprintf(stderr, "Run test on a GPU device.\n");
+        // Lets disable automatic unpacking of PackedValue object to detect any accidental unpacking
+        // which will have a silent performance degradation otherwise
+        Internal::SetAutomaticUnpackingOfPackedValues(/*disable =*/ true);
 
-    // Lets disable automatic unpacking of PackedValue object to detect any accidental unpacking 
-    // which will have a silent performance degradation otherwise
-    Internal::SetAutomaticUnpackingOfPackedValues(/*disable =*/ true);
-
-    TrainCifarResnet();
+        TrainCifarResnet();
+    }
+    else
+    {
+        fprintf(stderr, "Cannot run TrainCifarResnet test on a CPU device.\n");
+    }
 
     fprintf(stderr, "\nCNTKv2Library-CifarResNet tests: Passed\n");
     fflush(stderr);

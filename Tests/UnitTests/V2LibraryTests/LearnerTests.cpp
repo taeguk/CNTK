@@ -12,7 +12,7 @@
 using namespace CNTK;
 using namespace std;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 static const size_t maxMinibatchSize = 1000;
 
@@ -395,4 +395,4 @@ BOOST_AUTO_TEST_CASE(CreateAndUpdateFSAdaGradLearner)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

@@ -10,7 +10,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 static unsigned long seed = 1;
 
@@ -417,4 +417,4 @@ BOOST_AUTO_TEST_CASE(RecurrentNetworkCreationInGPU)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

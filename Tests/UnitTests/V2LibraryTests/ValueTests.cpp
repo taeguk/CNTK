@@ -12,7 +12,7 @@
 using namespace CNTK;
 using namespace std;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 // Check the actual Value match the expected shape and the given data (in dense format)
 template <typename ElementType>
@@ -811,4 +811,4 @@ BOOST_AUTO_TEST_CASE(ValueCopyToExceptions)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

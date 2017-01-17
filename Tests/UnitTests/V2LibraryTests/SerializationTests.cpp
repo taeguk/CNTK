@@ -21,7 +21,7 @@ static const size_t maxNDShapeSize = 10;
 static const size_t maxNumAxes = 3;
 static const size_t maxDimSize = 5;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 static size_t keyCounter = 0;
 static boost::random::uniform_real_distribution<double> double_dist = boost::random::uniform_real_distribution<double>();
@@ -901,4 +901,4 @@ BOOST_AUTO_TEST_CASE(CheckpointingWithStatefulNodesInGPU)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

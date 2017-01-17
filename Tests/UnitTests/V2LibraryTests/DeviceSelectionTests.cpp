@@ -8,7 +8,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 BOOST_AUTO_TEST_SUITE(DeviceSelectionSuite)
 
@@ -75,4 +75,4 @@ BOOST_AUTO_TEST_CASE(CpuAndBestDevicesInAllDevices)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

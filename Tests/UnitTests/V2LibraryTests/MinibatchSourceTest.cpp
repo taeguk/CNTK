@@ -8,7 +8,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 // Mock communicator to simulate MPI run
 class MockCommunicator : public DistributedCommunicator
@@ -326,4 +326,4 @@ BOOST_AUTO_TEST_CASE(RandomizedMinibatchSourceWithNoData)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

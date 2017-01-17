@@ -9,7 +9,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 std::wstring s_tempModelPath = L"feedForward.net";
 
@@ -362,4 +362,4 @@ BOOST_AUTO_TEST_CASE(FFNetworkCreationInCPU)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

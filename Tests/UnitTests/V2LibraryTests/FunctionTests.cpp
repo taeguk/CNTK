@@ -8,7 +8,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 void TestReduceSum(size_t sampleRank, const DeviceDescriptor& device)
 {
@@ -852,4 +852,4 @@ BOOST_AUTO_TEST_CASE(OutputVariableNameInCPU)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

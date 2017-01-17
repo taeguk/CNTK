@@ -10,7 +10,7 @@
 
 static unsigned long seed = 1;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 FunctionPtr LinearLayerBlock(Variable input, size_t outputDim, const DeviceDescriptor& device, const std::wstring& outputName = L"")
 {
@@ -131,4 +131,4 @@ BOOST_AUTO_TEST_CASE(ChangingParameterValuesInGPU)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

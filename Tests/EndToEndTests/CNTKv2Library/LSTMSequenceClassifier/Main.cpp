@@ -22,7 +22,7 @@ int main()
 #endif
 
 #ifndef CPUONLY
-    fprintf(stderr, "Run tests on %s device using GPU build.\n", IsGPUAvailable() ? "GPU" : "CPU");
+    fprintf(stderr, "Run tests using GPU build.\n");
 #else
     fprintf(stderr, "Run tests using CPU-only build.\n");
 #endif

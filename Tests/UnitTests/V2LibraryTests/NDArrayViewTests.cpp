@@ -11,7 +11,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 template <typename ElementType>
 void CreateNDArrayViewOverStdArray()
@@ -243,4 +243,4 @@ BOOST_AUTO_TEST_CASE(CheckCscArrayViewInCpu)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

@@ -175,8 +175,5 @@ void TrainCifarResnet()
 {
     fprintf(stderr, "\nTrainCifarResnet..\n");
 
-    if (IsGPUAvailable())
-        TrainResNetCifarClassifer(DeviceDescriptor::GPUDevice(0), true /*testSaveAndReLoad*/);
-    else
-        fprintf(stderr, "Cannot run TrainCifarResnet test on a CPU device.\n");
+    TrainResNetCifarClassifer(DeviceDescriptor::GPUDevice(0), true /*testSaveAndReLoad*/);
 }

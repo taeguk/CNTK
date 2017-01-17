@@ -8,7 +8,7 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
+namespace CNTK { namespace Test {
 
 template <typename ElementType>
 void TestTensorPlus(size_t numAxesLeftOperand, size_t numAxesRightOperand, const DeviceDescriptor& device, bool useConstantInputsOnly)
@@ -150,4 +150,4 @@ BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithoutAxes)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-}}}}
+}}

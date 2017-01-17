@@ -23,22 +23,6 @@ mkdir $TestDataDir
 cp -R $DataSourceDir/MNIST/v0/Train-28x28_cntk_text.txt $TestDataDir || exit $?
 cp -R $TEST_DIR/../../Simple2d/Data/SimpleDataT*_cntk_text.txt $TestDataDir || exit $?
 
-# Train model that is used by Eval tests.
-# Setup predefined variables $DataDir, $ConfigDir, and $OutputDir that are required by cntkrun
-ConfigDir=$TEST_ROOT_DIR/../../Examples/Image/GettingStarted
-OutputDir=$ConfigDir/Output
-DataDir=$ConfigDir/../DataSets/MNIST
-
-cp $DataSourceDir/MNIST/v0/Train-28x28_cntk_text.txt $DataDir || exit $?
-
-# Train model that is needed by evaluation
-[ -d $OutputDir ] || mkdir $OutputDir || exit $?
-[ -d $OutputDir/Models ] && rm -rf $OutputDir/Models
-DeleteModelsAfterTest=0
-[ -f $ConfigDir/01_OneHidden.cntk ] || exit 1
-cntkrun 01_OneHidden.cntk "stderr=- command=trainNetwork trainNetwork=[SGD=[maxEpochs=1]]" || exit $?
-cp $OutputDir/Models/01_OneHidden $TestDataDir || exit $?
-
 # Set CUDA_VISIBLE_DEVICES to exclude all gpu if running on cpu device
 if [ "$TEST_DEVICE" == "cpu" ]; then
   export CUDA_VISIBLE_DEVICES=-1

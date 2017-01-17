@@ -21,7 +21,6 @@ fi
 TestDataDir=$TEST_RUN_DIR/TestData
 mkdir $TestDataDir
 
-# Train model that is used by Eval tests.
 # Setup predefined variables $DataDir, $ConfigDir, and $OutputDir that are required by cntkrun
 ConfigDir=$TEST_ROOT_DIR/../../Examples/Image/GettingStarted
 OutputDir=$ConfigDir/Output

@@ -1,3 +1,8 @@
+//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
+//
+
 #pragma once
 #include <boost/test/unit_test.hpp>
 
@@ -17,7 +22,6 @@
 
 using namespace CNTK;
 
-namespace Microsoft { namespace MSR { namespace CNTK { namespace Test {
 
 #ifdef _MSC_VER
 // In case of asserts in debug mode, print the message into stderr and throw exception
@@ -168,8 +172,7 @@ inline FunctionPtr FullyConnectedLinearLayer(Variable input, size_t outputDim, c
     size_t inputDim = input.Shape()[0];
 
     auto timesParam = Parameter({ outputDim, inputDim }, DataType::Float, GlorotUniformInitializer(DefaultParamInitScale,
-                                                                                                                           SentinelValueForInferParamInitRank,
-                                                                                                                           SentinelValueForInferParamInitRank, 1), device, L"timesParam");
+                                SentinelValueForInferParamInitRank, SentinelValueForInferParamInitRank, 1), device, L"timesParam");
     auto timesFunction = Times(timesParam, input, L"times");
 
     auto plusParam = Parameter({ outputDim }, 0.0f, device, L"plusParam");
@@ -641,5 +644,3 @@ inline void CompareFunctions(const FunctionPtr& first, const FunctionPtr& second
         }
     }
 }
-
-}}}}
