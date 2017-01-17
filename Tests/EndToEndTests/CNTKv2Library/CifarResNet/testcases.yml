@@ -1,8 +1,8 @@
 dataDir: .
 
 tags:
-    - bvt-e (device == 'gpu') and ((flavor == 'release') if (os == 'windows') else (flavor == 'debug'))
-    - nightly-e (device=='gpu') or (flavor== 'release')
+    - bvt-e (build_sku == '1bitsgd') and (device=='gpu') and ((flavor == 'release') ^ (os == 'linux'))
+    - nightly-e (build_sku == '1bitsgd') and (device=='gpu')
 
 testCases:
   Test run must be completed:

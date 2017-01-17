@@ -223,7 +223,7 @@ void TestEndOfSweepFlag(size_t maxSamples, size_t mbSize, bool randomize)
 {
     const size_t sweepSize = 603;
     auto ctfInput = L"SimpleDataTest_cntk_text.txt";
-    std::vector<StreamConfiguration> streamConfig { { L"features", 2 } };
+    std::vector<StreamConfiguration> streamConfig{ { L"features", 2 }, { L"labels", 2 } };
     auto cpuDevice = DeviceDescriptor::CPUDevice();
     auto src = TextFormatMinibatchSource(ctfInput, streamConfig, maxSamples, randomize);
 
