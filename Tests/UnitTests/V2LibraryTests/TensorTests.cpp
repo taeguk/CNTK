@@ -130,16 +130,22 @@ BOOST_AUTO_TEST_CASE(TensorPlusInCPU)
     TestTensorPlus<float>(0, 3, DeviceDescriptor::CPUDevice(), false);
 }
 
-BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithAxes, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithAxes)
 {
-    TestTensorPlus<double>(4, 1, DeviceDescriptor::GPUDevice(0), true);
-    TestTensorPlus<float>(1, 3, DeviceDescriptor::GPUDevice(0), false);
+    if (IsGPUAvailable())
+    {
+        TestTensorPlus<double>(4, 1, DeviceDescriptor::GPUDevice(0), true);
+        TestTensorPlus<float>(1, 3, DeviceDescriptor::GPUDevice(0), false);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithoutAxes, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(TensorPlusRightOperandWithoutAxes)
 {
-    TestTensorPlus<double>(2, 0, DeviceDescriptor::GPUDevice(0), false);
-    TestTensorPlus<float>(0, 0, DeviceDescriptor::GPUDevice(0), false);
+    if (IsGPUAvailable())
+    {
+        TestTensorPlus<double>(2, 0, DeviceDescriptor::GPUDevice(0), false);
+        TestTensorPlus<float>(0, 0, DeviceDescriptor::GPUDevice(0), false);
+    }
 }
 
 BOOST_AUTO_TEST_SUITE_END()

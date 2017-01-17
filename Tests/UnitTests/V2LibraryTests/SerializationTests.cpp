@@ -855,36 +855,48 @@ BOOST_AUTO_TEST_CASE(CheckpointingWithStatefulNodesInCPU)
     TestCheckpointingWithStatefulNodes(DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(LearnerSerializationInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(LearnerSerializationInGPU)
 {
-    TestLearnerSerialization<float>(5, DeviceDescriptor::GPUDevice(0));
-    TestLearnerSerialization<double>(10, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        TestLearnerSerialization<float>(5, DeviceDescriptor::GPUDevice(0));
+        TestLearnerSerialization<double>(10, DeviceDescriptor::GPUDevice(0));
+    }
 }
 
-BOOST_AUTO_TEST_CASE(FunctionSerializationInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(FunctionSerializationInGPU)
 {
-    TestFunctionSerialization(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        TestFunctionSerialization(DeviceDescriptor::GPUDevice(0));
+    }
 }
 
-BOOST_AUTO_TEST_CASE(ModelSerializationDuringTrainingInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ModelSerializationDuringTrainingInGPU)
 {
-    TestModelSerializationDuringTraining(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        TestModelSerializationDuringTraining(DeviceDescriptor::GPUDevice(0));
+    }
 }
 
-BOOST_AUTO_TEST_CASE(CheckpointingInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(CheckpointingInGPU)
 {
-    TestCheckpointing(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestCheckpointing(DeviceDescriptor::GPUDevice(0));
 }
 
 
-BOOST_AUTO_TEST_CASE(LegacyModelSavingInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(LegacyModelSavingInGPU)
 {
-    TestLegacyModelSaving(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestLegacyModelSaving(DeviceDescriptor::GPUDevice(0));
 }
 
-BOOST_AUTO_TEST_CASE(CheckpointingWithStatefulNodesInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(CheckpointingWithStatefulNodesInGPU)
 {
-    TestCheckpointingWithStatefulNodes(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestCheckpointingWithStatefulNodes(DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

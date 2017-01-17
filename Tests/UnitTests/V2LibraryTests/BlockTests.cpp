@@ -123,9 +123,10 @@ BOOST_AUTO_TEST_CASE(BlocksWithRecurrence)
     TestBlocksWithRecurrence(7, 5, DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(ChangingParameterValuesInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ChangingParameterValuesInGPU)
 {
-    TestBlocksWithRecurrence(11, 15, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestBlocksWithRecurrence(11, 15, DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

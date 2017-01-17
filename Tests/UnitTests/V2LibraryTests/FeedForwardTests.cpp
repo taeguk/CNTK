@@ -336,16 +336,22 @@ BOOST_AUTO_TEST_CASE(ReduceableTransposeTimesInCPU)
     TestReduceableTransposeTimes<double>(4, 5, DeviceDescriptor::CPUDevice(), 3);
 }
 
-BOOST_AUTO_TEST_CASE(FFTimesAndPlusInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(FFTimesAndPlusInGPU)
 {
-    TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false, true);
-    TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false, false);
+    if (IsGPUAvailable())
+    {
+        TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false, true);
+        TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false, false);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(FFNetworkCreationInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(FFNetworkCreationInGPU)
 {
-    TestFeedForwardNetworkCreation(DeviceDescriptor::GPUDevice(0), true);
-    TestFeedForwardNetworkCreation(DeviceDescriptor::GPUDevice(0), false);
+    if (IsGPUAvailable())
+    {
+        TestFeedForwardNetworkCreation(DeviceDescriptor::GPUDevice(0), true);
+        TestFeedForwardNetworkCreation(DeviceDescriptor::GPUDevice(0), false);
+    }
 }
 
 BOOST_AUTO_TEST_CASE(FFNetworkCreationInCPU)

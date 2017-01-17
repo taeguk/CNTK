@@ -373,9 +373,10 @@ BOOST_AUTO_TEST_SUITE(UserDefinedFunctionSuite, *boost::unit_test::disabled())
 //    TestDuplicateVariablesInInputs(11, DeviceDescriptor::CPUDevice());
 //}
 //
-//BOOST_AUTO_TEST_CASE(DuplicateVariablesInGPU, *boost::unit_test::precondition(GpuAvailable))
+//BOOST_AUTO_TEST_CASE(DuplicateVariablesInGPU)
 //{
-//    TestDuplicateVariablesInInputs(117, DeviceDescriptor::GPUDevice(0));
+//    if (IsGPUAvailable())
+//        TestDuplicateVariablesInInputs(117, DeviceDescriptor::GPUDevice(0));
 //}
 //
 //BOOST_AUTO_TEST_CASE(TimesAndPlusInCPU)
@@ -383,10 +384,13 @@ BOOST_AUTO_TEST_SUITE(UserDefinedFunctionSuite, *boost::unit_test::disabled())
 //    TestTimesAndPlus<double>(4, 2, 5, DeviceDescriptor::CPUDevice(), 3, true, true);
 //}
 //
-//BOOST_AUTO_TEST_CASE(TimesAndPlusInGPU, *boost::unit_test::precondition(GpuAvailable))
+//BOOST_AUTO_TEST_CASE(TimesAndPlusInGPU)
 //{
-//    TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false);
-//    TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false);
+//    if (IsGPUAvailable())
+//    {
+//        TestTimesAndPlus<float>(145, 32, 2, DeviceDescriptor::GPUDevice(0), 10, true, false);
+//        TestTimesAndPlus<double>(145, 15, 200, DeviceDescriptor::GPUDevice(0), 21, false, false);
+//    }
 //}
 
 BOOST_AUTO_TEST_SUITE_END()

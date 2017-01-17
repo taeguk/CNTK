@@ -49,7 +49,6 @@ static const double relativeTolerance = 0.001f;
 static const double absoluteTolerance = 0.000001f;
 
 bool IsGPUAvailable();
-boost::test_tools::assertion_result GpuAvailable(boost::unit_test::test_unit_id);
 
 template <typename ElementType>
 inline void FloatingPointCompare(ElementType actual, ElementType expected, const char* message)

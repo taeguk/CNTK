@@ -58,11 +58,6 @@ bool IsGPUAvailable()
     return isGPUDeviceAvailable;
 }
 
-boost::test_tools::assertion_result GpuAvailable(boost::unit_test::test_unit_id)
-{
-    return IsGPUAvailable();
-}
-
 bool Is1bitSGDAvailable()
 {
     static bool is1bitSGDAvailable;

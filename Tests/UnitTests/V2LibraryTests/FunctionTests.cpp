@@ -790,9 +790,10 @@ BOOST_AUTO_TEST_CASE(ChangingParameterValuesInCPU)
     TestChangingParameterValues<double>(3, DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(ChangingParameterValuesInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ChangingParameterValuesInGPU)
 {
-    TestChangingParameterValues<double>(3, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestChangingParameterValues<double>(3, DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_CASE(TimesNodeShapeInference)
@@ -810,9 +811,10 @@ BOOST_AUTO_TEST_CASE(SliceInCPU)
     TestSlice(2, DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(SliceInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(SliceInGPU)
 {
-    TestSlice(1, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestSlice(1, DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_CASE(ReduceSumInCPU)
@@ -820,9 +822,10 @@ BOOST_AUTO_TEST_CASE(ReduceSumInCPU)
     TestReduceSum(1, DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(ReduceSumInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ReduceSumInGPU)
 {
-    TestReduceSum(2, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestReduceSum(2, DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_CASE(RecurrentFunctionCloning)
@@ -835,9 +838,10 @@ BOOST_AUTO_TEST_CASE(TransposeInCPU)
     TestTranspose(2, 0, 1, DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(TransposeInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(TransposeInGPU)
 {
-    TestTranspose(3, 1, 2, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestTranspose(3, 1, 2, DeviceDescriptor::GPUDevice(0));
 }
 
 BOOST_AUTO_TEST_CASE(OutputVariableNameInCPU)

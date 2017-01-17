@@ -732,54 +732,76 @@ BOOST_AUTO_TEST_CASE(ValueCopyToOneHotTestInCPU)
     ValueCopyToOneHotTest<double>(DeviceDescriptor::CPUDevice());
 }
 
-BOOST_AUTO_TEST_CASE(SettingParameterValuesManuallyInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(SettingParameterValuesManuallyInGPU)
 {
-    TestSettingParameterValuesManually(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+        TestSettingParameterValuesManually(DeviceDescriptor::GPUDevice(0));
 }
 
-BOOST_AUTO_TEST_CASE(ValueCreationWithNDMaskInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ValueCreationWithNDMaskInGPU)
 {
-    ValueCreationWithNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), false);
-    ValueCreationWithNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), true);
-
-}
-
-BOOST_AUTO_TEST_CASE(ValueCreationWithoutNDMaskInGPU, *boost::unit_test::precondition(GpuAvailable))
-{
-    ValueCreationNoNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), false);
-    ValueCreationNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
+    if (IsGPUAvailable())
+    {
+        ValueCreationWithNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), false);
+        ValueCreationWithNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), true);
+    }
 
 }
 
-BOOST_AUTO_TEST_CASE(ValueCreationOneHotWithoutNDMaskInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ValueCreationWithoutNDMaskInGPU)
 {
-    ValueCreationOneHotNoNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), false);
-    ValueCreationOneHotNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
+    if (IsGPUAvailable())
+    {
+        ValueCreationNoNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), false);
+        ValueCreationNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
+    }
 
 }
 
-BOOST_AUTO_TEST_CASE(ValueCreationOneHotWithNDMaskInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ValueCreationOneHotWithoutNDMaskInGPU)
 {
-    ValueCreationOneHotWithNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), false);
-    ValueCreationOneHotWithNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), true);
+    if (IsGPUAvailable())
+    {
+        ValueCreationOneHotNoNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), false);
+        ValueCreationOneHotNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
+    }
+
 }
 
-BOOST_AUTO_TEST_CASE(SparseSequenceBatchValueCreationInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ValueCreationOneHotWithNDMaskInGPU)
 {
-    SparseSequenceBatchValueCreationTest(50000, 1, DeviceDescriptor::GPUDevice(0));
-    SparseSequenceBatchValueCreationTest(6000, 6, DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        ValueCreationOneHotWithNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), false);
+        ValueCreationOneHotWithNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), true);
+    }
 }
 
-BOOST_AUTO_TEST_CASE(ValueCopyToDenseInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(SparseSequenceBatchValueCreationInGPU)
 {
-    ValueCopyToDenseTest<float>(DeviceDescriptor::GPUDevice(0));
-    ValueCopyToDenseTest<double>(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        SparseSequenceBatchValueCreationTest(50000, 1, DeviceDescriptor::GPUDevice(0));
+        SparseSequenceBatchValueCreationTest(6000, 6, DeviceDescriptor::GPUDevice(0));
+    }
 }
 
-BOOST_AUTO_TEST_CASE(ValueCopyToOneHotInGPU, *boost::unit_test::precondition(GpuAvailable))
+BOOST_AUTO_TEST_CASE(ValueCopyToDenseInGPU)
 {
-    ValueCopyToOneHotTest<float>(DeviceDescriptor::GPUDevice(0));
-    ValueCopyToOneHotTest<double>(DeviceDescriptor::GPUDevice(0));
+    if (IsGPUAvailable())
+    {
+        ValueCopyToDenseTest<float>(DeviceDescriptor::GPUDevice(0));
+        ValueCopyToDenseTest<double>(DeviceDescriptor::GPUDevice(0));
+    }
+}
+
+BOOST_AUTO_TEST_CASE(ValueCopyToOneHotInGPU)
+{
+    if (IsGPUAvailable())
+    {
+        ValueCopyToOneHotTest<float>(DeviceDescriptor::GPUDevice(0));
+        ValueCopyToOneHotTest<double>(DeviceDescriptor::GPUDevice(0));
+    }
 }
 
 BOOST_AUTO_TEST_CASE(ValueCopyToExceptions)
