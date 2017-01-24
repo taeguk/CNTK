@@ -10,7 +10,7 @@
 # by the following layer (usually a set of pretrained fully connected layers).
 # Classification error and evaluation criterion are computed for each ROI.
 
-#makeMode = false
+makeMode = false
 command = Train:WriteTest:WriteTrain
 
 deviceId = "Auto"
@@ -91,11 +91,12 @@ Train = {
 
     SGD = {
         epochSize = 0
-        minibatchSize = 2
-        maxEpochs = 17
+        minibatchSize = 5 # 2
+        maxEpochs = 20 # 17
         
         learningRatesPerSample=0.00001*10:0.000001*5:0.0000001
-        momentumPerMB=0.9
+        #momentumPerMB=0.9
+        momentumAsTimeConstant = 20 # 20 == 0.778
         gradUpdateType=None
         L2RegWeight=0.0005
         dropoutRate=0.5
