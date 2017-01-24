@@ -50,9 +50,9 @@ int main()
 
     // Note: Run the device selection tests first since later tests
     // may interfere with device selection by freezing default device
-    DeviceSelectionTests();
+   /* DeviceSelectionTests();
 
-    NDArrayViewTests();
+    NDArrayViewTests();*/
     ValueTests();
     TensorTests();
     FunctionTests();
