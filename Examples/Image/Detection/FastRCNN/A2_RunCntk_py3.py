@@ -218,6 +218,7 @@ if __name__ == '__main__':
     else:
         trained_model = train_fast_rcnn()
         trained_model.save_model(model_path)
+        print("Stored trained model at %s" % model_path)
 
     # Evaluate the test set
     test_fast_rcnn(trained_model)

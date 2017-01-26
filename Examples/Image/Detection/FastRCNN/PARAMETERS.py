@@ -15,7 +15,7 @@ datasetName = "grocery"
 # default parameters
 ############################
 # cntk params
-cntk_nrRois = 100  # 2000           # how many ROIs to zero-pad
+cntk_nrRois = 100      # how many ROIs to zero-pad. Use 100 to get quick result. Use 2000 to get good results.
 cntk_padWidth = 1000
 cntk_padHeight = 1000
 

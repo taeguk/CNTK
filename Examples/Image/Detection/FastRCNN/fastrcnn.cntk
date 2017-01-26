@@ -10,7 +10,7 @@
 # by the following layer (usually a set of pretrained fully connected layers).
 # Classification error and evaluation criterion are computed for each ROI.
 
-makeMode = false
+#makeMode = false
 command = Train:WriteTest:WriteTrain
 
 deviceId = "Auto"
@@ -50,14 +50,9 @@ Train = {
     action = "train"
     
     BrainScriptNetworkBuilder = {
-        # using ndl model:
-        #network     = BS.Network.Load ("../../../../../PretrainedModels/AlexNet.model")
-        #convLayers  = BS.Network.CloneFunction(network.features, network.conv5_y, parameters = "constant")
-        #fcLayers    = BS.Network.CloneFunction(network.pool3, network.h2_d)
-        # using brain scipt model
-        network     = BS.Network.Load ("../../../../../PretrainedModels/AlexNetBS.model")
-        convLayers  = BS.Network.CloneFunction(network.features, network.z_x___x___x_x, parameters = "constant")    # network.features, network.z.x._.x._.x.x
-        fcLayers    = BS.Network.CloneFunction(network.z_x___x___x, network.z_x)                                    # network.z.x._.x._.x, network.z.x
+        network     = BS.Network.Load ("../../../../../PretrainedModels/AlexNet.model")
+        convLayers  = BS.Network.CloneFunction(network.features, network.conv5_y, parameters = "constant")
+        fcLayers    = BS.Network.CloneFunction(network.pool3, network.h2_d)
 
         model (features, rois) = {
             featNorm = features - 114
@@ -91,12 +86,11 @@ Train = {
 
     SGD = {
         epochSize = 0
-        minibatchSize = 5 # 2
-        maxEpochs = 20 # 17
+        minibatchSize = 2
+        maxEpochs = 17
         
         learningRatesPerSample=0.00001*10:0.000001*5:0.0000001
-        #momentumPerMB=0.9
-        momentumAsTimeConstant = 20 # 20 == 0.778
+        momentumAsTimeConstant = 20
         gradUpdateType=None
         L2RegWeight=0.0005
         dropoutRate=0.5
