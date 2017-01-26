@@ -993,7 +993,7 @@ void ValueTests()
     fprintf(stderr, "\nValueTests..\n");
     srand(1);
 
-    /*TestSettingParameterValuesManually(DeviceDescriptor::CPUDevice());
+    TestSettingParameterValuesManually(DeviceDescriptor::CPUDevice());
 
     ValueCreationNoNDMaskTest<float>(DeviceDescriptor::CPUDevice(), false);
     ValueCreationNoNDMaskTest<double>(DeviceDescriptor::CPUDevice(), true);
@@ -1011,7 +1011,7 @@ void ValueTests()
     ValueCopyToOneHotTest<double>(DeviceDescriptor::CPUDevice());
 
     ValueCopyToExceptionsTest(DeviceDescriptor::CPUDevice());
-*/
+
     CreateBatchTestDense<float>(DeviceDescriptor::CPUDevice(), false);
     CreateBatchTestDense<float>(DeviceDescriptor::CPUDevice(), true);
     CreateSequenceTestDense<float>(DeviceDescriptor::CPUDevice(), false);
@@ -1027,7 +1027,7 @@ void ValueTests()
 
     if (IsGPUAvailable())
     {
-        /*TestSettingParameterValuesManually(DeviceDescriptor::GPUDevice(0));
+        TestSettingParameterValuesManually(DeviceDescriptor::GPUDevice(0));
 
         ValueCreationNoNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), false);
         ValueCreationNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
@@ -1037,13 +1037,14 @@ void ValueTests()
         ValueCreationOneHotNoNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), true);
         ValueCreationOneHotWithNDMaskTest<float>(DeviceDescriptor::GPUDevice(0), false);
         ValueCreationOneHotWithNDMaskTest<double>(DeviceDescriptor::GPUDevice(0), true);
+
         SparseSequenceBatchValueCreationTest(50000, 1, DeviceDescriptor::GPUDevice(0));
         SparseSequenceBatchValueCreationTest(6000, 6, DeviceDescriptor::GPUDevice(0));
+        
         ValueCopyToDenseTest<float>(DeviceDescriptor::GPUDevice(0));
         ValueCopyToDenseTest<double>(DeviceDescriptor::GPUDevice(0));
         ValueCopyToOneHotTest<float>(DeviceDescriptor::GPUDevice(0));
-
-        ValueCopyToExceptionsTest(DeviceDescriptor::GPUDevice(0));*/
+        ValueCopyToExceptionsTest(DeviceDescriptor::GPUDevice(0));
 
         CreateBatchTestDense<float>(DeviceDescriptor::GPUDevice(0), false);
         CreateBatchTestDense<float>(DeviceDescriptor::GPUDevice(0), true);
