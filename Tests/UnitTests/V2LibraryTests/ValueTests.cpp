@@ -1003,27 +1003,28 @@ void ValueTests()
     ValueCreationOneHotNoNDMaskTest<double>(DeviceDescriptor::CPUDevice(), true);
     ValueCreationOneHotWithNDMaskTest<double>(DeviceDescriptor::CPUDevice(), false);
     ValueCreationOneHotWithNDMaskTest<float>(DeviceDescriptor::CPUDevice(), true);
+
     SparseSequenceBatchValueCreationTest(300, 7, DeviceDescriptor::CPUDevice());
     SparseSequenceBatchValueCreationTest(2300, 1, DeviceDescriptor::CPUDevice());
+
     ValueCopyToDenseTest<float>(DeviceDescriptor::CPUDevice());
     ValueCopyToDenseTest<double>(DeviceDescriptor::CPUDevice());
     ValueCopyToOneHotTest<float>(DeviceDescriptor::CPUDevice());
     ValueCopyToOneHotTest<double>(DeviceDescriptor::CPUDevice());
-
     ValueCopyToExceptionsTest(DeviceDescriptor::CPUDevice());
 
-    CreateBatchTestDense<float>(DeviceDescriptor::CPUDevice(), false);
     CreateBatchTestDense<float>(DeviceDescriptor::CPUDevice(), true);
-    CreateSequenceTestDense<float>(DeviceDescriptor::CPUDevice(), false);
+    CreateBatchTestDense<double>(DeviceDescriptor::CPUDevice(), false);
     CreateSequenceTestDense<float>(DeviceDescriptor::CPUDevice(), true);
-    CreateBatchOfSequencesTestDense<float>(DeviceDescriptor::CPUDevice(), false);
+    CreateSequenceTestDense<double>(DeviceDescriptor::CPUDevice(), false);
     CreateBatchOfSequencesTestDense<float>(DeviceDescriptor::CPUDevice(), true);
-    CreateBatchTestOneHot<float>(DeviceDescriptor::CPUDevice(), false);
+    CreateBatchOfSequencesTestDense<double>(DeviceDescriptor::CPUDevice(), false);
     CreateBatchTestOneHot<float>(DeviceDescriptor::CPUDevice(), true);
-    CreateSequenceTestOneHot<float>(DeviceDescriptor::CPUDevice(), false);
+    CreateBatchTestOneHot<double>(DeviceDescriptor::CPUDevice(), false);
     CreateSequenceTestOneHot<float>(DeviceDescriptor::CPUDevice(), true);
-    CreateBatchOfSequencesTestOneHot<float>(DeviceDescriptor::CPUDevice(), false);
+    CreateSequenceTestOneHot<double>(DeviceDescriptor::CPUDevice(), false);
     CreateBatchOfSequencesTestOneHot<float>(DeviceDescriptor::CPUDevice(), true);
+    CreateBatchOfSequencesTestOneHot<double>(DeviceDescriptor::CPUDevice(), false);
 
     if (IsGPUAvailable())
     {
@@ -1040,23 +1041,23 @@ void ValueTests()
 
         SparseSequenceBatchValueCreationTest(50000, 1, DeviceDescriptor::GPUDevice(0));
         SparseSequenceBatchValueCreationTest(6000, 6, DeviceDescriptor::GPUDevice(0));
-        
+
         ValueCopyToDenseTest<float>(DeviceDescriptor::GPUDevice(0));
         ValueCopyToDenseTest<double>(DeviceDescriptor::GPUDevice(0));
         ValueCopyToOneHotTest<float>(DeviceDescriptor::GPUDevice(0));
         ValueCopyToExceptionsTest(DeviceDescriptor::GPUDevice(0));
 
         CreateBatchTestDense<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateBatchTestDense<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateBatchTestDense<double>(DeviceDescriptor::GPUDevice(0), true);
         CreateSequenceTestDense<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateSequenceTestDense<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateSequenceTestDense<double>(DeviceDescriptor::GPUDevice(0), true);
         CreateBatchOfSequencesTestDense<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateBatchOfSequencesTestDense<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateBatchOfSequencesTestDense<double>(DeviceDescriptor::GPUDevice(0), true);
         CreateBatchTestOneHot<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateBatchTestOneHot<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateBatchTestOneHot<double>(DeviceDescriptor::GPUDevice(0), true);
         CreateSequenceTestOneHot<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateSequenceTestOneHot<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateSequenceTestOneHot<double>(DeviceDescriptor::GPUDevice(0), true);
         CreateBatchOfSequencesTestOneHot<float>(DeviceDescriptor::GPUDevice(0), false);
-        CreateBatchOfSequencesTestOneHot<float>(DeviceDescriptor::GPUDevice(0), true);
+        CreateBatchOfSequencesTestOneHot<double>(DeviceDescriptor::GPUDevice(0), true);
     }
 }
