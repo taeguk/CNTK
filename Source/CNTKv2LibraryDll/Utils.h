@@ -564,4 +564,16 @@ namespace CNTK
 
         return namedListString;
     }
+
+    template<class T>
+    std::shared_ptr<std::vector<T>> CreateSafeVector(const std::vector<T>& values)
+    {
+        return std::shared_ptr<std::vector<T>>(new std::vector<T>(values), [](std::vector<T>* ptr) { delete ptr; });
+    }
+
+    template<class T>
+    std::shared_ptr<std::vector<T>> CreateSafeVector(const std::vector<T>&& values)
+    {
+        return std::shared_ptr<std::vector<T>>(new std::vector<T>(std::move(values)), [](std::vector<T>* ptr) { delete ptr; });
+    }
 }

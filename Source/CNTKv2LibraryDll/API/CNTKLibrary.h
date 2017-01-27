@@ -2436,7 +2436,10 @@ namespace CNTK
         /// Infers the shape, data type and dynamic axes of the outputs of 'this' function based on the 
         /// Function's inputs, and returns Output Variable objects containing the inferred information
         ///
-        CNTK_API virtual std::vector<Variable> InferOutputs() = 0;
+        std::vector<Variable> InferOutputs()
+        {
+            return *(InferOutputsImpl().get());
+        }
 
     public:
 
@@ -2656,6 +2659,8 @@ namespace CNTK
         ///
         CNTK_API virtual void OnPlaceholdersReplaced(const std::unordered_map<Variable, Variable>& placeholderReplacements,
                                                      std::unordered_set<Variable>& replacedPlaceholders);
+
+        CNTK_API virtual std::shared_ptr<std::vector<Variable>> InferOutputsImpl() = 0;
 
     protected:
         static bool ValidateOrUpdateOutput(const Variable& output, const Variable& newOutput, bool alwaysUpdate);

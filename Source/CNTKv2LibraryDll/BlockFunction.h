@@ -131,7 +131,7 @@ namespace CNTK
             return blockFunctionInputs;
         }
 
-        virtual std::vector<Variable> InferOutputs() override
+        std::shared_ptr<std::vector<Variable>> InferOutputsImpl() override
         {
             // We determine the outputs by replacing the arguments of the composite with new placeholders with updated 
             // shape etc. information matching the corresponding mapped input
@@ -158,7 +158,7 @@ namespace CNTK
                 blockFunctionOutputs.push_back(output);
             }
 
-            return blockFunctionOutputs;
+            return CreateSafeVector(blockFunctionOutputs);
         }
 
     private:
