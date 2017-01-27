@@ -179,7 +179,8 @@ private:
                     else
                     {
                         m_gpuDataTransferer = std::make_unique<GPUDataTransferer>(deviceId, m_useAsyncAggregation);
-                        m_intermediateCPUBuffer = AllocateIntermediateBuffer(deviceId, totalGradientsSizeInElements);
+                        m_intermediateCPUBuffer = std::shared_ptr<ElemType>(new ElemType[totalGradientsSizeInElements], [](ElemType* p) { delete[] p; });
+                        // AllocateIntermediateBuffer(deviceId, totalGradientsSizeInElements);
                     }
                 }
             }
@@ -253,6 +254,7 @@ private:
                 for (size_t i = 0; i < numGradMatrices; ++i)
                 {
                     m_AggregationBuffer->ColumnSlice(offset, gradients[i]->GetNumElements()).AssignValuesOf(gradients[i]->Reshaped(1, gradients[i]->GetNumElements()));
+                    // m_AggregationBuffer->ColumnSlice(offset, gradients[i]->GetNumElements()).Reshaped(gradients[i]->GetNumRows(), gradients[i]->GetNumCols()).Print("Before ");
                     offset += gradients[i]->GetNumElements();
                 }
 
@@ -307,9 +309,8 @@ private:
                 fprintf(stderr, "\n#### Before all reduce ####\n");
                 fflush(stderr);
 
-                allReduceRequests.push_back(MPI_Request());
-                MPI_Iallreduce(MPI_IN_PLACE, reductionBuffer, m_AggregationBuffer->GetNumElements(),
-                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator(), &allReduceRequests[0]) || MpiFail("MPI_Allreduce");
+                MPI_Allreduce(MPI_IN_PLACE, reductionBuffer, m_AggregationBuffer->GetNumElements(),
+                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator()) || MpiFail("MPI_Allreduce");
 
                 fprintf(stderr, "##### After all reduce ####\n");
                 for (size_t i=0; i<m_AggregationBuffer->GetNumElements(); i++)
@@ -383,7 +384,6 @@ private:
         {
             if (m_AggregationBuffer != NULL)
             {
-                MPI_Wait(&allReduceRequests[0], MPI_STATUSES_IGNORE) || MpiFail("MPI_Wait");
                 if (deviceId >= 0)
                 {
                     m_gpuDataTransferer->CopyCPUToGPUAsync(m_intermediateCPUBuffer.get(), m_AggregationBuffer->GetNumElements(), m_AggregationBuffer->Data());
@@ -395,6 +395,7 @@ private:
                 for (size_t i = 0; i < numGradMatrices; ++i)
                 {
                     gradients[i]->AssignValuesOf(m_AggregationBuffer->ColumnSlice(offset, gradients[i]->GetNumElements()).Reshaped(gradients[i]->GetNumRows(), gradients[i]->GetNumCols()));
+                    m_AggregationBuffer->ColumnSlice(offset, gradients[i]->GetNumElements()).Reshaped(gradients[i]->GetNumRows(), gradients[i]->GetNumCols()).Print("After ");
                     offset += gradients[i]->GetNumElements();
                 }
             }
