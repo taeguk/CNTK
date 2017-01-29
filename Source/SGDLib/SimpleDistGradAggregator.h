@@ -301,8 +301,9 @@ private:
                     reductionBuffer = m_intermediateCPUBuffer.get();
                 }
 
-                MPI_Allreduce(MPI_IN_PLACE, reductionBuffer, m_AggregationBuffer->GetNumElements(),
-                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator()) || MpiFail("MPI_Allreduce");
+                allReduceRequests.push_back(MPI_Request());
+                MPI_Iallreduce(MPI_IN_PLACE, reductionBuffer, m_AggregationBuffer->GetNumElements(),
+                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator(), &allReduceRequests[0]) || MpiFail("MPI_Allreduce");
             }
             else
             {
@@ -370,6 +371,7 @@ private:
         {
             if (m_AggregationBuffer != NULL)
             {
+                MPI_Wait(&allReduceRequests[0], MPI_STATUSES_IGNORE) || MpiFail("MPI_Wait");
                 if (deviceId >= 0)
                 {
                     m_gpuDataTransferer->CopyCPUToGPUAsync(m_intermediateCPUBuffer.get(), m_AggregationBuffer->GetNumElements(), m_AggregationBuffer->Data());
