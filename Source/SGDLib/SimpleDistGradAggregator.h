@@ -260,7 +260,6 @@ private:
                 if (deviceId >= 0)
                 {
                     m_gpuDataTransferer->CopyGPUToCPUAsync(m_AggregationBuffer->Data(), m_AggregationBuffer->GetNumElements(), m_intermediateCPUBuffer.get());
-                    m_gpuDataTransferer->WaitForCopyGPUToCPUAsync();
                 }
             }
             else if (deviceId >= 0)
@@ -298,12 +297,22 @@ private:
                 ElemType* reductionBuffer = m_AggregationBuffer->Data();
                 if (deviceId >= 0)
                 {
+                    m_gpuDataTransferer->WaitForCopyGPUToCPUAsync();
                     reductionBuffer = m_intermediateCPUBuffer.get();
+
+                    fprintf(stderr, "### Debug: Before reduceall ###\n");
+                    for (int i=0; i<10; i++)
+                        fprintf(stderr, "%.6f, ", *(m_intermediateCPUBuffer.get() + i));
+                    fprintf(stderr, "=== Last 10 elements; ");
+                    for (int i= m_AggregationBuffer->GetNumElements() - 11; i <  m_AggregationBuffer->GetNumElements(); i++)
+                        fprintf(stderr, "%.6f, ", *(m_intermediateCPUBuffer.get() + i));
+                    fprintf(stderr, "=== Debug: Before reduceall ===\n");
+                    fflush(stderr);
                 }
 
                 allReduceRequests.push_back(MPI_Request());
                 MPI_Iallreduce(MPI_IN_PLACE, reductionBuffer, m_AggregationBuffer->GetNumElements(),
-                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator(), &allReduceRequests[0]) || MpiFail("MPI_Allreduce");
+                    MPIWrapper::GetDataType(reductionBuffer), MPI_SUM, m_mpi->Communicator(), &allReduceRequests[0]) || MpiFail("MPI_Iallreduce");
             }
             else
             {
@@ -376,6 +385,15 @@ private:
                 {
                     m_gpuDataTransferer->CopyCPUToGPUAsync(m_intermediateCPUBuffer.get(), m_AggregationBuffer->GetNumElements(), m_AggregationBuffer->Data());
                     m_gpuDataTransferer->WaitForCopyCPUToGPUAsync();
+
+                    fprintf(stderr, "### Debug: After reduceall ###\n");
+                    for (int i=0; i<10; i++)
+                        fprintf(stderr, "%.6f, ", *(m_intermediateCPUBuffer.get() + i));
+                    fprintf(stderr, "=== Last 10 elements; ");
+                    for (int i= m_AggregationBuffer->GetNumElements() - 11; i <  m_AggregationBuffer->GetNumElements(); i++)
+                        fprintf(stderr, "%.6f, ", *(m_intermediateCPUBuffer.get() + i));
+                    fprintf(stderr, "=== Debug: After reduceall ===\n");
+                    fflush(stderr);
                 }
 
                 // Copy all gradient data back from the single contiguous buffer used for aggregation
@@ -384,6 +402,7 @@ private:
                 {
                     gradients[i]->AssignValuesOf(m_AggregationBuffer->ColumnSlice(offset, gradients[i]->GetNumElements()).Reshaped(gradients[i]->GetNumRows(), gradients[i]->GetNumCols()));
                     offset += gradients[i]->GetNumElements();
+                
                 }
             }
             else
