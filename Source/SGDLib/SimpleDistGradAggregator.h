@@ -162,12 +162,12 @@ private:
 
             if (!m_nccl.IsSupported())
             {
-                m_AggregationBuffer.reset(new Matrix<ElemType>(1, totalGradientsSizeInElements, deviceId));
+                m_AggregationBuffer.reset(new (std::nothrow) Matrix<ElemType>(1, totalGradientsSizeInElements, deviceId));
 
                 if (deviceId != CPUDEVICE)
                 {
                     // Cannot allocate extra continous buffer
-                    if (m_AggregationBuffer == NULL)
+                    if (m_AggregationBuffer == 0)
                     {
                         fprintf(stderr, "Failed to get extra contious buffer\n");
                         for (size_t i = 0; i < gradients.size(); i++)
@@ -247,7 +247,7 @@ private:
         // Copy all gradient data into a single contiguous buffer
         if (!m_nccl.IsSupported())
         {
-            if (m_AggregationBuffer != NULL)
+            if (m_AggregationBuffer != 0)
             {
                 size_t offset = 0;
                 for (size_t i = 0; i < numGradMatrices; ++i)
@@ -293,7 +293,7 @@ private:
         std::vector<MPI_Request> allReduceRequests;
         if (!m_nccl.IsSupported())
         {
-            if (m_AggregationBuffer != NULL)
+            if (m_AggregationBuffer != 0)
             {
                 ElemType* reductionBuffer = m_AggregationBuffer->Data();
                 if (deviceId >= 0)
@@ -369,7 +369,7 @@ private:
         // Wait for the allreduce operations to finish and initiate transfer back to the GPU if needed
         if (!m_nccl.IsSupported())
         {
-            if (m_AggregationBuffer != NULL)
+            if (m_AggregationBuffer != 0)
             {
                 MPI_Wait(&allReduceRequests[0], MPI_STATUSES_IGNORE) || MpiFail("MPI_Wait");
                 if (deviceId >= 0)
@@ -403,7 +403,7 @@ private:
 
         if (m_nccl.IsSupported())
             m_nccl.Sync();
-        else if (deviceId >= 0 && m_AggregationBuffer == NULL)
+        else if (deviceId >= 0 && m_AggregationBuffer == 0)
         {
             for (size_t i = 0; i < numGradMatrices; ++i)
                 m_gpuDataTransferers[i]->WaitForCopyCPUToGPUAsync();
